@@ -9,7 +9,7 @@ To install the package run:
 ```R
 # install MadingleyR package
 library('remotes') # or use library('devtools')
-install_github("SHoeks/MadingleyR")
+install_github("MadingleyR/MadingleyR")
 ```
 Code from paper:
 
@@ -138,7 +138,7 @@ remove.packages('MadingleyR')
 rm(list=ls())
 
 # install pkg
-remotes::install_github("SHoeks/MadingleyR", auth_token = "099f9209beb876055f3adc0f8e0c791cafaff6d1")
+remotes::install_github("MadingleyR/MadingleyR")
 
 # test run
 library(MadingleyR)
