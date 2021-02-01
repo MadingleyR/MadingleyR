@@ -3,7 +3,7 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 
 - The package manual is accessible from within R or can be downloaded from: https://github.com/MadingleyR/MadingleyR/blob/main/Manual.pdf
 - For more information about the package see: {URL}
-- For more information about the model: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841
+- For more information about the Madingley model: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841
 
 To install the package run:
 
