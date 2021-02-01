@@ -1,11 +1,13 @@
 Package: MadingleyR
-Type: Package
-Title: MadingleyR: General Ecosystem Model
-Version: 1.0.1
-Author: Selwyn Hoeks
-Maintainer: The package maintainer <shoeks@science.ru.nlt>
-Description: The MadingleyR package is wrapper around the C++ code of the Madingley model. It was intended as an accessible and transparent tool to lower barrier of using the Madingley model, thereby broadening the Madingley comminity. 
-License: None?
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "First",
+           family = "Last",
+           role = c("aut", "cre"),
+           email = "first.last@example.com",
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: What the package does (one paragraph).
+License: What license it uses
 Encoding: UTF-8
 LazyData: true
-Imports: sp, raster, rgdal
