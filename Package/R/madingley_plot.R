@@ -1,4 +1,4 @@
-madingey_plot = function(madingley_data){
+madingley_plot = function(madingley_data){
 
   def.par = par(no.readonly = TRUE)
 
@@ -17,25 +17,3 @@ madingey_plot = function(madingley_data){
   try(plot_spatialbiomass(madingley_data, functional_filter = T, box=F, axes=F))
 
 }
-
-### Test code
-# library(MadingleyR)
-# sptl_inp = madingley_inputs('spatial inputs')
-# chrt_def = madingley_inputs('cohort definition')
-# stck_def = madingley_inputs('stock definition')
-# mdl_prms = madingley_inputs('model parameters')
-#
-# mdata = madingley_init(spatial_window = c(31, 35, -5, -1),
-#                        cohort_def = chrt_def,
-#                        stock_def = stck_def,
-#                        spatial_inputs = sptl_inp)
-#
-# mdata2 = madingley_run(madingley_data = mdata,
-#                        years = 100,
-#                        cohort_def = chrt_def,
-#                        stock_def = stck_def,
-#                        spatial_inputs = sptl_inp,
-#                        model_parameters = mdl_prms)
-#
-# madingey_plot(mdata2)
-### Test code
