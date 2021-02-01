@@ -1,0 +1,2 @@
+ECHO off
+C:\Users\Selwyn\Dropbox\Phd\Papers\Paper_MadingleyR\MadingleyRwin\dist\madingley.exe run 50 31 35 -5 -1 C:\Users\Selwyn\AppData\Local\Temp\Rtmp2jq7wH\madingley_outs_06_01_20_17_30_42\ 576 576 576 576 1 C:\Users\Selwyn\AppData\Local\Temp\Rtmp2jq7wH\input\ 500 C:\Users\Selwyn\AppData\Local\Temp\Rtmp2jq7wH\input\C.csv C:\Users\Selwyn\AppData\Local\Temp\Rtmp2jq7wH\input\S.csv 0 C:\Users\Selwyn\AppData\Local\Temp\Rtmp2jq7wH\spatial_inputs\1deg\ 1 0
