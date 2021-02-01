@@ -1,9 +1,8 @@
 # MadingleyR
 R package of the Madingley General Ecosystem Model. The MadingleyR R package streamlines the installation procedure and supports all major operating systems. MadingleyR enables users to combine multiple consecutive simulation runs, making case study specific modifications to MadingleyR objects along the way. 
 
-For more information about the package see: {URL}
-
-For more information about the model: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841
+- For more information about the package see: {URL}
+- For more information about the model: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841
 
 To install the package run:
 
