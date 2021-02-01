@@ -1,19 +1,17 @@
 # MadingleyR
 R package of the Madingley General Ecosystem Model. The MadingleyR R package streamlines the installation procedure and supports all major operating systems. MadingleyR enables users to combine multiple consecutive simulation runs, making case study specific modifications to MadingleyR objects along the way. 
 
-- The package manual is accessible from within R or can be downloaded from: https://github.com/MadingleyR/MadingleyR/blob/main/inst/MadingleyR_Manual_1.0.0.pdf
-- For more information about the package see: {URL}
-- For more information about the model: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841
+For more information about the package see: {URL}
+For more information about the model: https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841
 
 To install the package run:
 
 ```R
 # install MadingleyR package
 library('remotes') # or use library('devtools')
-install_github("MadingleyR/MadingleyR")
-??MadingleyR # open function help pages
+install_github("SHoeks/MadingleyR")
 ```
-Test code (from paper):
+Code from paper:
 
 ```R
 
@@ -35,17 +33,12 @@ mdl_prms = madingley_inputs('model parameters')
 
 # initialise model (generate cohorts and stocks)
 mdata = madingley_init(spatial_window = c(31, 35, -5, -1),
-                       cohort_def = chrt_def,
-                       stock_def = stck_def,
-                       spatial_inputs = sptl_inp)
+ cohort_def = chrt_def,
+ stock_def = stck_def,
+ spatial_inputs = sptl_inp)
 
 # Run the Madingley model
-mdata2 = madingley_run(madingley_data = mdata, 
-                       years = 100, 
-                       cohort_def = chrt_def, 
-                       stock_def = stck_def, 
-                       spatial_inputs = sptl_inp, 
-                       model_parameters = mdl_prms)
+mdata2 = madingley_run(madingley_data = mdata, years = 100, cohort_def = chrt_def, stock_def = stck_def, spatial_inputs = sptl_inp, model_parameters = mdl_prms)
  
 # Create MadingleyR plots
 madingley_plot(mdata2) 
@@ -66,14 +59,9 @@ sptl_inp$Endo_O_max[ ] = 2e+05 # set max size omnivores = 200 kg
 sptl_inp$Endo_C_max[ ] = 6e+05 # set max size carnivores = 600 kg
 sptl_inp$Ecto_max[ ] = 1.5e+05 # set max size ectotherms = 150 kg
 
-# Initialize model
+# Initialize model and run spin-up of 100 years (output results to C:/MadingleyOut)
 mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
-
-# Run spin-up of 100 years (output results to C:/MadingleyOut)
-mdata2 = madingley_run(out_dir = 'C:/MadingleyOut', 
-                       madingley_data = mdata, 
-                       spatial_inputs = sptl_inp, 
-                       years = 100)
+mdata2 = madingley_run(out_dir = 'C:/MadingleyOut', madingley_data = mdata, spatial_inputs = sptl_inp, years = 100)
 
 # Save environment
 save(mdata2, sptl_inp, file = 'model_spin_up.RData')
@@ -118,15 +106,8 @@ stats = data.frame() # used to store individual model output statistics
 # Loop over land-use intensities
 for(i in 1:length(avail_bio)) {
  m_params[27, 2] = avail_bio[i] # accessible biomass (see model parameters)
- 
- cohorts = madingley_run(
-  years = 5, 
-  madingley_data = mdata2, 
-  model_parameters = m_params, 
-  spatial_inputs = sptl_inp)$cohorts # store cohort results only
- 
- # Calculate cohort biomass
- cohorts$Biomass = cohorts$CohortAbundance * cohorts$IndividualBodyMass 
+ cohorts = madingley_run(years = 5, madingley_data = mdata2, model_parameters = m_params, spatial_inputs = sptl_inp)$cohorts # store cohort results only
+ cohorts$Biomass = cohorts$CohortAbundance * cohorts$IndividualBodyMass # calc cohort biomass
  cohorts = cohorts[cohorts$FunctionalGroupIndex<3, ] # only keep endotherms
  cohorts = aggregate(cohorts$Biomass, by = list(fg[cohorts$FunctionalGroupIndex + 1]), sum)
  stats = rbind(stats, cohorts) # attach aggregated stats
@@ -136,14 +117,11 @@ for(i in 1:length(avail_bio)) {
 stats$veg_reduced = sort(rep(1 - avail_bio, 3))
 m = aggregate(stats$x, by = list(stats$veg_reduced, stats$Group.1), FUN = mean)
 m$x_rel = NA;
-for(i in fg) { 
- m$x_rel[m$Group.2 == i] = m$x[m$Group.2 == i]/m$x[m$Group.2 == i][1] 
-}
+for(i in fg) { m$x_rel[m$Group.2 == i] = m$x[m$Group.2 == i]/m$x[m$Group.2 == i][1] }
 
 # Make final plots
-plot(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Herbivore'], 
-     col= 'green', pch = 19, ylim = c(0, 1.5), xlim = c(0, 1),
-     xlab = 'Relative vegetation biomass inaccessible', ylab = 'Relative change in cohort biomass')
+plot(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Herbivore'], col= 'green', pch = 19, ylim = c(0, 1.5), xlim = c(0, 1),
+ xlab = 'Relative vegetation biomass inaccessible', ylab = 'Relative change in cohort biomass')
 points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 =='Carnivore'], col= 'red', pch = 19)
 points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Omnivore'], col = 'blue', pch = 19)
 abline(1, -1, lty = 2)
@@ -160,7 +138,7 @@ remove.packages('MadingleyR')
 rm(list=ls())
 
 # install pkg
-remotes::install_github("MadingleyR/MadingleyR")
+remotes::install_github("SHoeks/MadingleyR", auth_token = "099f9209beb876055f3adc0f8e0c791cafaff6d1")
 
 # test run
 library(MadingleyR)
@@ -183,13 +161,8 @@ mm = madingley_inputs("model parameters")
 
 # run model
 #m_data2 = madingley_run(out_dir='C:/test test/',madingley_data = m_data, years = 4)
-m_data2 = madingley_run(madingley_data = m_data, 
-                        years = 1, 
-                        dispersal_off = T, 
-                        noise_cohort_order = 0.35, 
-                        output_timestep = c(99,99,99,99), 
-                        parallel = F, 
-                        model_parameters = mm)
+m_data2 = madingley_run(madingley_data = m_data, years = 1, dispersal_off = T, noise_cohort_order = 0.35,
+                        output_timestep = c(99,99,99,99), parallel = F, model_parameters = mm)
 
 # plots
 plot_timelines(m_data2,select='functional groups',ylim=c(5.5,11.5))
