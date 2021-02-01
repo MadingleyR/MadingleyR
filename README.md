@@ -160,7 +160,7 @@ remove.packages('MadingleyR')
 rm(list=ls())
 
 # install pkg
-remotes::install_github("MadingleyR/MadingleyR")
+remotes::install_github('MadingleyR/MadingleyR', subdir='/Package')
 
 # test run
 library(MadingleyR)
