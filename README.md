@@ -10,7 +10,7 @@ To install the package run:
 ```R
 # install MadingleyR package
 library('remotes') # or use library('devtools')
-install_github('MadingleyR/MadingleyR', subdir='/Package')
+install_github('MadingleyR/MadingleyR', subdir='Package')
 ??MadingleyR # open function help pages
 ```
 Test code (from paper):
@@ -160,7 +160,7 @@ remove.packages('MadingleyR')
 rm(list=ls())
 
 # install pkg
-remotes::install_github('MadingleyR/MadingleyR', subdir='/Package')
+remotes::install_github('MadingleyR/MadingleyR', subdir='Package')
 
 # test run
 library(MadingleyR)
