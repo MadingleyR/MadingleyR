@@ -13,7 +13,7 @@ library('remotes') # or use library('devtools')
 install_github("MadingleyR/MadingleyR")
 ??MadingleyR # open function help pages
 ```
-Code from paper:
+Test code (from paper):
 
 ```R
 
