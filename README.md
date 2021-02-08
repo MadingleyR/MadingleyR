@@ -64,9 +64,9 @@ madingley_plot(mdata2)
 ```
 
 
-<img src="Figures/fig2.png" alt="Fig2" width="50%"/>
-<img src="Figures/fig3.png" alt="Fig3" width="50%"/>
-<img src="Figures/fig4.png" alt="Fig4" width="50%"/>
+<img src="Figures/fig2.png" alt="Fig2" width="70%"/>
+<img src="Figures/fig3.png" alt="Fig3" width="70%"/>
+<img src="Figures/fig4.png" alt="Fig4" width="70%"/>
 
 
 Case study spin-up (from paper):
@@ -120,7 +120,7 @@ plot_foodweb(mdata3, max_flows = 5) # control food-web plot
 plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 ```
 
-<img src="Figures/fig5.png" alt="Fig5" width="50%"/>
+<img src="Figures/fig5.png" alt="Fig5" width="70%"/>
 
 Case study 2 (from paper):
 
@@ -171,4 +171,4 @@ legend(0.0, 0.2, fg, col=c('green', 'red', 'blue'), pch = 19, box.lwd = 0)
 
 ```
 
-<img src="Figures/fig6.png" alt="Fig6" width="30%"/>
+<img src="Figures/fig6.png" alt="Fig6" width="50%"/>
