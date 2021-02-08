@@ -52,6 +52,8 @@ madingley_plot(mdata2)
 ```
 
 <img src="Figures/fig2.png" alt="Fig2" width="50%"/>
+<img src="Figures/fig3.png" alt="Fig3" width="50%"/>
+<img src="Figures/fig4.png" alt="Fig4" width="50%"/>
 
 
 Case study spin-up (from paper):
