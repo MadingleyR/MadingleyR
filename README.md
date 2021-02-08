@@ -51,8 +51,7 @@ mdata2 = madingley_run(madingley_data = mdata,
 madingley_plot(mdata2) 
 ```
 
-![Figure2](Figures/fig2.png)
-
+<img src="Figures/fig2.png" alt="Fig2" width="50%"/>
 
 
 Case study spin-up (from paper):
