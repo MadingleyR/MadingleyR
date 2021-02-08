@@ -23,6 +23,8 @@ In addition to installing the MadingleyR dependencies (rgdal, sp and raster), th
 
 ### Model initialisation
 
+The function ```R madingley_init()``` initialises a model run by generating a cohort and stock data set. Both data sets are returned as data frames in a list object after the madingley_init() finishes. The cohort data set contains functional information for all cohorts (i.e. heterotrophs) needed to run a Madingley simulation. The stock data set holds the functional information concerning the stocks (i.e. photo-autotrophs). 
+
 ```R
 
 # Load package
