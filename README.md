@@ -15,7 +15,7 @@ library('remotes') # or use library('devtools')
 install_github('MadingleyR/MadingleyR', subdir='Package')
 ```
 
-Test code (from paper):
+Baisc use and testing the package:
 
 ```R
 
