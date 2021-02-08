@@ -102,7 +102,7 @@ madingley_plot(mdata2)
 </p>
 
 
-Case study spin-up (from paper):
+## Case studies (spin-up)
 
 ```R
 library(MadingleyR)
@@ -131,7 +131,7 @@ save(mdata2, sptl_inp, file = 'model_spin_up.RData')
 
 ```
 
-Case study 1 (from paper):
+## Case study 1
 
 ```R
 # Load model spin-up
@@ -152,10 +152,16 @@ par(mfrow = c(1, 2))
 plot_foodweb(mdata3, max_flows = 5) # control food-web plot
 plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 ```
-
+<p>
 <img src="Figures/fig5.png" alt="Fig5" width="70%"/>
+<br>
+<em>Log10-binned food-web plots construction from a control simulation (a) and a simulation in which large and mega (>100 kg) endothermic herbivores were removed (b). Node colour depicts feeding category: carnivores (red), omnivores (blue) and herbivores (green). Grey lines connecting the nodes illustrate the flows between grouped cohorts. These results can be replicated, without any further dependencies, using the code shown in the main text.</em>
+<br>
+<br>
+<br>
+</p>
 
-Case study 2 (from paper):
+## Case study 2
 
 ```R
 # Load model spin-up
