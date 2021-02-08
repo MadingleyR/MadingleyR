@@ -5,7 +5,9 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 - Additional information about the package can be found [here](addlink) (link not yet available)
 - More information about the Madingley model can be found [here](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
 
-To install the package run:
+## Installation
+
+The MadingleyR package can be directly installed from R using the devtools or remotes R package. The following command installs the package using the remotes R package:
 
 ```R
 # Load the remotes package
@@ -15,7 +17,11 @@ library('remotes') # or use library('devtools')
 install_github('MadingleyR/MadingleyR', subdir='Package')
 ```
 
-Baisc use and testing the package:
+In addition to installing the MadingleyR dependencies (rgdal, sp and raster), the installation process also downloads the precompiled C++ executable, default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
+
+## Using the package
+
+### Model initialisation
 
 ```R
 
@@ -40,7 +46,9 @@ mdata = madingley_init(spatial_window = c(31, 35, -5, -1),
                        cohort_def = chrt_def,
                        stock_def = stck_def,
                        spatial_inputs = sptl_inp)
+```
 
+```R
 # Run the Madingley model
 mdata2 = madingley_run(madingley_data = mdata, 
                        years = 100, 
@@ -52,6 +60,7 @@ mdata2 = madingley_run(madingley_data = mdata,
 # Create MadingleyR plots
 madingley_plot(mdata2) 
 ```
+
 
 <img src="Figures/fig2.png" alt="Fig2" width="50%"/>
 <img src="Figures/fig3.png" alt="Fig3" width="50%"/>
