@@ -51,7 +51,7 @@ mdata2 = madingley_run(madingley_data = mdata,
 madingley_plot(mdata2) 
 ```
 
-![title](Images/example.png)
+![Figure2](Figures/fig2.png)
 
 
 
