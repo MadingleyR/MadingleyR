@@ -8,11 +8,13 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 To install the package run:
 
 ```R
-# install MadingleyR package
+# Load the remotes package
 library('remotes') # or use library('devtools')
+
+# Install the MadingleyR package
 install_github('MadingleyR/MadingleyR', subdir='Package')
-??MadingleyR # open function help pages
 ```
+
 Test code (from paper):
 
 ```R
