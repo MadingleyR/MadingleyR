@@ -25,7 +25,7 @@ library(MadingleyR)
 # Spatial model domain = c(min_long, max_long, min_lat, max_lat)
 spatial_window = c(31, 35, -5, -1)
 
-# initialise model (generate cohorts and stocks)
+# Initialise model (generate cohorts and stocks)
 mdata = madingley_init(spatial_window = spatial_window)
 
 # Load inputs manually
@@ -35,7 +35,7 @@ chrt_def = madingley_inputs('cohort definition')
 stck_def = madingley_inputs('stock definition')
 mdl_prms = madingley_inputs('model parameters')
 
-# initialise model (generate cohorts and stocks)
+# Initialise model the model using the pre-loaded inputs
 mdata = madingley_init(spatial_window = c(31, 35, -5, -1),
                        cohort_def = chrt_def,
                        stock_def = stck_def,
