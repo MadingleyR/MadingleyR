@@ -160,4 +160,4 @@ legend(0.0, 0.2, fg, col=c('green', 'red', 'blue'), pch = 19, box.lwd = 0)
 
 ```
 
-<img src="Figures/fig6.png" alt="Fig6" width="50%"/>
+<img src="Figures/fig6.png" alt="Fig6" width="30%"/>
