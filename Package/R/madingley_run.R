@@ -120,7 +120,7 @@ madingley_run = function(out_dir=tempdir(),
   options("scipen"=0, "digits"=7)
 
   # write madingley_data cohorts and stocks to temp dir
-  write_madingley_data_cohorts_stocks_to_temp_dir(input_dir=input_dir,madingley_data=madingley_data)
+  write_madingley_data_cohorts_stocks_to_temp_dir_fast(input_dir=input_dir,madingley_data=madingley_data)
 
   # use user defined model parameters or default
   if(class(model_parameters)!="data.frame"){ # default
