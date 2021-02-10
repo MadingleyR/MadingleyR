@@ -176,7 +176,7 @@ stats = data.frame() # used to store individual model output statistics
 
 # Loop over land-use intensities
 for(i in 1:length(avail_bio)) {
- m_params[27, 2] = avail_bio[i] # accessible biomass (see model parameters)
+ m_params[28, 2] = avail_bio[i] # accessible biomass (see model parameters)
  
  cohorts = madingley_run(
   years = 5, 
