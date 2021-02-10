@@ -8,4 +8,4 @@ Description: The MadingleyR package is wrapper around the C++ code of the Mading
 License: None?
 Encoding: UTF-8
 LazyData: true
-Imports: sp, raster, rgdal
+Imports: sp, raster, rgdal, data.table
