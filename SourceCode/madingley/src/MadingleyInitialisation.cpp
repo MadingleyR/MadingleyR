@@ -142,7 +142,7 @@ MadingleyInitialisation::MadingleyInitialisation( long long& nextCohortID, doubl
         GridCellCounter++;
 
     } );
-	std::cout << " " << std::endl;
+	std::cout << " done" << std::endl;
 
     if(TypeOfRun=="run") {
 
