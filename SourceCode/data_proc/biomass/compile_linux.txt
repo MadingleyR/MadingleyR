@@ -1,0 +1,10 @@
+--------------------------------------- final compile
+
+mkdir dist_$(date +%Y%m%d)_linux
+cd src
+g++ -fopenmp -static-libgcc -static-libstdc++ -std=c++11 data_proc_biomass.cpp -o data_proc_biomass
+rm *.o
+mv data_proc_biomass ../dist_$(date +%Y%m%d)_linux/
+cd ../
+
+--------------------------------------- final compile

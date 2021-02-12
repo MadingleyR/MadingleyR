@@ -1,0 +1,17 @@
+--------------------------------------- install compiler
+
+brew install gcc@7
+
+--------------------------------------- compile
+
+/usr/local/bin/g++-7 -static-libgcc -static-libstdc++  -std=c++11 data_proc_biomass.cpp -o data_proc_biomass
+/usr/local/bin/g++-7 -fopenmp -static-libgcc -static-libstdc++ -std=c++11 data_proc_biomass.cpp -o data_proc_biomass
+
+--------------------------------------- final compile
+
+mkdir dist_$(date +%Y%m%d)_mac
+cd src
+/usr/local/bin/g++-7 -fopenmp -static-libgcc -static-libstdc++ -std=c++11 data_proc_biomass.cpp -o data_proc_biomass
+rm *.o
+mv data_proc_biomass ../dist_$(date +%Y%m%d)_mac/
+cd ../

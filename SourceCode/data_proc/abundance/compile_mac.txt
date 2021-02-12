@@ -1,0 +1,17 @@
+--------------------------------------- install compiler
+
+brew install gcc@7
+
+--------------------------------------- compile
+
+/usr/local/bin/g++-7 -static-libgcc -static-libstdc++  -std=c++11 data_proc_abundance.cpp -o data_proc_abundance
+/usr/local/bin/g++-7 -fopenmp -static-libgcc -static-libstdc++ -std=c++11 data_proc_abundance.cpp -o data_proc_abundance
+
+--------------------------------------- final compile
+
+mkdir dist_$(date +%Y%m%d)_mac
+cd src
+/usr/local/bin/g++-7 -fopenmp -static-libgcc -static-libstdc++ -std=c++11 data_proc_abundance.cpp -o data_proc_abundance
+rm *.o
+mv data_proc_abundance ../dist_$(date +%Y%m%d)_mac/
+cd ../

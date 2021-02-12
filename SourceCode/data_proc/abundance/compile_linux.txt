@@ -1,0 +1,10 @@
+--------------------------------------- final compile
+
+mkdir dist_$(date +%Y%m%d)_linux
+cd src
+g++ -fopenmp -static-libgcc -static-libstdc++ -std=c++11 data_proc_abundance.cpp -o data_proc_abundance
+rm *.o
+mv data_proc_abundance ../dist_$(date +%Y%m%d)_linux/
+cd ../
+
+--------------------------------------- final compile
