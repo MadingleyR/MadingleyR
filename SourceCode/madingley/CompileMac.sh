@@ -18,7 +18,7 @@ echo "source compiled"
 
 
 cd dist_$(date +%Y%m%d)_mac/
-cp madingley /Users/osx/Documents/GitHub/MadingleyR/inst/mac_exec/madingley
-cp madingley /Library/Frameworks/R.framework/Versions/3.6/Resources/library/MadingleyR/mac_exec/madingley
+mv ../../../Package/inst/mac_exec/madingley ../../../Package/inst/mac_exec/madingley_old
+cp madingley ../../../Package/inst/mac_exec/madingley
 cd ../
-echo "files copied to R package dir and installation dir"
+echo "files copied to MadingleyR/Package/inst/mac_exec"
