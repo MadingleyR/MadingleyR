@@ -144,8 +144,13 @@ MadingleyInitialisation::MadingleyInitialisation( long long& nextCohortID, doubl
     } );
 	std::cout << " done" << std::endl;
 
+
+    //std::cout << CohortData.size() << std::endl;
+
     if(TypeOfRun=="run") {
 
+
+        //totalCohorts = SeedCohortsApplySpinUpFast( modelGrid, CohortData ); // if(UseMadingleySpinUp==1) 
         int maxAttempts = 10;
 
         for (int count = 0; count < maxAttempts; count++) {
@@ -529,6 +534,8 @@ long MadingleyInitialisation::SeedCohortsApplySpinUpFast( Grid& modelGrid, std::
 
     for( unsigned jj = 0; jj < nrows; jj++ ) {
 
+        //std::cout << "jj: " << jj << std::endl;
+
         // CohortData[0] ==> gridcell index
         unsigned gridCellIndex = std::stoul(CohortData[0][jj]);
 
@@ -613,16 +620,26 @@ long MadingleyInitialisation::SeedCohortsApplySpinUpFast( Grid& modelGrid, std::
     std::vector<double> v;
     for( unsigned jj = 0; jj < nrows; jj++ ) {
         v.push_back(std::stoul(CohortData[0][jj]));
+        //std::cout << "CohortData[0][jj]" << CohortData[0][jj] << std::endl;
     }
+
+    // init ghosts in empty cells (needed to start the model, will die straigth away after init)
     modelGrid.ApplyFunctionToAllCells( [&]( GridCell & gridCell ) {      
         if(!gridCell.IsMarine()){
             double x = gridCell.GetIndex();
             if(std::find(v.begin(), v.end(), x) == v.end()) {
-                //std::cout << "empty cell "<< x << std::endl;
-                modelGrid.GetACell( x ).SetCohortSize( mCohortFunctionalGroupDefinitions.mAllFunctinoalGroupsIndex.size( ) );
-                Cohort* NewCohort=new Cohort( modelGrid.GetACell( x ), 10, 1, 1, 1, 1,1, 0, 0, mNextCohortID, 2, 0, std::numeric_limits<unsigned>::max( ), 0, 0, 0, 0 );
-                modelGrid.GetACell( x ).mCohorts[10].push_back( NewCohort );
-                totalCohorts++;
+                //std::cout << modelGrid.GetACell( x ).GetIndex() << std::endl;
+                try{
+                    modelGrid.GetACell( x ).SetCohortSize( mCohortFunctionalGroupDefinitions.mAllFunctinoalGroupsIndex.size( ) );
+                    //std::cout << "ok1" << std::endl;
+                    Cohort* NewCohort=new Cohort( modelGrid.GetACell( x ), 1, 1, 1, 1, 1,1, 0, 0, mNextCohortID, 2, 0, std::numeric_limits<unsigned>::max( ), 0, 0, 0, 0 );
+                    //std::cout << "ok2" << std::endl;
+                    modelGrid.GetACell( x ).mCohorts[1].push_back( NewCohort );
+                    //std::cout << "ok3" << std::endl;
+                    totalCohorts++;
+                }catch(...){
+                    std::cout << "Unable to init cohort" << std::endl;
+                }
             }
         }
     } );
