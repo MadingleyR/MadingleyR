@@ -1,11 +1,5 @@
 # MadingleyR
 
-<br/>
-
-# About
-
-### Introduction
-
 R package of the Madingley General Ecosystem Model. The MadingleyR R package streamlines the installation procedure and supports all major operating systems. MadingleyR enables users to combine multiple consecutive simulation runs, making case study specific modifications to MadingleyR objects along the way. 
 
 - The package manual is accessible from within R or can be downloaded from [here](https://github.com/MadingleyR/MadingleyR/raw/master/Manual.pdf)
@@ -24,8 +18,6 @@ email: NA@na.na
   * [Running the Madingley model](#Running-the-Madingley-model)
   * [Creating plots](#Creating-plots)
 * Case studies
-  * [Case study 1](#Case-study-1)
-  * [Case study 2](#Case-study-2)
-  * [Case study 3](#Case-study-3)
-
-<br/>
+  * [Case study 1](./CASESTUDY1.md)
+  * [Case study 2](./CASESTUDY1.md))
+  * [Case study 3](./CASESTUDY1.md))
