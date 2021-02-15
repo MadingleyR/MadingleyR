@@ -11,7 +11,7 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 - [Model initialisation](#Model-initialisation)
 - [Running the Madingley model](#Running-the-Madingley-model)
 - [Creating plots](#Creating-plots)
-- [Case study initialisation](#Case-studies-spin-up)
+- [Case study 1 and 2 spin-up](#Case-study-1-and-2-spin-up)
 - [Case study 1](#Case-study-1)
 - [Case study 2](#Case-study-2)
 
@@ -111,7 +111,7 @@ madingley_plot(mdata2)
 </p>
 
 
-## Case studies (spin-up)
+## Case study 1 and 2 spin-up
 
 ```R
 library(MadingleyR)
