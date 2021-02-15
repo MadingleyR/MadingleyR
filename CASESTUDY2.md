@@ -1,4 +1,4 @@
-### Case study 2
+## Case study 2
 
 In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters (as described for case study 1).
 
