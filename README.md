@@ -133,7 +133,7 @@ madingley_plot(mdata2)
 
 ### Case study 1
 
-To investigate the role of large and megaherbivores in the Serengeti, we removed endothermic herbivores with a body mass >100 kg from the simulation. This was done by loading the spin-up simulation state (model_spin_up.RData containing mdata2 and sptl_inp) and removing all endothermic herbivore cohorts with a body mass of >100 kg from the cohort data.frame within the mdata2. The modified mdata2 object was then used to run a consecutive simulation of 50 years. For the control simulation, the same principle was applied, but without any modification to mdata2:
+To investigate the role of large and megaherbivores in the Serengeti, we removed endothermic herbivores with a body mass >100 kg from the simulation. This was done by first initialising and running the model for 100-year period (model spin-up) using the default cohort definitions, stock definitions, spatio-temporal input layers and model parameters:
 
 ```R
 library(MadingleyR)
@@ -156,7 +156,11 @@ mdata2 = madingley_run(out_dir = 'C:/MadingleyOut',
                        madingley_data = mdata, 
                        spatial_inputs = sptl_inp, 
                        years = 100)
+```
 
+From the resulting MadingleyR object (```mdata2```) we remove all endothermic herbivore cohorts with a body mass of >100 kg. The modified object was then used to run a consecutive simulation of 50 years. For the control simulation, the same principle was applied, but without any modification to the object created by the model spin-up. Food-web results were plotted for means of comparison between the control and removal simulation:
+
+```R
 # Run 50-year control simulation (for later comparison)
 mdata3 = madingley_run(madingley_data = mdata2, years = 50, spatial_inputs = sptl_inp)
 
@@ -182,6 +186,8 @@ plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 </p>
 
 ### Case study 2
+
+In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters (as described in section 3.1). This spin-up simulation was then extended by an additional 5 years without any reduction in available autotroph biomass and the end state was used as the control. The 100-year spin-up was then also used to run 8 independent land-use intensity experiments where the fraction accessible stock mass for herbivory was reduced by 0.1 increments to test the effects over a gradient of land-use intensities. This was done by modifying the default model input parameters (overview of all default parameters is shown in Supporting Information Appendix S4 and S5). Each land-use intensity experiment was run for 5 years and with 10 replicas. The end state of each land-use intensity scenario was compared to the control run.
 
 ```R
 library(MadingleyR)
