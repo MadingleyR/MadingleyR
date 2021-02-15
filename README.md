@@ -1,15 +1,16 @@
-#MadingleyR
+# MadingleyR
 R package of the Madingley General Ecosystem Model. The MadingleyR R package streamlines the installation procedure and supports all major operating systems. MadingleyR enables users to combine multiple consecutive simulation runs, making case study specific modifications to MadingleyR objects along the way. 
 
 - The package manual is accessible from within R or can be downloaded from [here](https://github.com/MadingleyR/MadingleyR/raw/master/Manual.pdf)
 - Additional information about the package can be found [here](addlink) (paper link not yet available)
 - More information about the Madingley model can be found [here](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
 
-##MadingleyR vignette content
+## MadingleyR vignette content
 
 - [Installation](##-Installation)
+- [Model initialisation](##-Model-initialisation)
 
-##Installation
+## Installation
 
 The MadingleyR package can be directly installed from R using the ```devtools``` or ```remotes``` R package. The following command installs the package using the remotes R package:
 
