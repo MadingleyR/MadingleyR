@@ -15,6 +15,7 @@
   * [Case study 1](#Case-study-1)
   * [Case study 2](#Case-study-2)
   
+<br/><br/>
 # About
 
 ### Introduction
