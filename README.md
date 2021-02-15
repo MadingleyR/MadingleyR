@@ -23,7 +23,8 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp``` and
   * [Case study 1](./CASESTUDY1.md)
   * [Case study 2](./CASESTUDY2.md)
   * [Case study 3](./CASESTUDY3.md)
-* [Package manual](./Manual.pdf)
+* Function description
+  * [Package manual](./Manual.pdf)
 
 
 ## Contact information
