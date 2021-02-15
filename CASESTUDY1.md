@@ -1,6 +1,4 @@
-# Case studies
-
-### Case study 1
+## Case study 1
 
 To investigate the role of large and megaherbivores in the Serengeti, we removed endothermic herbivores with a body mass >100 kg from the simulation. This was done by first initialising and running the model for 100-year period (model spin-up) using the default cohort definitions, stock definitions, spatio-temporal input layers and model parameters:
 
