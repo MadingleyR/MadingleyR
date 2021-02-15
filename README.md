@@ -15,7 +15,7 @@
   * [Case study 1](#Case-study-1)
   * [Case study 2](#Case-study-2)
   
-<br/><br/>
+<br/>
 # About
 
 ### Introduction
@@ -30,6 +30,7 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 
 NA
 
+<br/>
 # Basic use
 
 ## Installation
