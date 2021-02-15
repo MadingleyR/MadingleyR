@@ -29,7 +29,7 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 
 ### Contact information
 
-NA
+email: NA@na.na
 
 <br/>
 
