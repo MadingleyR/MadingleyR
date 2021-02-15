@@ -1,6 +1,6 @@
 # MadingleyR
 
-## Content
+### Content
 
 * About
   * [Introduction](#Introduction)
