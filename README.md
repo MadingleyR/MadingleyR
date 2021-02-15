@@ -5,6 +5,9 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 - Additional information about the package can be found [here](addlink) (paper link not yet available)
 - More information about the Madingley model can be found [here](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
 
+## MadingleyR vignette content
+
+- [Installation](## Installation)
 
 ## Installation
 
