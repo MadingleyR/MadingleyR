@@ -7,8 +7,8 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 
 ## MadingleyR vignette content
 
-- [Installation](##-Installation)
-- [Model initialisation](##-Model-initialisation)
+- [Installation](##Installation)
+- [Model initialisation](##Model-initialisation)
 
 ## Installation
 
