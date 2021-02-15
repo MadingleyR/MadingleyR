@@ -125,9 +125,6 @@ madingley_plot(mdata2)
 <img src="Figures/fig4.png" alt="Fig4" width="70%"/>
 <br>
 <em>The yearly average total biomass (in log10) plotted per grid cell and per included functional group. The yearly average biomass was computed over the last simulation year.  The total simulation time (100 years) as well as the spatial model domain (31 to 35 longitude and -5 to -1 latitude) were set in the R code presented in the text. The plot was made using one of the default plotting functions included in the MadingleyR package.</em>
-<br>
-<br>
-<br>
 </p>
 
 <br/>
