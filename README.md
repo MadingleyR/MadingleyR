@@ -131,7 +131,9 @@ madingley_plot(mdata2)
 
 # Case studies
 
-### Case study 1 and 2 spin-up
+### Case study 1
+
+To investigate the role of large and megaherbivores in the Serengeti, we removed endothermic herbivores with a body mass >100 kg from the simulation. This was done by loading the spin-up simulation state (model_spin_up.RData containing mdata2 and sptl_inp) and removing all endothermic herbivore cohorts with a body mass of >100 kg from the cohort data.frame within the mdata2. The modified mdata2 object was then used to run a consecutive simulation of 50 years. For the control simulation, the same principle was applied, but without any modification to mdata2:
 
 ```R
 library(MadingleyR)
@@ -155,17 +157,6 @@ mdata2 = madingley_run(out_dir = 'C:/MadingleyOut',
                        spatial_inputs = sptl_inp, 
                        years = 100)
 
-# Save environment
-save(mdata2, sptl_inp, file = 'model_spin_up.RData')
-
-```
-
-### Case study 1
-
-```R
-# Load model spin-up
-load('C:/MadingleyOut/model_spin_up.RData')
-
 # Run 50-year control simulation (for later comparison)
 mdata3 = madingley_run(madingley_data = mdata2, years = 50, spatial_inputs = sptl_inp)
 
@@ -173,10 +164,10 @@ mdata3 = madingley_run(madingley_data = mdata2, years = 50, spatial_inputs = spt
 remove_idx = which(mdata2$cohorts$AdultMass > 1e+5 & mdata2$cohorts$FunctionalGroupIndex == 0)
 mdata2$cohorts = mdata2$cohorts[-remove_idx, ]
 
-# Run large herbivore removal simulation
+# Run large herbivore removal simulation (for 50 years)
 mdata4 = madingley_run(madingley_data = mdata2, years = 50, spatial_inputs = sptl_inp) 
 
-# Make plot
+# Make plots
 par(mfrow = c(1, 2))
 plot_foodweb(mdata3, max_flows = 5) # control food-web plot
 plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
@@ -193,8 +184,21 @@ plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 ### Case study 2
 
 ```R
-# Load model spin-up
-load('C:/MadingleyOut/model_spin_up.RData')
+library(MadingleyR)
+setwd('C:/MadingleyOut') # create this directory if it does not exist
+
+# Set model params
+spatial_window = c(31, 35, -5, -1) # region of interest: Serengeti
+sptl_inp = madingley_inputs('spatial inputs') # load default inputs
+
+# Initialize model
+mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
+
+# Run spin-up of 100 years (output results to C:/MadingleyOut)
+mdata2 = madingley_run(out_dir = 'C:/MadingleyOut', 
+                       madingley_data = mdata, 
+                       spatial_inputs = sptl_inp, 
+                       years = 100)
 
 # Set scenario parameters
 reps = 10 # set number of replicas per land-use intensity
@@ -236,7 +240,6 @@ points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 =='Carnivore'], col= 'red', 
 points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Omnivore'], col = 'blue', pch = 19)
 abline(1, -1, lty = 2)
 legend(0.0, 0.2, fg, col=c('green', 'red', 'blue'), pch = 19, box.lwd = 0)
-
 ```
 <p>
 <img src="Figures/fig6.png" alt="Fig6" width="50%"/>
