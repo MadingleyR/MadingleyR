@@ -7,7 +7,7 @@ library(MadingleyR)
 
 ```
 
-<p>
+<p align="center">
 <img src="https://cdn.peri.com/.imaging/l/dam/d8c1b1e8-e62b-428c-8b44-2bd42971023b/48943/under-construction.jpg" alt="Fig1" width="20%"/>
 <br>
 <em>Under construction</em>
@@ -18,7 +18,7 @@ library(MadingleyR)
 
 
 <!---
-<p>
+<p align="center">
 <img src="Figures/fig7.png" alt="Fig1" width="20%"/>
 <br>
 <em>description</em>
