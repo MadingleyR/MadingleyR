@@ -21,3 +21,4 @@ email: NA@na.na
   * [Case study 1](./CASESTUDY1.md)
   * [Case study 2](./CASESTUDY1.md)
   * [Case study 3](./CASESTUDY1.md)
+* [Package manual](./Manual.pdf)
