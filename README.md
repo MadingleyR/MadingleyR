@@ -13,7 +13,7 @@ install_github('MadingleyR/MadingleyR', subdir='Package')
 In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable, default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
 
 <p>
-<img src="Figures/fig1.png" style="display:block;text-align:center" alt="Fig1" width="70%"/>
+<img src="Figures/fig1.png" style="margin-right=15%; margin-left=15%" alt="Fig1" width="70%"/>
 <br>
 <em>Overview of the MadingleyR workflow.</em>
 <br>
