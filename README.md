@@ -16,9 +16,9 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 ## Content
 
 * Basic use
-  * [Model initialisation](#Model-initialisation)
-  * [Running the Madingley model](#Running-the-Madingley-model)
-  * [Creating plots](#Creating-plots)
+  * [Model initialisation](./INIT.md)
+  * [Running the Madingley model](./RUN.md)
+  * [Creating plots](./PLOT.md)
 * Case studies
   * [Case study 1](./CASESTUDY1.md)
   * [Case study 2](./CASESTUDY2.md)
