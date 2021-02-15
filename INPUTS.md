@@ -1,3 +1,7 @@
+## Loading inputs manually
+
+Inputs required by ```madingley_run()``` ([see](./RUN.md)) and ```madingley_init()``` ([see](./INIT.md)).
+
 ```R
 # Load inputs manually
 madingley_inputs( ) # prints the possible input options to the R console
