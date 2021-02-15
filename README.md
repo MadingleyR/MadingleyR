@@ -1,6 +1,6 @@
 # MadingleyR
 
-## MadingleyR vignette content
+## Content
 
 * About
   * [Introduction](#Introduction)
