@@ -20,6 +20,5 @@ mdl_prms = madingley_inputs('model parameters') # useful later for running the m
 mdata = madingley_init(spatial_window = spatial_window,
                        cohort_def = chrt_def,
                        stock_def = stck_def,
-                       spatial_inputs = sptl_inp
-                       )
+                       spatial_inputs = sptl_inp)
 ```
