@@ -19,5 +19,5 @@ email: NA@na.na
   * [Creating plots](#Creating-plots)
 * Case studies
   * [Case study 1](./CASESTUDY1.md)
-  * [Case study 2](./CASESTUDY1.md))
-  * [Case study 3](./CASESTUDY1.md))
+  * [Case study 2](./CASESTUDY1.md)
+  * [Case study 3](./CASESTUDY1.md)
