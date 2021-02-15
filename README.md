@@ -187,7 +187,7 @@ plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 
 ### Case study 2
 
-In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters (as described in section 3.1). This spin-up simulation was then extended by an additional 5 years without any reduction in available autotroph biomass and the end state was used as the control. The 100-year spin-up was then also used to run 8 independent land-use intensity experiments where the fraction accessible stock mass for herbivory was reduced by 0.1 increments to test the effects over a gradient of land-use intensities. This was done by modifying the default model input parameters (overview of all default parameters is shown in Supporting Information Appendix S4 and S5). Each land-use intensity experiment was run for 5 years and with 10 replicas. The end state of each land-use intensity scenario was compared to the control run.
+In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters (as described for case study 1).
 
 ```R
 library(MadingleyR)
@@ -205,6 +205,10 @@ mdata2 = madingley_run(out_dir = 'C:/MadingleyOut',
                        madingley_data = mdata, 
                        spatial_inputs = sptl_inp, 
                        years = 100)
+```
+This spin-up simulation was then extended by an additional 5 years without any reduction in available autotroph biomass and the end state was used as the control. The 100-year spin-up was then also used to run 8 independent land-use intensity experiments where the fraction accessible stock mass for herbivory was reduced by 0.1 increments to test the effects over a gradient of land-use intensities. This was done by modifying the default model input parameters (overview of all default parameters is shown in Supporting Information Appendix S4 and S5). Each land-use intensity experiment was run for 5 years and with 10 replicas. The end state of each land-use intensity scenario was compared to the control run.
+
+```R
 
 # Set scenario parameters
 reps = 10 # set number of replicas per land-use intensity
