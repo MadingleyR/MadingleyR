@@ -7,8 +7,13 @@ R package of the Madingley General Ecosystem Model. The MadingleyR R package str
 
 ## MadingleyR vignette content
 
-- [Installation](##Installation)
-- [Model initialisation](##Model-initialisation)
+- [Installation](#Installation)
+- [Model initialisation](#Model-initialisation)
+- [Running the Madingley model](#Running-the-Madingley-model)
+- [Creating plots](#Creating-plots)
+- [Case-stdies (spin-up)](#Case-studies-(spin-up))
+- [Case study 1](#Case-study-1)
+- [Case study 2](#Case-study-2)
 
 ## Installation
 
