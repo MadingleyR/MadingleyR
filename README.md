@@ -11,9 +11,9 @@
   * [Running the Madingley model](#Running-the-Madingley-model)
   * [Creating plots](#Creating-plots)
 * Case studies
-  * [Case study 1 and 2 spin-up](#Case-study-1-and-2-spin-up)
   * [Case study 1](#Case-study-1)
   * [Case study 2](#Case-study-2)
+  * [Case study 3](#Case-study-3)
   
 <br/>
 
