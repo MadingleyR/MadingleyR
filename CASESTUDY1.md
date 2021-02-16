@@ -11,9 +11,9 @@ spatial_window = c(31, 35, -5, -1) # region of interest: Serengeti
 sptl_inp = madingley_inputs('spatial inputs') # load default inputs
 
 # set the maximum body masses of the functional groups manually
-sptl_inp$Endo_O_max[ ] = 2e+05 # set max size omnivores = 200 kg
-sptl_inp$Endo_C_max[ ] = 6e+05 # set max size carnivores = 600 kg
-sptl_inp$Ecto_max[ ] = 1.5e+05 # set max size ectotherms = 150 kg
+sptl_inp$Endo_O_max[ ] = 200000 # set max size omnivores = 200000 g (200 kg)
+sptl_inp$Endo_C_max[ ] = 600000 # set max size carnivores = 600000 g (600 kg)
+sptl_inp$Ecto_max[ ] = 150000 # set max size ectotherms = 150000 g (150 kg)
 
 # Initialize model
 mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
