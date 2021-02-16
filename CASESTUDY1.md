@@ -32,7 +32,8 @@ From the resulting MadingleyR object (```mdata2```) we remove all endothermic he
 mdata3 = madingley_run(madingley_data = mdata2, years = 50, spatial_inputs = sptl_inp)
 
 # Remove large (>100 kg) endothermic herbivores from mdata$cohorts
-remove_idx = which(mdata2$cohorts$AdultMass > 1e5 & mdata2$cohorts$FunctionalGroupIndex == 0)
+remove_idx = which(mdata2$cohorts$AdultMass > 1e5 & 
+                   mdata2$cohorts$FunctionalGroupIndex == 0)
 mdata2$cohorts = mdata2$cohorts[-remove_idx, ]
 
 # Run large herbivore removal simulation (for 50 years)
