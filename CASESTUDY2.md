@@ -20,7 +20,7 @@ mdata2 = madingley_run(out_dir = 'C:/MadingleyOut',
 ```
 
 
-This spin-up simulation was then extended by an additional 5 years without any reduction in available autotroph biomass and the end state was used as the control. The 100-year spin-up was then also used to run 8 independent land-use intensity experiments where the fraction accessible stock mass for herbivory was reduced by 0.1 increments to test the effects over a gradient of land-use intensities. This was done by modifying the default model input parameters (overview of all default parameters is shown in Supporting Information Appendix S4 and S5). Each land-use intensity experiment was run for 5 years and with 10 replicas. The end state of each land-use intensity scenario was compared to the control run.
+Next, this spin-up simulation is extended by an additional 5 years without any reduction in available autotroph biomass and the end state was used as the control. The 100-year spin-up was then also used to run 8 independent land-use intensity experiments where the fraction accessible stock mass for herbivory was reduced by 0.1 increments to test the effects over a gradient of land-use intensities. This was done by modifying the default model input parameters (```madingley_inputs('model parameters')```). Each land-use intensity experiment was run for 5 years and with 10 replicas. 
 
 ```R
 
@@ -47,6 +47,10 @@ for(i in 1:length(avail_bio)) {
  cohorts = aggregate(cohorts$Biomass, by = list(fg[cohorts$FunctionalGroupIndex + 1]), sum)
  stats = rbind(stats, cohorts) # attach aggregated stats
 }
+```
+The end state of each land-use intensity scenario can then be compared to the control run using the code below:
+
+```R
 
 # Calculate mean relative (to control) response per replica simulation
 stats$veg_reduced = sort(rep(1 - avail_bio, 3))
