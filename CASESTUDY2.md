@@ -1,16 +1,15 @@
 ## Case study 2
 
-In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters (as described for case study 1).
+In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters. The code below shows how the initialisation and spin-up simulation can be done, case study one uses the exact same procedure and provides more explanation on the code ([see](./CASESTUDY1.md)). Please note that ```madingley_run()``` tries to write outputs to ```C:/MadingleyOut```, make sure this folder exists or modify the path.
 
 ```R
 library(MadingleyR)
-setwd('C:/MadingleyOut') # create this directory if it does not exist
 
 # Set model params
 spatial_window = c(31, 35, -5, -1) # region of interest: Serengeti
 sptl_inp = madingley_inputs('spatial inputs') # load default inputs
 
-# Initialize model
+# Initialise model
 mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
 
 # Run spin-up of 100 years (output results to C:/MadingleyOut)
@@ -19,6 +18,8 @@ mdata2 = madingley_run(out_dir = 'C:/MadingleyOut',
                        spatial_inputs = sptl_inp, 
                        years = 100)
 ```
+
+
 This spin-up simulation was then extended by an additional 5 years without any reduction in available autotroph biomass and the end state was used as the control. The 100-year spin-up was then also used to run 8 independent land-use intensity experiments where the fraction accessible stock mass for herbivory was reduced by 0.1 increments to test the effects over a gradient of land-use intensities. This was done by modifying the default model input parameters (overview of all default parameters is shown in Supporting Information Appendix S4 and S5). Each land-use intensity experiment was run for 5 years and with 10 replicas. The end state of each land-use intensity scenario was compared to the control run.
 
 ```R
