@@ -27,7 +27,7 @@ Next, we can initialise the model using we use the spatial inputs (named ```sptl
 mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
 ```
 
-After the ```mdata``` objects is returned by the initialisation process, we can run a simulation for a 100-year period without any intervention, referred to as the model spin-up. The outputs are in this case written to ```C:/MadingleyOut```, which can be changed depending on preference and the operating system. Please note, that if the output folder is not set within the ```madingley_run()``` function, the outputs will be stored in the temporary folder of ```R```, they can still be used to create plots or run consecutive simulations.
+After the ```mdata``` objects is returned by the initialisation process, we can run a simulation for a 100-year period without any intervention, referred to as the model spin-up. The outputs are in this case written to ```C:/MadingleyOut```, which can be changed depending on preference and the operating system. Please note that if the output folder is not set within the ```madingley_run()``` function, the outputs will be stored in the temporary folder of ```R```, they can still be used to create plots or run consecutive simulations. If ```out_dir``` is set to ```C:/MadingleyOut``` make sure this folder exists or modify the path before running the code.
 
 ```R
 # Run spin-up of 100 years (output results to C:/MadingleyOut)
