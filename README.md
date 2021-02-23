@@ -15,10 +15,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 ## Content
 
 * Basic use
-  * [Model initialisation](./INIT.md)
-  * [Running the Madingley model](./RUN.md)
-  * [Creating plots](./PLOT.md)
-  * [Full R markdown vignette](./Vignette/Vignette.html)
+  * [R markdown vignette](./Vignette/Vignette.html)
   * [Download R markdown vignette as pdf](./Vignette/Vignette.pdf)
   * [R markdown vignette code, for testing purposes](./Vignette/Vignette.rmd)
 * Function description
