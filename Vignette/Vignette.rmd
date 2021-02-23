@@ -87,7 +87,7 @@ After generating cohorts and stocks, a simulation can be started using the ```ma
 ```{r}
 # Run the Madingley model for 10 years
 mdata2 = madingley_run(madingley_data = mdata, 
-                       years = 10, 
+                       years = 1, 
                        cohort_def = chrt_def, 
                        stock_def = stck_def, 
                        spatial_inputs = sptl_inp, 

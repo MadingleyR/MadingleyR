@@ -110,14 +110,14 @@ plot_densities = function(madingley_data,weighted="biomass",by_traits=c("DEFINIT
 
       #out_temp = h_helper1(c_select$mass_class, c_select$biomass, breaks = seq(0,20,0.5),plot = F)
 
-      if(plot) h_helper1(c_select$mass_class, c_select$biomass,ylab="density",
+      if(plot) h_helper1(x=c_select$mass_class, w=c_select$biomass,ylab="density",
                     breaks = seq(floor(min(c_select$mass_class)),ceiling(max(c_select$mass_class)),0.5),
-                    xlab="log10(Cohort Body mass [g])",main=paste(main_lab_sel,"biomass"),plot = T,col=col[nn],...)
+                    xlab="log10(Cohort Body mass [g])",main=paste(main_lab_sel,"biomass"),plot = T,col=col[nn])
 
 
 
       if(plot==FALSE) {
-        temp_out = h_helper1(c_select$mass_class, c_select$biomass,breaks = seq(xlim[1],xlim[2],0.5),plot = F)
+        temp_out = h_helper1(x=c_select$mass_class, w=c_select$biomass,breaks = seq(floor(min(c_select$mass_class)),ceiling(max(c_select$mass_class)),0.5),plot = F)
         temp_out = data.frame(mids=temp_out$mids,
                               lows=temp_out$breaks[1:length(temp_out$mids)],
                               highs=temp_out$breaks[2:length(temp_out$breaks)],
@@ -128,16 +128,16 @@ plot_densities = function(madingley_data,weighted="biomass",by_traits=c("DEFINIT
     }else{
 
     
-      #out_temp = h_helper1(c_select$mass_class, c_select$CohortAbundance,breaks = seq(0,20,0.5),plot = F)
+      #out_temp = h_helper1(x=c_select$mass_class, w=c_select$CohortAbundance,breaks = seq(0,20,0.5),plot = F)
 
 
-      if(plot) h_helper1(c_select$mass_class, c_select$CohortAbundance,ylab="density",
+      if(plot) h_helper1(x = c_select$mass_class, w= c_select$CohortAbundance,ylab="density",
                     breaks = seq(floor(min(c_select$mass_class)),ceiling(max(c_select$mass_class)),0.5),
-                    xlab="log10(Cohort Body mass [g])",main=paste(main_lab_sel,"abundance"),plot = T,col=col[nn],...)
+                    xlab="log10(Cohort Body mass [g])",main=paste(main_lab_sel,"abundance"),plot = T,col=col[nn])
 
 
       if(plot==FALSE) {
-        temp_out = h_helper1(c_select$mass_class, c_select$CohortAbundance,
+        temp_out = h_helper1(x=c_select$mass_class, w= c_select$CohortAbundance,
                              breaks = seq(floor(min(c_select$mass_class)),ceiling(max(c_select$mass_class)),0.5),
                              plot = F)
         temp_out = data.frame(mids=temp_out$mids,
