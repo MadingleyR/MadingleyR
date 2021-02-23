@@ -90,22 +90,22 @@ plot_spatialabundances = function(madingley_data,functional_filter=F,plot=TRUE,b
     command = paste0('cd "',get_lib_path(),'/mac_exec" &&',' ./data_proc_abundance ',in_files,' ',out_file)
     log = system(command,intern = T)
 
-  }else{
+  }else{ # Linux
 
     # allow exec to be run
     system(paste0('cd "',get_lib_path(),'/lin_exec"'," && ","chmod u+x data_proc_abundance"))
 
     # path quotation, fix space issues
     cohortsRnames = paste0('\"',cohortsRnames,'\"')
-    cat(cohortsRnames)
+    #cat(cohortsRnames)
     csv_out_path_cpp = paste0('\"',csv_out_path,'\"')
-    cat(csv_out_path_cpp)
+    #cat(csv_out_path_cpp)
 
     in_files = paste(cohortsRnames, collapse = ' ')
     out_file = csv_out_path_cpp
     command = paste0('cd "',get_lib_path(),'/lin_exec" &&',' ./data_proc_abundance ',in_files,' ',out_file)
-    cat('----------------------------------------------\n')
-    cat(command)
+    #cat('----------------------------------------------\n')
+    #cat(command)
     log = system(command,intern = T)
 
   }

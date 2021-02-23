@@ -9,6 +9,20 @@ library(MadingleyR)
 # Spatial model domain = c(min_long, max_long, min_lat, max_lat)
 spatial_window = c(31, 35, -5, -1)
 
+# plot the spatial window to check selection
+plot_spatialwindow(spatial_window)
+```
+
+<p align="center">
+<img src="Figures/spatialwindow.png" alt="spatialwindow" width="70%"/>
+<br>
+<em>spatial window plotted on top of land mask</em>
+<br>
+<br>
+<br>
+</p>
+
+```R
 # Load inputs manually
 madingley_inputs( ) # prints the possible input options to the R console
 sptl_inp = madingley_inputs('spatial inputs')

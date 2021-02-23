@@ -53,6 +53,9 @@ library(MadingleyR)
 
 # Spatial model domain = c(min_long, max_long, min_lat, max_lat)
 spatial_window = c(31, 35, -5, -1)
+
+# plot the spatial window to check selection
+plot_spatialwindow(spatial_window)
 ```
 
 ```{r, linewidth=90}
@@ -87,7 +90,7 @@ After generating cohorts and stocks, a simulation can be started using the ```ma
 ```{r}
 # Run the Madingley model for 10 years
 mdata2 = madingley_run(madingley_data = mdata, 
-                       years = 1, 
+                       years = 10, 
                        cohort_def = chrt_def, 
                        stock_def = stck_def, 
                        spatial_inputs = sptl_inp, 

@@ -1,6 +1,7 @@
 # raster plot function
 plot_spatialbiomass = function(madingley_data,functional_filter=F,plot=TRUE,box=T,axes=T,
-                               names=0,cex_legend_title=1,cex_axis=1.3,legend_mar=20,distance_legend_title=4,legend_width=2.5){
+                               names=0,cex_legend_title=1,cex_axis=1.3,legend_mar=20,
+                               distance_legend_title=4,legend_width=2.5){
 
   # get spatial window
   spatial_window=madingley_data$spatial_window
@@ -96,15 +97,15 @@ plot_spatialbiomass = function(madingley_data,functional_filter=F,plot=TRUE,box=
 
     # path quotation, fix space issues
     cohortsRnames = paste0('\"',cohortsRnames,'\"')
-    cat(cohortsRnames)
+    #cat(cohortsRnames)
     csv_out_path_cpp = paste0('\"',csv_out_path,'\"')
-    cat(csv_out_path_cpp)
+    #cat(csv_out_path_cpp)
 
     in_files = paste(cohortsRnames, collapse = ' ')
     out_file = csv_out_path_cpp
     command = paste0('cd "',get_lib_path(),'/lin_exec" &&',' ./data_proc_biomass ',in_files,' ',out_file)
-    cat('----------------------------------------------\n')
-    cat(command)
+    #cat('----------------------------------------------\n')
+    #cat(command)
     log = system(command,intern = T)
 
 
