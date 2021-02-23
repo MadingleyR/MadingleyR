@@ -34,7 +34,14 @@ library('remotes') # or use library('devtools')
 install_github('MadingleyR/MadingleyR', subdir='Package')
 ```
 
-In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable, default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
+In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable, default spatio-temporal input layers and all other default input parameters and includes them in the installation folder. The following code can be used to make sure  a  previous version of MadingleyR in uninstalled:
+
+
+```{r, eval=FALSE}
+# Uninstall MadingleyR package, this code is not executed within the vignette
+detach('package:MadingleyR', unload=TRUE)
+remove.packages('MadingleyR')
+```
 
 ## Model initialisation
 
@@ -80,7 +87,7 @@ After generating cohorts and stocks, a simulation can be started using the ```ma
 ```{r}
 # Run the Madingley model for 10 years
 mdata2 = madingley_run(madingley_data = mdata, 
-                       years = 100, 
+                       years = 10, 
                        cohort_def = chrt_def, 
                        stock_def = stck_def, 
                        spatial_inputs = sptl_inp, 
