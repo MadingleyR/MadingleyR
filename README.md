@@ -26,6 +26,9 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Package manual](./Manual.pdf)
 * Compile source
   * [How to compile source code](./SourceCode/)
+  * [Compile source Mac](./SourceCode/)
+  * [Compile source Windows](./SourceCode/)
+  * [Compile source Linux](./SourceCode/)
 
 ## MadingleyR workflow
 
