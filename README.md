@@ -28,7 +28,6 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Case study 2](./CASESTUDY2.md)
   * [Case study 3](./CASESTUDY3.md)
 * Compile source
-  * [How to compile source code](./SourceCode/)
   * [Compile source Mac](./SourceCode/CompileMac.md)
   * [Compile source Windows](./SourceCode/CompileWindows.md)
   * [Compile source Linux](./SourceCode/CompileLinux.md)
@@ -41,7 +40,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 ## MadingleyR workflow
 
 <p align="center">
-<img src="Figures/fig1.png" alt="Fig1" width="70%"/>
+<img src="Figures/fig1.png" alt="Fig1" width="90%"/>
 <br>
 <em>Overview of the MadingleyR workflow.</em>
 <br>
