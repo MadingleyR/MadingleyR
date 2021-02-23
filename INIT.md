@@ -14,7 +14,7 @@ plot_spatialwindow(spatial_window)
 ```
 
 <p align="center">
-<img src="Figures/spatialwindow.png" alt="spatialwindow" width="70%"/>
+<img src="Figures/spatialwindow.png" alt="spatialwindow" width="40%"/>
 <br>
 <em>spatial window plotted on top of land mask</em>
 <br>
