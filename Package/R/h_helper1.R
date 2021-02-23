@@ -1,5 +1,4 @@
-h_helper1<-function(x,w,breaks="Sturges",col=NULL,plot=TRUE,
-                        freq=TRUE,ylim=NA,ylab=NULL,xaxis=TRUE,...) {
+h_helper1<-function(x,w,breaks="Sturges",col=NULL,plot=TRUE,freq=TRUE,ylab=NULL,xaxis=TRUE,...) {
 
   if(missing(x))
     stop("Usage: weighted.hist(x,...) vector of values x required")
