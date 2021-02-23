@@ -22,3 +22,5 @@ mdata = madingley_init(spatial_window = spatial_window,
                        stock_def = stck_def,
                        spatial_inputs = sptl_inp)
 ```
+
+The returned ```mdata``` object will contain all cohorts and stocks (```data.frame```). In addition, the spatial window will be attached, making sure any consecutive model run will use the same spatial window.
