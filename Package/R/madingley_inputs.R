@@ -10,23 +10,25 @@ madingley_inputs = function(input_type = "print options") {
     cat("possible input arguments are: input_type = ",paste0('"',input_options[1:4],'" OR '),'"print options"')
   }
 
-
-  # check package rgdal
-  if (!"rgdal" %in% installed.packages()[, "Package"]) {
-    stop("Package 'rgdal' not installed")
-  }else{
-    require(rgdal)
-  }
-
-  # check package raster
-  if (!"raster" %in% installed.packages()[, "Package"]) {
-    stop("Package 'raster' not installed")
-  }else{
-    require(raster)
-  }
-
-  input = list()
+  
+  
   if(input_type=="spatial inputs") {
+    
+    output = list()
+    
+    # check package rgdal
+    if (!"rgdal" %in% installed.packages()[, "Package"]) {
+      stop("Package 'rgdal' not installed")
+    }else{
+      require(rgdal)
+    }
+    
+    # check package raster
+    if (!"raster" %in% installed.packages()[, "Package"]) {
+      stop("Package 'raster' not installed")
+    }else{
+      require(raster)
+    }
 
     spatial_path=paste0(get_lib_path(),"/spatial_input_rasters")
 
@@ -57,7 +59,7 @@ madingley_inputs = function(input_type = "print options") {
     for(i in FILES_sp){
       file_name = grep(i,file_names,value = T)
       cat(".")
-      input[[i]] = raster(file_name)
+      output[[i]] = raster(file_name)
     }
 
     # read sp temp files
@@ -75,13 +77,13 @@ madingley_inputs = function(input_type = "print options") {
         }
       }
       if(length(file_name_sort)==12){
-        input[[i]] = brick(lapply(file_name_sort,raster))
+        output[[i]] = brick(lapply(file_name_sort,raster))
       }
       cat(".")
     }
     cat("\n")
 
-    return(input)
+    return(output)
 
   }else if(input_type=="cohort definition"){
 
