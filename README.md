@@ -18,17 +18,25 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Model initialisation](./INIT.md)
   * [Running the Madingley model](./RUN.md)
   * [Creating plots](./PLOT.md)
+  * [Full R markdown vignette](./Vignette/Vignette.html)
+  * [Download R markdown vignette as pdf](./Vignette/Vignette.pdf)
+  * [R markdown vignette code, for testing purposes](./Vignette/Vignette.rmd)
+* Function description
+  * [Package manual](./Manual.pdf)
 * Case studies
   * [Case study 1](./CASESTUDY1.md)
   * [Case study 2](./CASESTUDY2.md)
   * [Case study 3](./CASESTUDY3.md)
-* Function description
-  * [Package manual](./Manual.pdf)
 * Compile source
   * [How to compile source code](./SourceCode/)
   * [Compile source Mac](./SourceCode/CompileMac.md)
   * [Compile source Windows](./SourceCode/CompileWindows.md)
   * [Compile source Linux](./SourceCode/CompileLinux.md)
+
+## Useful links
+
+* Additional information about the package can be found [here](addlink) (paper link not yet available)
+* More information about the Madingley model can be found [here](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
 
 ## MadingleyR workflow
 
@@ -46,11 +54,4 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 email: NA@na.na
 
 
-## Useful links
-
-* The package manual is accessible from within R or can be viewed [here](./Manual.pdf)
-* Additional information about the package can be found [here](addlink) (paper link not yet available)
-* More information about the Madingley model can be found [here](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
-* The R package code can be found [here](https://github.com/MadingleyR/MadingleyR/tree/master/Package)
-* The C++ source code can be found [here](https://github.com/MadingleyR/MadingleyR/tree/master/SourceCode)
 

@@ -1,7 +1,9 @@
 ---
 title: "MadingleyR vignette"
-output: pdf_document
-toc: true
+output:
+  html_document:
+    df_print: paged
+toc: yes
 ---
 
 ```{r wrap-hook, echo = F}
@@ -96,8 +98,10 @@ mdata2 = madingley_run(madingley_data = mdata,
                        cohort_def = chrt_def, 
                        stock_def = stck_def, 
                        spatial_inputs = sptl_inp, 
-                       model_parameters = mdl_prms)
+                       model_parameters = mdl_prms,
+                       silenced = TRUE)
 ```
+By default the ```madingley_run()``` print simulation process (simulation month), however, it can be useful is some cases to silence the printing of ```madingley_run()``` using ```silenced = TRUE)```. For example, when making a vignette (saving space) or when running many simulations remotely.
 
 \pagebreak
 
@@ -119,21 +123,27 @@ The individuals plots can also be produced one by one using the functions shown 
 # Plot MadingleyR time lines
 plot_timelines(mdata2)
 ```
+\pagebreak
 
 ```{r, fig.height=5, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 # Plot MadingleyR body mass density
 plot_densities(mdata2)
 ```
+\pagebreak
 
 ```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 # Plot MadingleyR trophic pyramid
 plot_trophicpyramid(mdata2)
 ```
 
+\pagebreak
+
 ```{r, fig.height=6, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 # Create MadingleyR log10-binned food-web plot
 plot_foodweb(mdata2, max_flows = 5)
 ```
+
+\pagebreak
 
 ```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 # Plot MadingleyR spatial biomass
