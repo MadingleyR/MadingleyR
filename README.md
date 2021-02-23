@@ -24,6 +24,8 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Case study 3](./CASESTUDY3.md)
 * Function description
   * [Package manual](./Manual.pdf)
+* Compile source
+  * [How to compile source code](./SourceCode/)
 
 ## MadingleyR workflow
 
