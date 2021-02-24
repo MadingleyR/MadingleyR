@@ -1,0 +1,66 @@
+# Load the remotes package
+library('remotes') # or use library('devtools')
+# Install the MadingleyR package
+install_github('MadingleyR/MadingleyR', subdir='Package')
+
+####
+
+library(MadingleyR)
+
+# Set model params
+spatial_window = c(31, 35, -5, -1) # region of interest: Serengeti
+sptl_inp = madingley_inputs('spatial inputs') # load default inputs
+
+# Initialise model
+mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
+
+# Run spin-up of 100 years (output results to C:/MadingleyOut)
+mdata2 = madingley_run(madingley_data = mdata,
+                       spatial_inputs = sptl_inp,
+                       years = 100)
+
+
+####
+
+# Set scenario parameters
+reps = 10 # set number of replicas per land-use intensity
+avail_bio = sort(rep(seq(1.0, 0.2, -0.1), reps), decreasing = T) # accessible biomass
+m_params = madingley_inputs('model parameters') # load default model parameters
+fg = c('Herbivore', 'Carnivore', 'Omnivore') # vector for aggregating cohorts
+stats = data.frame() # used to store individual model output statistics
+
+# Loop over land-use intensities
+for(i in 1:length(avail_bio)) {
+  m_params[28, 2] = avail_bio[i] # accessible biomass (see model parameters)
+  
+  cohorts = madingley_run(
+    years = 50,
+    madingley_data = mdata2,
+    model_parameters = m_params,
+    spatial_inputs = sptl_inp)$cohorts # store cohort results only
+  
+  # Calculate cohort biomass
+  cohorts$Biomass = cohorts$CohortAbundance * cohorts$IndividualBodyMass
+  cohorts = cohorts[cohorts$FunctionalGroupIndex<3, ] # only keep endotherms
+  cohorts = aggregate(cohorts$Biomass, by = list(fg[cohorts$FunctionalGroupIndex + 1]), sum)
+  stats = rbind(stats, cohorts) # attach aggregated stats
+}
+
+####
+
+# Calculate mean relative (to control) response per replica simulation
+stats$veg_reduced = sort(rep(1 - avail_bio, 3))
+m = aggregate(stats$x, by = list(stats$veg_reduced, stats$Group.1), FUN = mean)
+m$x_rel = NA;
+for(i in fg) {
+  m$x_rel[m$Group.2 == i] = m$x[m$Group.2 == i]/m$x[m$Group.2 == i][1]
+}
+
+# Make final plots
+plot(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Herbivore'],
+     col= 'green', pch = 19, ylim = c(0, 1.5), xlim = c(0, 1),
+     xlab = 'Relative vegetation biomass inaccessible', ylab = 'Relative change in cohort biomass')
+points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 =='Carnivore'], col= 'red', pch = 19)
+points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Omnivore'], col = 'blue', pch = 19)
+abline(1, -1, lty = 2)
+legend(0.0, 0.2, fg, col=c('green', 'red', 'blue'), pch = 19, box.lwd = 0)

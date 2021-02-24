@@ -11,7 +11,7 @@ EatingHerbivory::EatingHerbivory( std::string globalModelTimeStepUnit ) {
     mHerbivoryRateConstant = 1.0E-11; //EatingHerbivory_Parameters[5]
     mHerbivoryRateMassExponent = 1.0; //EatingHerbivory_Parameters[6]
     mAttackRateExponentTerrestrial = 2.1;  //EatingHerbivory_Parameters[7]
-    mProportionEdibleStockMass = 1.0;  //EatingHerbivory_Parameters[8]
+    mProportionEdibleStockMass = 0.1;  //EatingHerbivory_Parameters[8]
 
     UseNonDefaultModelParameters = InputParameters::Get( )->GetUseNonDefaultModelParameters();
 
@@ -87,7 +87,7 @@ void EatingHerbivory::GetEatingPotentialTerrestrial( GridCell& gcl, Cohort* acti
         // Loop over stocks within the functional group
         for( int i = 0; i < gcl.mStocks[FunctionalGroup].size( ); i++ ) {
             // Get the mass from this stock that is available for eating (assumes only 10% is edible)
-            mEdibleMass = (gcl.mStocks[FunctionalGroup][i].mTotalBiomass * 0.1) * mProportionEdibleStockMass; //## mProportionEdibleStockMass
+            mEdibleMass = (gcl.mStocks[FunctionalGroup][i].mTotalBiomass * mProportionEdibleStockMass);
 
             // Calculate the potential biomass eaten from this stock by the acting cohort
             mPotentialBiomassesEaten[FunctionalGroup][i] = CalculatePotentialBiomassEatenTerrestrial( mEdibleMass, mBodyMassHerbivore, actingCohort, params );
@@ -107,14 +107,14 @@ void EatingHerbivory::GetEatingPotentialTerrestrial( GridCell& gcl, Cohort* acti
 void EatingHerbivory::Run( GridCell& gcl, Cohort* actingCohort, unsigned currentTimestep, MadingleyInitialisation& params ) {
     
     mEdibleScaling = 1.0;
-    if( !gcl.IsMarine( ) ) mEdibleScaling = 0.1;
+    if( !gcl.IsMarine( ) ) mEdibleScaling = mProportionEdibleStockMass;
 
     // Loop over autotroph functional groups that can be eaten
     for( int FunctionalGroup: mFunctionalGroupIndicesToEat ) {
         // Loop over stocks within the functional groups
         for( int i = 0; i < gcl.mStocks[FunctionalGroup].size( ); i++ ) {
             // Get the mass from this stock that is available for eating (assumes only 10% is edible in the terrestrial realm)
-            mEdibleMass = (gcl.mStocks[FunctionalGroup][i].mTotalBiomass * mEdibleScaling) * mProportionEdibleStockMass; //## mProportionEdibleStockMass;
+            mEdibleMass = (gcl.mStocks[FunctionalGroup][i].mTotalBiomass * mEdibleScaling);
 
             // Calculate the biomass actually eaten from this stock by the acting cohort
             mBiomassesEaten[FunctionalGroup][i] = CalculateBiomassesEaten( mPotentialBiomassesEaten[FunctionalGroup][i], mTimeUnitsToHandlePotentialFoodItems, actingCohort->mCohortAbundance, mEdibleMass );

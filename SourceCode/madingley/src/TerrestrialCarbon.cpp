@@ -86,7 +86,7 @@ void TerrestrialCarbon::InitialisePlantModelParameters( ) {
         mBaseScalarFire = VegetationModel_Parameters[29]; 
         mMinReturnInterval = VegetationModel_Parameters[30]; 
         mMassCarbonPerMassLeafDryMatter = VegetationModel_Parameters[31]; 
-        mMassLeafDryMatterPerMassLeafWetMatter = VegetationModel_Parameters[32]; 
+        mMassLeafDryMatterPerMassLeafWetMatter = 0.213; 
     }
 
     mM2ToKm2Conversion = 1000000.0;

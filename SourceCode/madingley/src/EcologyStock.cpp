@@ -1,4 +1,5 @@
 #include "EcologyStock.h"
+#include "InputParameters.h"
 
 void EcologyStock::RunWithinCellEcology( GridCell& gcl, Stock& actingStock, unsigned currentTimeStep, unsigned currentMonth, MadingleyInitialisation& params ) {
 
@@ -12,7 +13,14 @@ void EcologyStock::RunWithinCellEcology( GridCell& gcl, Stock& actingStock, unsi
         double NPPWetMatter = mDynamicPlantModel.UpdateLeafStock( gcl, actingStock, currentTimeStep, madingleyStockDefinitions.GetTraitNames( "leaf strategy", actingStock.mFunctionalGroupIndex ) == "deciduous", Parameters::Get( )->GetTimeStepUnits( ), currentMonth );
 
         // Apply human appropriation of NPP - note in the latest C# version this is changed to include the NPPWetMatter calculated above
-        double fhanpp = 0.0; //mHANPP.RemoveHumanAppropriatedMatter( NPPWetMatter, gcl,actingStock, currentTimeStep, currentMonth );
-        actingStock.mTotalBiomass += NPPWetMatter * ( 1 - fhanpp );
+        if(InputParameters::Get( )->GetUseNonDefaultModelParameters()==1){
+            std::vector<double> Params = InputParameters::Get( )->Get_VegetationModel_Parameters();
+            //double fhanpp = mHANPP.RemoveHumanAppropriatedMatter( NPPWetMatter, gcl,actingStock, currentTimeStep, currentMonth );
+            actingStock.mTotalBiomass += NPPWetMatter * Params[32]; //( 1 - fhanpp );
+        }else{
+            actingStock.mTotalBiomass += NPPWetMatter * 1.0; 
+        }
+        
+        
     }
 }

@@ -17,7 +17,7 @@ get_default_model_parameters = function(){
   EatingCarnivory_names = c(EatingCarnivory_names,"EatingOmnivory_Parameters")
 
   # default herbivory params
-  EatingHerbivory_Parameters = c(0.7,0.7,0.7,0.7,1.0,1.0E-11,1.0,2.1,1.0)
+  EatingHerbivory_Parameters = c(0.7,0.7,0.7,0.7,1.0,1.0E-11,1.0,2.1,0.1)
   EatingHerbivory_names = c(rep("EatingHerbivory_Parameters",length(EatingHerbivory_Parameters)))
 
   # default metabolism params
@@ -41,7 +41,7 @@ get_default_model_parameters = function(){
                                   0.04309283,-1.478393163,0.139462774,-4.395910091,
                                   0.362742634,0.388125108,19.98393943,1.148698636,
                                   8.419032427,0.01,24.0,0.01,24.0,0.01,12.0,1,
-                                  0.001,2.0,0.00000226032940698105,0.476,0.213)
+                                  0.001,2.0,0.00000226032940698105,0.476,1.0)
   VegetationModel_names = rep("VegetationModel_Parameters",length(VegetationModel_Parameters))
 
   All_values = c(Activity_Parameters,
@@ -177,7 +177,7 @@ get_default_model_parameters = function(){
   ModelParameters$notes[i] = "Terrestrial Carbon: Base Scalar Fire"; i = i + 1
   ModelParameters$notes[i] = "Terrestrial Carbon: Min Return Interval"; i = i + 1
   ModelParameters$notes[i] = "Terrestrial Carbon: Mass Carbon Per Mass Leaf Dry Matter"; i = i + 1
-  ModelParameters$notes[i] = "Terrestrial Carbon: Mass Leaf Dry Matter Per Mass Leaf Wet Matter"; i = i + 1
+  ModelParameters$notes[i] = "Terrestrial Carbon: Hnpp reduction fraction, lower vegetation production available to herbivores"; i = i + 1
 
   # return ModelParameters
   return(ModelParameters)
