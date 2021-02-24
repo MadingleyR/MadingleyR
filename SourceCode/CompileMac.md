@@ -2,6 +2,7 @@
 
 
 # Install correct compiler
-````
+
+```
 brew install gcc@7
 ```
