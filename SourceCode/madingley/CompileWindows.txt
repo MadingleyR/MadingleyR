@@ -1,11 +1,12 @@
-# ------------------------------------
-# use: C:\Users\Selwyn\Dropbox\Phd\MinGW\MinGW
-# ------------------------------------
+:: ------------------------------------
+:: use: C:\Users\Selwyn\Dropbox\Phd\MinGW\MinGW
+:: ------------------------------------
 
-# -------------------------------------------------------------------------------------
-# In cmd run the following (line by line) to compile and link entire source (src) directory:
-# this requires mingw with mingw32-pthreads-w32
-# -------------------------------------------------------------------------------------
+:: -------------------------------------------------------------------------------------
+:: In cmd run the following (line by line) to compile and link entire source (src) directory:
+:: this requires mingw with mingw32-pthreads-w32
+:: -------------------------------------------------------------------------------------
+:: cd c:/madingley/
 mkdir dist_%date:~-4,4%%date:~-10,2%%date:~7,2%_win
 cd src
 for /r %i in (*.cpp) do g++ -std=c++11 -w -c -g -fopenmp -static-libgcc -static-libstdc++ %i
@@ -15,8 +16,8 @@ move madingley.exe ..
 cd ..
 move /y madingley.exe dist_%date:~-4,4%%date:~-10,2%%date:~7,2%_win
 
-# -------------------------------------------------------------------------------------
-# only compile single file
-# -------------------------------------------------------------------------------------
+:: -------------------------------------------------------------------------------------
+:: only compile single file
+:: -------------------------------------------------------------------------------------
 g++ -std=c++11 -w -c -g -fopenmp -static-libgcc -static-libstdc++ Main.cpp
 g++ -fopenmp -static-libgcc -static-libstdc++ -o madingley.exe *.o
