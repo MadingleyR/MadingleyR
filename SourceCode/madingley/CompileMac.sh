@@ -1,5 +1,8 @@
 #!/usr/bin/env bash 
 
+# install correct compiler using:
+# brew install gcc@7
+
 mkdir dist_$(date +%Y%m%d)_mac
 cd src
 for file in $(ls *.cpp)
