@@ -12,10 +12,9 @@ do
 
 done
 
-mv *.o binaries_mac
-cd binaries_mac
 /usr/local/bin/g++-7 -fopenmp -static-libgcc -static-libstdc++ -o madingley *.o
 mv madingley ../../dist_$(date +%Y%m%d)_mac/
+rm -rf *.o
 cd ../../
 echo "source compiled"
 
