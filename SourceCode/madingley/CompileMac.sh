@@ -20,8 +20,8 @@ cd ../../
 echo "source compiled"
 
 
-cd dist_$(date +%Y%m%d)_mac/
-mv ../../../Package/inst/mac_exec/madingley ../../../Package/inst/mac_exec/madingley_old
-cp madingley ../../../Package/inst/mac_exec/madingley
-cd ../
-echo "files copied to MadingleyR/Package/inst/mac_exec"
+# cd dist_$(date +%Y%m%d)_mac/
+# mv ../../../Package/inst/mac_exec/madingley ../../../Package/inst/mac_exec/madingley_old
+# cp madingley ../../../Package/inst/mac_exec/madingley
+# cd ../
+# echo "files copied to MadingleyR/Package/inst/mac_exec"
