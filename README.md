@@ -21,9 +21,9 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 * Function description
   * [Package manual](./Manual.pdf)
 * Case studies
-  * [Case study 1](./CASESTUDY1.md)
-  * [Case study 2](./CASESTUDY2.md)
-  * [Case study 3](./CASESTUDY3.md)
+  * [Case study 1](./Vignette/CaseStudies/CASESTUDY1.md)
+  * [Case study 2](./Vignette/CaseStudies/CASESTUDY2.md)
+  * [Case study 3](./Vignette/CaseStudies/CASESTUDY3.md)
 * Compile source
   * [Compile source Mac](./SourceCode/CompileMac.md)
   * [Compile source Windows](./SourceCode/CompileWindows.md)
