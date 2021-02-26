@@ -177,7 +177,7 @@ get_default_model_parameters = function(){
   ModelParameters$notes[i] = "Terrestrial Carbon: Base Scalar Fire"; i = i + 1
   ModelParameters$notes[i] = "Terrestrial Carbon: Min Return Interval"; i = i + 1
   ModelParameters$notes[i] = "Terrestrial Carbon: Mass Carbon Per Mass Leaf Dry Matter"; i = i + 1
-  ModelParameters$notes[i] = "Terrestrial Carbon: Hnpp reduction fraction, lower vegetation production available to herbivores"; i = i + 1
+  ModelParameters$notes[i] = "Terrestrial Carbon: Apply human appropriation of NPP (fraction of growth reduced)"; i = i + 1
 
   # return ModelParameters
   return(ModelParameters)

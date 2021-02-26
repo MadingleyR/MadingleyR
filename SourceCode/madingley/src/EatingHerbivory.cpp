@@ -81,6 +81,7 @@ void EatingHerbivory::GetEatingPotentialTerrestrial( GridCell& gcl, Cohort* acti
         mPotentialBiomassesEaten[i].resize( gcl.mStocks[i].size( ) );
     }
     
+    //std::cout << "mProportionEdibleStockMass: " << mProportionEdibleStockMass << std::endl;
 
     // Loop over functional groups that can be eaten
     for( int FunctionalGroup: mFunctionalGroupIndicesToEat ) {
@@ -108,6 +109,8 @@ void EatingHerbivory::Run( GridCell& gcl, Cohort* actingCohort, unsigned current
     
     mEdibleScaling = 1.0;
     if( !gcl.IsMarine( ) ) mEdibleScaling = mProportionEdibleStockMass;
+
+    //std::cout << "mEdibleScaling: " << mEdibleScaling << std::endl;
 
     // Loop over autotroph functional groups that can be eaten
     for( int FunctionalGroup: mFunctionalGroupIndicesToEat ) {

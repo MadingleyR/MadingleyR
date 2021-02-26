@@ -14,11 +14,17 @@ void EcologyStock::RunWithinCellEcology( GridCell& gcl, Stock& actingStock, unsi
 
         // Apply human appropriation of NPP - note in the latest C# version this is changed to include the NPPWetMatter calculated above
         if(InputParameters::Get( )->GetUseNonDefaultModelParameters()==1){
+            
             std::vector<double> Params = InputParameters::Get( )->Get_VegetationModel_Parameters();
             //double fhanpp = mHANPP.RemoveHumanAppropriatedMatter( NPPWetMatter, gcl,actingStock, currentTimeStep, currentMonth );
+            //std::cout << "Params[32]: " << Params[32] << std::endl;
+
             actingStock.mTotalBiomass += NPPWetMatter * Params[32]; //( 1 - fhanpp );
+
         }else{
+
             actingStock.mTotalBiomass += NPPWetMatter * 1.0; 
+
         }
         
         

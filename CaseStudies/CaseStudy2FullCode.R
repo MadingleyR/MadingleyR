@@ -1,7 +1,7 @@
 # Load the remotes package
-library('remotes') # or use library('devtools')
+#library('remotes') # or use library('devtools')
 # Install the MadingleyR package
-install_github('MadingleyR/MadingleyR', subdir='Package')
+#install_github('MadingleyR/MadingleyR', subdir='Package')
 
 ####
 
@@ -23,44 +23,55 @@ mdata2 = madingley_run(madingley_data = mdata,
 ####
 
 # Set scenario parameters
-reps = 10 # set number of replicas per land-use intensity
-avail_bio = sort(rep(seq(1.0, 0.2, -0.1), reps), decreasing = T) # accessible biomass
+reps = 6 # set number of replicas per land-use intensity
+fractional_veg_production = seq(1.0, 0.1, -0.1) # accessible biomass
 m_params = madingley_inputs('model parameters') # load default model parameters
 fg = c('Herbivore', 'Carnivore', 'Omnivore') # vector for aggregating cohorts
 stats = data.frame() # used to store individual model output statistics
 
 # Loop over land-use intensities
-for(i in 1:length(avail_bio)) {
-  m_params[28, 2] = avail_bio[i] # accessible biomass (see model parameters)
+for(j in 1:reps){
   
-  cohorts = madingley_run(
-    years = 50,
-    madingley_data = mdata2,
-    model_parameters = m_params,
-    spatial_inputs = sptl_inp)$cohorts # store cohort results only
+  mdata3 = mdata2 # copy spin-up MadingleyR object to use in replica
   
-  # Calculate cohort biomass
-  cohorts$Biomass = cohorts$CohortAbundance * cohorts$IndividualBodyMass
-  cohorts = cohorts[cohorts$FunctionalGroupIndex<3, ] # only keep endotherms
-  cohorts = aggregate(cohorts$Biomass, by = list(fg[cohorts$FunctionalGroupIndex + 1]), sum)
-  stats = rbind(stats, cohorts) # attach aggregated stats
+  for(i in 1:length(fractional_veg_production)) {
+  
+    print(paste0("rep: ",j," fraction veg reduced: ",fractional_veg_production[i]))
+    
+    m_params[86, 2] = fractional_veg_production[i] # lower veg production
+    
+    mdata4 = madingley_run(
+      years = 50,
+      madingley_data = mdata3,
+      model_parameters = m_params,
+      output_timestep = c(99,99,99,99),
+      spatial_inputs = sptl_inp,
+      silenced = TRUE) 
+    
+    # Calculate cohort biomass
+    cohorts = mdata4$cohorts
+    cohorts$Biomass = cohorts$CohortAbundance * cohorts$IndividualBodyMass
+    cohorts = cohorts[cohorts$FunctionalGroupIndex<3, ] # only keep endotherms
+    cohorts = aggregate(cohorts$Biomass, by = list(fg[cohorts$FunctionalGroupIndex + 1]), sum)
+    stats = rbind(stats, cohorts) # attach aggregated stats
+  }
 }
 
 ####
 
 # Calculate mean relative (to control) response per replica simulation
-stats$veg_reduced = sort(rep(1 - avail_bio, 3))
-m = aggregate(stats$x, by = list(stats$veg_reduced, stats$Group.1), FUN = mean)
+stats$veg_reduced = rep(sort(rep(1 - fractional_veg_production, 3)),reps)
+m = aggregate(stats$x, by = list(stats$veg_reduced, stats$Group.1), FUN = median)
 m$x_rel = NA;
 for(i in fg) {
   m$x_rel[m$Group.2 == i] = m$x[m$Group.2 == i]/m$x[m$Group.2 == i][1]
 }
 
 # Make final plots
-plot(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Herbivore'],
+plot(1 - unique(fractional_veg_production), m$x_rel[m$Group.2 == 'Herbivore'],
      col= 'green', pch = 19, ylim = c(0, 1.5), xlim = c(0, 1),
      xlab = 'Relative vegetation biomass inaccessible', ylab = 'Relative change in cohort biomass')
-points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 =='Carnivore'], col= 'red', pch = 19)
-points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Omnivore'], col = 'blue', pch = 19)
+points(1 - unique(fractional_veg_production), m$x_rel[m$Group.2 =='Carnivore'], col= 'red', pch = 19)
+points(1 - unique(fractional_veg_production), m$x_rel[m$Group.2 == 'Omnivore'], col = 'blue', pch = 19)
 abline(1, -1, lty = 2)
-legend(0.0, 0.2, fg, col=c('green', 'red', 'blue'), pch = 19, box.lwd = 0)
+legend(0.0, 0.3, fg, col=c('green', 'red', 'blue'), pch = 19, box.lwd = 0)

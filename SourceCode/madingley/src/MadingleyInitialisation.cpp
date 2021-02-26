@@ -531,90 +531,88 @@ long MadingleyInitialisation::SeedCohortsApplySpinUpFast( Grid& modelGrid, std::
     long nrows = CohortData[0].size();
     //std::cout << "n _ cohorts to ini: " << nrows << std::endl;
     long totalCohorts = 0;
+    long totalCohorts_init_failed = 0;
+
+    int gridCellIndex_counter = 0;
 
     for( unsigned jj = 0; jj < nrows; jj++ ) {
 
-        //std::cout << "jj: " << jj << std::endl;
-
-        // CohortData[0] ==> gridcell index
-        unsigned gridCellIndex = std::stoul(CohortData[0][jj]);
-
-        // CohortData[1] ==> functional index
-        int functionalGroup = std::stoi(CohortData[1][jj]);
-
-        // CohortData[2] ==> JuvenileMass
-        double cohortJuvenileMass = std::stod(CohortData[2][jj]);
-
-        // CohortData[3] ==> AdultMass
-        double cohortAdultMass = std::stod(CohortData[3][jj]);
-
-        // CohortData[4] ==> IndividualBodyMass
-        double IndividualBodyMass = std::stod(CohortData[4][jj]);
-
-        // CohortData[5] ==> CohortAbundance
-        double NewAbund = std::stod(CohortData[5][jj]);
-
-        // CohortData[6] ==> LogOptimalPreyBodySizeRatio
-        double optimalPreyBodySizeRatio = exp(std::stod(CohortData[6][jj]));
-
-        // CohortData[7] ==> BirthTimeStep
-        unsigned BirthTimeStep = std::stod(CohortData[7][jj]);;
-
-        // CohortData[8] ==> ProportionTimeActive
-        double ProportionTimeActive = std::stod(CohortData[8][jj]);
-
-        // CohortData[9] ==> TrophicIndex
-        double trophicindex = std::stod(CohortData[9][jj]);
-
-        // CohortData[10] ==> individualReproductivePotentialMass
-        //double individualReproductivePotentialMass = 0;
-        double individualReproductivePotentialMass = std::stod(CohortData[10][jj]);
         
-        // CohortData[11] ==> maturityTimeStep
-        //unsigned maturityTimeStep = std::numeric_limits<unsigned>::max( );
-        unsigned maturityTimeStep = std::stod(CohortData[11][jj]);
+        try{
 
-        //################################################################################
+            // CohortData[0] ==> gridcell index
+            unsigned gridCellIndex = std::stoul(CohortData[0][jj]);
 
-        // CohortData[12] ==> mIsAdult
-        int isAdult = std::stoi(CohortData[12][jj]);
+            // CohortData[1] ==> functional index
+            int functionalGroup = std::stoi(CohortData[1][jj]);
 
-        // CohortData[13] ==> mAgeMonths
-        int ageMonths = std::stoi(CohortData[13][jj]);
+            // CohortData[2] ==> JuvenileMass
+            double cohortJuvenileMass = std::stod(CohortData[2][jj]);
 
-        // CohortData[14] ==> mTimeStepsJuviline
-        int timeStepsJuviline = std::stoi(CohortData[14][jj]);
+            // CohortData[3] ==> AdultMass
+            double cohortAdultMass = std::stod(CohortData[3][jj]);
 
-        // CohortData[15] ==> mTimeStepsAdult
-        int timeStepsAdult = std::stoi(CohortData[15][jj]);
+            // CohortData[4] ==> IndividualBodyMass
+            double IndividualBodyMass = std::stod(CohortData[4][jj]);
 
-        // std::cout << 
-        // gridCellIndex << ", "<< 
-        // functionalGroup << ", "<< 
-        // cohortJuvenileMass << ", "<< 
-        // cohortAdultMass << ", "<< 
-        // IndividualBodyMass << ", "<< 
-        // NewAbund << ", "<< 
-        // optimalPreyBodySizeRatio << ", "<< 
-        // BirthTimeStep << ", "<< 
-        // ProportionTimeActive << ", "<< 
-        // trophicindex << ", "<< 
-        // individualReproductivePotentialMass << ", "<< 
-        // maturityTimeStep << std::endl;
+            // CohortData[5] ==> CohortAbundance
+            double NewAbund = std::stod(CohortData[5][jj]);
 
-        modelGrid.GetACell( gridCellIndex ).SetCohortSize( mCohortFunctionalGroupDefinitions.mAllFunctinoalGroupsIndex.size( ) );
+            // CohortData[6] ==> LogOptimalPreyBodySizeRatio
+            double optimalPreyBodySizeRatio = exp(std::stod(CohortData[6][jj]));
 
-        Cohort* NewCohort=new Cohort( modelGrid.GetACell( gridCellIndex ), functionalGroup, cohortJuvenileMass, cohortAdultMass, IndividualBodyMass, NewAbund,
-                optimalPreyBodySizeRatio, BirthTimeStep, ProportionTimeActive, mNextCohortID, trophicindex, individualReproductivePotentialMass, maturityTimeStep,
-                isAdult, ageMonths, timeStepsJuviline, timeStepsAdult );
-        
-        totalCohorts++; //  total number of cohorts in the model
+            // CohortData[7] ==> BirthTimeStep
+            unsigned BirthTimeStep = std::stod(CohortData[7][jj]);;
 
-        //std::cout << "iterator jj: " << jj << " gridcellindex: " << gridCellIndex << " totalCohorts: " << totalCohorts << endl;
-        //std::cout << " " << endl;
+            // CohortData[8] ==> ProportionTimeActive
+            double ProportionTimeActive = std::stod(CohortData[8][jj]);
 
-        modelGrid.GetACell( gridCellIndex ).mCohorts[functionalGroup].push_back( NewCohort );
+            // CohortData[9] ==> TrophicIndex
+            double trophicindex = std::stod(CohortData[9][jj]);
+
+            // CohortData[10] ==> individualReproductivePotentialMass
+            //double individualReproductivePotentialMass = 0;
+            double individualReproductivePotentialMass = std::stod(CohortData[10][jj]);
+            
+            // CohortData[11] ==> maturityTimeStep
+            //unsigned maturityTimeStep = std::numeric_limits<unsigned>::max( );
+            unsigned maturityTimeStep = std::stod(CohortData[11][jj]);
+
+            //################################################################################
+
+            // CohortData[12] ==> mIsAdult
+            int isAdult = std::stoi(CohortData[12][jj]);
+
+            // CohortData[13] ==> mAgeMonths
+            int ageMonths = std::stoi(CohortData[13][jj]);
+
+            // CohortData[14] ==> mTimeStepsJuviline
+            int timeStepsJuviline = std::stoi(CohortData[14][jj]);
+
+            // CohortData[15] ==> mTimeStepsAdult
+            int timeStepsAdult = std::stoi(CohortData[15][jj]);
+
+            modelGrid.GetACell( gridCellIndex ).SetCohortSize( mCohortFunctionalGroupDefinitions.mAllFunctinoalGroupsIndex.size( ) );
+
+            Cohort* NewCohort=new Cohort( modelGrid.GetACell( gridCellIndex ), functionalGroup, cohortJuvenileMass, cohortAdultMass, IndividualBodyMass, NewAbund,
+                    optimalPreyBodySizeRatio, BirthTimeStep, ProportionTimeActive, mNextCohortID, trophicindex, individualReproductivePotentialMass, maturityTimeStep,
+                    isAdult, ageMonths, timeStepsJuviline, timeStepsAdult );
+            
+            totalCohorts++; //  total number of cohorts in the model
+
+            modelGrid.GetACell( gridCellIndex ).mCohorts[functionalGroup].push_back( NewCohort );
+
+        }catch(...){
+
+            //std::cout << CohortData[0][jj] << " gc, failed to init cohort" << std::endl;
+            totalCohorts_init_failed++;
+
+        }
+    
+
     }
+
+    //std::cout << "failed to init: " << totalCohorts_init_failed << " cohorts" << std::endl;
 
     ////////////////////////////////////////////////////////////////////////////////////
     std::vector<double> v;
