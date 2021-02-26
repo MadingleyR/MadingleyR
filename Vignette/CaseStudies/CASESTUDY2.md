@@ -63,7 +63,7 @@ for(i in fg) {
 # Make final plots
 plot(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Herbivore'], 
      col= 'green', pch = 19, ylim = c(0, 1.5), xlim = c(0, 1),
-     xlab = 'Relative vegetation biomass inaccessible', ylab = 'Relative change in cohort biomass')
+     xlab = 'Relative vegetation reduction', ylab = 'Relative change in cohort biomass')
 points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 =='Carnivore'], col= 'red', pch = 19)
 points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Omnivore'], col = 'blue', pch = 19)
 abline(1, -1, lty = 2)
