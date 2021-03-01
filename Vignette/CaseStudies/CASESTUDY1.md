@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 ## Case study 1
 
 To investigate the role of large and megaherbivores in the Serengeti, we removed endothermic herbivores with a body mass >100 kg from the simulation. First, we need to load the ```MadingleyR``` package and select the spatial window:
@@ -64,6 +69,10 @@ par(mfrow = c(1, 2))
 plot_foodweb(mdata3, max_flows = 5) # control food-web plot
 plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 ```
+<!--
+![](../../Figures/fig5.png)
+-->
+
 <p align="center">
 <img src="../../Figures/fig5.png" alt="Fig5" width="70%"/>
 <br>
@@ -72,3 +81,5 @@ plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 <br>
 <br>
 </p>
+
+

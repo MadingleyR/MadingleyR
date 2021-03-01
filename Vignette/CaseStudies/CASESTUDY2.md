@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 ## Case study 2
 
 In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters. The code below shows how the initialisation and spin-up simulation can be done, case study one uses the exact same procedure and provides more explanation on the code ([see](./CASESTUDY1.md)). Please note that ```madingley_run()``` tries to write outputs to ```C:/MadingleyOut```, make sure this folder exists or modify the path.
@@ -69,6 +74,12 @@ points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Omnivore'], col = 'blue'
 abline(1, -1, lty = 2)
 legend(0.0, 0.2, fg, col=c('green', 'red', 'blue'), pch = 19, box.lwd = 0)
 ```
+
+<!--
+![](../../Figures/fig6.png)
+Relative change in biomass of endotherm cohorts compared to the control simulation (biomass experiment/biomass control) plotted against the proportion of plant biomass reduction. A relative change in biomass of 1 indicates no change. Data points represent the relative change in biomass of endothermic carnivores (red), omnivores (blue) and herbivores (green) averaged over 10 replicas extracted at the end of the 5-year simulation experiment. The dashed line indicates the impact expected if the biomass of endotherms decreased linearly with the amount of plant made inaccessible for feeding.
+-->
+
 <p align="center">
 <img src="../../Figures/fig6.png" alt="Fig6" width="50%"/>
 <br>
@@ -77,3 +88,5 @@ legend(0.0, 0.2, fg, col=c('green', 'red', 'blue'), pch = 19, box.lwd = 0)
 <br>
 <br>
 </p>
+
+

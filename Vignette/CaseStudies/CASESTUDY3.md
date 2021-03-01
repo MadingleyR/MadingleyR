@@ -1,3 +1,8 @@
+---
+output:
+  pdf_document: default
+  html_document: default
+---
 ## Case study 3
 
 Please note that running this case study requires significantly more processing power and/or time compared to the previous case studies because of the spatial scale (the amount of model grid cells to process). The code was tested on a Dell XPS15 with a i7-8750H (6 core) processor and 16 gb memory, the total run time of the script was 13 hours and 31 minutes. Although it can be run on a laptop, we suggest running this on a powerful desktop or server.
@@ -6,12 +11,18 @@ Please note that running this case study requires significantly more processing 
 library(MadingleyR)
 
 # Set spatial window
-spatial_window = c(-20, 55, -36, 40) #spatial_window = c(32, 34, -4, 0) # smaller test region
-plot_spatialwindow(spatial_window) # can be used to check if we defined the spatial window correctly
+spatial_window = c(-20, 55, -36, 40) # c(32, 34, -4, 0) # smaller test region
+
+# Can be used to check if we defined the spatial window correctly
+plot_spatialwindow(spatial_window) 
 
 # Load spatial inputs
 sptl_inp = madingley_inputs('spatial inputs') # load default inputs
 ```
+
+<!-- 
+![](../../Figures/spatialwindow2.png)
+--->
 
 <p align="center"><img src="../../Figures/spatialwindow2.png" alt="Fig1" width="40%"/><br><em>spatial window</em><br><br><br></p>
 
@@ -39,7 +50,7 @@ mdata = madingley_init(spatial_window = spatial_window,
                        cohort_def = chrt_def)
 ```
 
-Next, we run the model for ```years_spinup = 200``` years, outputting the results into ```~/Desktop/TempMadingleyOuts/```
+Next, we run the model for 200 years, outputting the results into ```~/Desktop/TempMadingleyOuts/```
 
 ```R
 # Run spin-up of 200 years 
@@ -59,7 +70,7 @@ save.image("~/Desktop/TempMadingleyOuts/env_sinup.RData")
 
 Next, we load the default model parameters and perform 19 consecutive simulations (the input for simulation ```i + 1``` is the output of simulation ```i```). In each consecutive simulation we reduce the growth of autotrophs by 5%. This is done by modifying the default model input parameters ```m_params```. ```m_params[86, ]$notes``` provides additional information on this specific parameter. For this parameter the default value is 1.0 (autotroph production is at 100%), by reducing it each 5 years by 0.05 until we reach 0.05, we gradually reduced autotroph production to 5%.
 
-```
+```R
 # Set scenario parameters
 m_params = madingley_inputs('model parameters') # load default model parameters
 mdata_list = list(mdata2)
@@ -84,7 +95,7 @@ for(i in 1:19) {
 }
 ```
 
-After the reduction in autotroph production we run the model for an additional ```years_postred = 200``` years to allow the model to stabilise. During this simulation we keep the autotroph production at 5% (```m_params[86, 2] = 0.05```). 
+After the reduction in autotroph production we run the model for an additional 200 years to allow the model to stabilise. During this simulation we keep the autotroph production at 5% (```m_params[86, 2] = 0.05```). 
 
 ```R
 # Run model for additional 100 years
@@ -101,7 +112,7 @@ mdata4 = madingley_run(madingley_data = mdata_list[[20]],
 
 Finally we compare the end state of the model before the autotroph reduction to the end state of the model after the autotroph reduction using a spatial plot.
 
-```
+```R
 # Create plot
 herb_bef = plot_spatialbiomass(mdata2, functional_filter = TRUE, plot = FALSE)[[1]]
 herb_red = plot_spatialbiomass(mdata4, functional_filter = TRUE, plot = FALSE)[[1]]
@@ -112,10 +123,17 @@ r[] = ifelse(r[]>r_max,r_max+1e-9,r[])
 plot(r,colNA="white", axes = FALSE, box = FALSE, legend = FALSE,
      col = colorRampPalette(c("#e5f5e0","#31a354"))(20),zlim=c(0,(r_max+1e-9)))
 plot(r, legend.only=TRUE, col=colorRampPalette(c("#e5f5e0","#31a354"))(20),
-     legend.width=1, legend.shrink=0.75, legend.mar = 42,
-     axis.args=list(at=seq(0,r_max,5), labels=seq(0,r_max,5), cex.axis=0.6),
-     legend.args=list(text='Herbivores\n remaining (%)', side=3, font=2, line=2.5, cex=0.8))
+     legend.width=1, legend.shrink=0.75, 
+     legend.mar = 42, axis.args=list(at=seq(0,r_max,5), 
+     labels=seq(0,r_max,5), cex.axis=0.6),
+     legend.args=list(text='Herbivores\n remaining (%)', 
+     side=3, font=2, line=2.5, cex=0.8))
 ```
+
+<!--
+![](../../Figures/fig7.png)
+-->
+
 
 <p align="center">
 <img src="../../Figures/fig7.png" alt="Fig1" width="50%"/>
