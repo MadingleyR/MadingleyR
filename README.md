@@ -15,14 +15,15 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 ## Content
 
 * Basic use
-  * R markdown vignette: [view as html](https://madingleyr.github.io/MadingleyR/Vignette/Vignette.html); [pdf](./Vignette/Vignette.pdf)
-  * Download as [R code](./Vignette/Vignette.rmd)
+  * [R markdown vignette pdf](./Vignette/Vignette.pdf)
+  * [Download R markdown code](./Vignette/Vignette.rmd)
+  * [Download R code only](./Vignette/Vignette.r) (for testing purposes)
 * Function description
   * [Package manual pdf](./Manual.pdf)
 * Example case studies
-  * Case study 1: [html](./Vignette/CaseStudies/CASESTUDY1.md); [pdf](./Vignette/CaseStudies/CASESTUDY1.pdf)
-  * Case study 2: [html](./Vignette/CaseStudies/CASESTUDY2.md); [pdf](./Vignette/CaseStudies/CASESTUDY2.pdf)
-  * Case study 3: [html](./Vignette/CaseStudies/CASESTUDY3.md); [pdf](./Vignette/CaseStudies/CASESTUDY3.pdf)
+  * [Case study 1](./Vignette/CaseStudies/CASESTUDY1.md)
+  * [Case study 2](./Vignette/CaseStudies/CASESTUDY2.md)
+  * [Case study 3](./Vignette/CaseStudies/CASESTUDY3.md)
 * Compile C++ source code
   * [Mac](./SourceCode/CompileMac.md)
   * [Windows](./SourceCode/CompileWindows.md)
