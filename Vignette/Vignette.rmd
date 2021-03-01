@@ -3,6 +3,7 @@ title: "MadingleyR vignette"
 output:
   html_document:
     df_print: paged
+  pdf_document: default
 toc: yes
 ---
 
@@ -33,13 +34,13 @@ library('remotes') # or use library('devtools')
 install_github('MadingleyR/MadingleyR', subdir='Package')
 ```
 
-In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable, default spatio-temporal input layers and all other default input parameters and includes them in the installation folder. The following code can be used to make sure  a  previous version of MadingleyR in uninstalled:
+When calling the ```install_github()``` function, the argument ```force = TRUE``` can be used to make sure the package is updated to the latest version, in the case previous installation files exist in the machine. In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable, default spatio-temporal input layers and all other default input parameters and includes them in the installation folder. The following code can be used to make sure a previous version of MadingleyR in uninstalled:
 
 
 ```{r, eval=FALSE}
-# Uninstall MadingleyR package, this code is not executed within the vignette
-detach('package:MadingleyR', unload=TRUE)
-remove.packages('MadingleyR')
+# Uninstall MadingleyR package, uncomment code below
+# detach('package:MadingleyR', unload=TRUE)
+# remove.packages('MadingleyR')
 ```
 
 \pagebreak
@@ -98,10 +99,9 @@ mdata2 = madingley_run(madingley_data = mdata,
                        cohort_def = chrt_def, 
                        stock_def = stck_def, 
                        spatial_inputs = sptl_inp, 
-                       model_parameters = mdl_prms,
-                       silenced = TRUE)
+                       model_parameters = mdl_prms)
 ```
-By default the ```madingley_run()``` print simulation process (simulation month), however, it can be useful is some cases to silence the printing of ```madingley_run()``` using ```silenced = TRUE)```. For example, when making a vignette (saving space) or when running many simulations remotely.
+By default the ```madingley_run()``` print simulation process (simulation month), however, it can be useful is some cases to silence the printing of ```madingley_run()``` using ```silenced = TRUE```. Additionally, the ```parallel``` input argument allows the user to run the simulation in serial (on one processing core) or in parallel (using multiple cores). By default the simulation is executed in parallel to speed up the time required to run a simulation. See ```?madingley_run``` for all input arguments.
 
 \pagebreak
 
