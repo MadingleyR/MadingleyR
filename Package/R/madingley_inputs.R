@@ -3,11 +3,11 @@ madingley_inputs = function(input_type = "print options") {
   input_options = c("spatial inputs","cohort definition","stock definition","model parameters","print options")
 
   if(!is.element(input_type, input_options)){
-    stop("Incorrect input argument, possible input arguments are: input_type =",paste0(' "',input_options[1:4],'" OR'),' "print options"')
+    stop("Incorrect input argument, possible input arguments are:",paste0('"',input_options[1:4],'";'))
   }
 
   if(input_type=="print options"){
-    cat("possible input arguments are: input_type = ",paste0('"',input_options[1:4],'" OR '),'"print options"')
+    cat("possible input arguments are:",paste0('"',input_options[1:4],'";'))
   }
 
   
