@@ -14,23 +14,20 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 
 ## Content
 
-* Basic use
-  * [R markdown vignette](https://madingleyr.github.io/MadingleyR/Vignette/Vignette.html)
-  * [View R markdown vignette as pdf](./Vignette/Vignette.pdf)
-  * [R markdown vignette code, for testing purposes](./Vignette/Vignette.rmd)
+* R markdown vignette (basic use)
+  * [View as html](https://madingleyr.github.io/MadingleyR/Vignette/Vignette.html); 
+  * [View as pdf](./Vignette/Vignette.pdf)
+  * [Download R code](./Vignette/Vignette.rmd)
 * Function description
-  * [Package manual](./Manual.pdf)
-* Case studies
-  * [Case study 1](./Vignette/CaseStudies/CASESTUDY1.md)
-  * [Case study 1 pdf download](./Vignette/CaseStudies/CASESTUDY1.pdf)
-  * [Case study 2](./Vignette/CaseStudies/CASESTUDY2.md)
-  * [Case study 2 pdf download](./Vignette/CaseStudies/CASESTUDY2.pdf)
-  * [Case study 3](./Vignette/CaseStudies/CASESTUDY3.md)
-  * [Case study 3 pdf download](./Vignette/CaseStudies/CASESTUDY3.pdf)
-* Compile source
-  * [Compile source Mac](./SourceCode/CompileMac.md)
-  * [Compile source Windows](./SourceCode/CompileWindows.md)
-  * [Compile source Linux](./SourceCode/CompileLinux.md)
+  * [Package manual pdf](./Manual.pdf)
+* Example case studies
+  * Case study 1: [html](./Vignette/CaseStudies/CASESTUDY1.md); [pdf](./Vignette/CaseStudies/CASESTUDY1.pdf)
+  * Case study 2: [html](./Vignette/CaseStudies/CASESTUDY2.md); [pdf](./Vignette/CaseStudies/CASESTUDY2.pdf)
+  * Case study 3: [html](./Vignette/CaseStudies/CASESTUDY3.md); [pdf](./Vignette/CaseStudies/CASESTUDY3.pdf)
+* Compile C++ source code
+  * [Mac](./SourceCode/CompileMac.md)
+  * [Windows](./SourceCode/CompileWindows.md)
+  * [Linux](./SourceCode/CompileLinux.md)
 
 ## Useful links
 
