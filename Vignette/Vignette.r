@@ -43,6 +43,9 @@ mdata = madingley_init(spatial_window = spatial_window,
 
 #------- Running the Madingley model -------#
 
+# Print the model parameters
+print(mdl_prms)
+
 # Run the Madingley model for 10 years
 mdata2 = madingley_run(madingley_data = mdata, 
                        years = 10, 

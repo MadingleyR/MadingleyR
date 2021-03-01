@@ -14,6 +14,7 @@ get_default_cohort_def = function(){
                  PROPERTY_Initial.number.of.GridCellCohorts = c(0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 50, 50L, 50L, 50L, 50L, 50L, 50L, 50L, 50L), 
                  NOTES_group.description = structure(c(1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L, 1L), .Label = "None", class = "factor")), 
             class = "data.frame", row.names = c(NA, -19L))
-  
-  return(df[df$DEFINITION_Realm=="Terrestrial",])
+  df = df[df$DEFINITION_Realm=="Terrestrial",]
+  rownames(df) = NULL
+  return(df)
 }

@@ -20,6 +20,12 @@ knit_hooks$set(output = function(x, options) {
   }
   hook_output(x, options)
 })
+
+def.chunk.hook  <- knit_hooks$get("output")
+knit_hooks$set(output = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
 ```
 
 ## MadingleyR Installation
@@ -62,12 +68,32 @@ madingley_inputs( )
 After checking which inputs are available, they can be loaded manually as shown below. However, if the default inputs suffice, it is possible to initialise the model without providing these inputs manually.
 
 ```{r, message=FALSE, results='hide'}
-# Load inputs manually
+# Load MadingleyR default inputs
 sptl_inp = madingley_inputs('spatial inputs')
 chrt_def = madingley_inputs('cohort definition')
 stck_def = madingley_inputs('stock definition')
 mdl_prms = madingley_inputs('model parameters') # useful later for running the model
 ```
+
+Next, we can view what is in the default input parameters of the MadingleyR package. These inputs can also be modified depending on the simulation experiment.
+
+```{r, linewidth=130, size="footnotesize"}
+# View the structure of the spatial input layers
+str(sptl_inp,2)
+
+# View the default stock definitions
+print(stck_def)
+```
+
+\pagebreak
+
+```{r, linewidth=130, size="footnotesize"}
+# View the default cohort definitions
+print(chrt_def)
+```
+
+\pagebreak
+
 
 ```{r, linewidth=90}
 # Initialise model the model using the pre-loaded inputs
@@ -79,11 +105,16 @@ mdata = madingley_init(spatial_window = spatial_window,
 
 The returned ```mdata``` object will contain all cohorts and stocks (```data.frame```). In addition, the spatial window will be attached, making sure any consecutive model run will use the same spatial window.
 
+```{r, linewidth=90}
+# View the contents of mdata
+str(mdata,1)
+```
+
 \pagebreak
 
 ## Running the Madingley model
 
-After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes. The code below runs the Madingley model for 10 years (```years = 10```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```.
+After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes. The code below runs the Madingley model for 10 years (```years = 10```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```. Similar to the ```cohort_def```, ```stock_def``` and ```spatial_inputs``` (shown previously) we can see and alter the default model parameters. These parameters quantify the strength, rates and constants of the the ecological interactions in the model.
 
 ```{r}
 # Run the Madingley model for 10 years
@@ -94,6 +125,7 @@ mdata2 = madingley_run(madingley_data = mdata,
                        spatial_inputs = sptl_inp, 
                        model_parameters = mdl_prms)
 ```
+
 By default the ```madingley_run()``` function prints the simulation process (simulation month). However, it can be useful in some cases to silence the printing of ```madingley_run()``` using ```silenced = TRUE```. Additionally, the ```parallel``` input argument allows the user to run the simulation in serial (on one processing core) or in parallel (using multiple cores). By default the simulation is executed in parallel to speed up the time required to run a simulation. See ```?madingley_run``` for all input arguments.
 
 \pagebreak
@@ -108,7 +140,7 @@ plot_timelines(mdata2)
 ```
 \pagebreak
 
-```{r, fig.height=5, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
 # Plot MadingleyR body mass density
 plot_densities(mdata2)
 ```
