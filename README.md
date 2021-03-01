@@ -16,7 +16,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 
 * Basic use
   * [R markdown vignette](https://madingleyr.github.io/MadingleyR/Vignette/Vignette.html)
-  * [Download R markdown vignette as pdf](./Vignette/Vignette.pdf)
+  * [View R markdown vignette as pdf](./Vignette/Vignette.pdf)
   * [R markdown vignette code, for testing purposes](./Vignette/Vignette.rmd)
 * Function description
   * [Package manual](./Manual.pdf)
