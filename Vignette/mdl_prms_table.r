@@ -1,0 +1,5 @@
+library(MadingleyR)
+library(gridExtra)
+pdf("modelparams.pdf", height=25, width=15)
+grid.table(madingley_inputs('model parameters'))
+dev.off()
