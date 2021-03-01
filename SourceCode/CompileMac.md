@@ -13,3 +13,8 @@ cd path/to/SourceCode/madingley/
 sh CompileMac.sh
 ```
 
+Next, move the created executable, which can be found in a newly created folder called dist_```dateoftoday```_mac (inside SourceCode/madingley),  into the MadingleyR package library (e.g. into ```path/to/pacakge/library/MadingleyR/mac_exec```). The following R code can be used to obtain the path of the MadingleyR library (function is part of the MadingleyR pacakage):
+
+```R
+get_lib_path()
+```

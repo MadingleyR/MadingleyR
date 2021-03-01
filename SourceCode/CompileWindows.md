@@ -16,7 +16,7 @@ cd ..
 move /y madingley.exe dist_%date:~-4,4%%date:~-10,2%%date:~7,2%_win
 ```
 
-Next move the created executable (madingley.exe) into the MadingleyR package library (e.g. into ```MadingleyR/win_exec```). The following R code can be used to obtain the path of the MadingleyR library (function is part of the MadingleyR pacakage):
+Next move the created executable (madingley.exe) into the MadingleyR package library (e.g. into ```path/to/pacakge/library/MadingleyR/win_exec```). The following R code can be used to obtain the path of the MadingleyR library (function is part of the MadingleyR pacakage):
 
 ```R
 get_lib_path()
