@@ -20,11 +20,20 @@ plot_spatialwindow(spatial_window)
 # Prints possible input options to the R console
 madingley_inputs( ) 
 
-# Load inputs manually
+# Load MadingleyR default inputs
 sptl_inp = madingley_inputs('spatial inputs')
 chrt_def = madingley_inputs('cohort definition')
 stck_def = madingley_inputs('stock definition')
 mdl_prms = madingley_inputs('model parameters') # useful later for running the model
+
+# View the contents of the spatial inputs
+str(sptl_inp,2)
+
+# View the default cohort definitions
+print(chrt_def)
+
+# View the default stock definitions
+print(stck_def)
 
 # Initialise model the model using the pre-loaded inputs
 mdata = madingley_init(spatial_window = spatial_window,
