@@ -74,7 +74,7 @@ plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 -->
 
 <p align="center">
-<img src="../../Figures/fig5.png" alt="Fig5" width="70%"/>
+<img src="../../Figures/fig5_2.png" alt="Fig5" width="70%"/>
 <br>
 <em>Log10-binned food-web plots construction from a control simulation (a) and a simulation in which large and mega (>100 kg) endothermic herbivores were removed (b). Node colour depicts feeding category: carnivores (red), omnivores (blue) and herbivores (green). Grey lines connecting the nodes illustrate the flows between grouped cohorts. These results can be replicated, without any further dependencies, using the code shown in the main text.</em>
 <br>
