@@ -2,7 +2,7 @@
 
 To compile the source on Windows mingw is required with mingw32-pthreads-w32. see http://mingw-w64.org/doku.php. 
 
-After installing mingw, run the following in ```cmd``` to compile and link entire source (src) directory 
+After installing mingw, run the following in ```cmd``` to compile and link entire source (src) directory. The source code can be downloaded [here](https://github.com/MadingleyR/MadingleyR/archive/master.zip).
 
 ```bash
 cd c:/madingley/
