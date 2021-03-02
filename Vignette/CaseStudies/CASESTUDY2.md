@@ -1,10 +1,3 @@
-<!--
----
-output:
-  pdf_document: default
-  html_document: default
----
--->
 ## Case study 2
 
 In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters. The code below shows how the initialisation and spin-up simulation can be done, case study one uses the exact same procedure and provides more explanation on the code ([see](./CASESTUDY1.md)). Please note that ```madingley_run()``` tries to write outputs to ```C:/MadingleyOut```, make sure this folder exists or modify the path.
