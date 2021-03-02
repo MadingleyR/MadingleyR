@@ -1,8 +1,10 @@
+<!--
 ---
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
+-->
 ## Case study 3
 
 Please note that running this case study requires significantly more processing power and/or time compared to the previous case studies because of the spatial scale (the amount of model grid cells to process). The code was tested on a Dell XPS15 with a i7-8750H (6 core) processor and 16 gb memory, the total run time of the script was 13 hours and 31 minutes. Although it can be run on a laptop, we suggest running this on a powerful desktop or server.
