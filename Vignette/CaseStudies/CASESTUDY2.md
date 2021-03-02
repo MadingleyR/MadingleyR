@@ -69,10 +69,10 @@ for(i in fg) {
 plot(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Herbivore'], 
      col= '#4575b4', pch = 19, ylim = c(0, 1.5), xlim = c(0, 1),
      xlab = 'Relative vegetation reduction', ylab = 'Relative change in cohort biomass')
-points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 =='Carnivore'], col= 'a50026', pch = 19)
-points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Omnivore'], col = 'fdae61', pch = 19)
+points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 =='Carnivore'], col= '#a50026', pch = 19)
+points(1 - unique(red_avail_bio), m$x_rel[m$Group.2 == 'Omnivore'], col = '#fdae61', pch = 19)
 abline(1, -1, lty = 2)
-legend(0.0, 0.2, fg, col=c('#4575b4', 'a50026', 'fdae61'), pch = 19, box.lwd = 0)
+legend(0.0, 0.2, fg, col=c('#4575b4', '#a50026', '#fdae61'), pch = 19, box.lwd = 0)
 ```
 
 <!--
