@@ -69,8 +69,8 @@ par(mfrow = c(1, 2))
 plot_foodweb(mdata3, max_flows = 5) # control food-web plot
 plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 ```
-<!--
-![](../../Figures/fig5.png)
+<!-- 
+![](../../Figures/fig5_2.png)
 -->
 
 <p align="center">

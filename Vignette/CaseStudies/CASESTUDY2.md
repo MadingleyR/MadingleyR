@@ -76,7 +76,7 @@ legend(0.0, 0.2, fg, col=c('#4575b4', '#a50026', '#fdae61'), pch = 19, box.lwd =
 ```
 
 <!--
-![](../../Figures/fig6.png)
+![](../../Figures/fig6_2.png)
 Relative change in biomass of endotherm cohorts compared to the control simulation (biomass experiment/biomass control) plotted against the proportion of plant biomass reduction. A relative change in biomass of 1 indicates no change. Data points represent the relative change in biomass of endothermic carnivores (red), omnivores (blue) and herbivores (green) averaged over 10 replicas extracted at the end of the 5-year simulation experiment. The dashed line indicates the impact expected if the biomass of endotherms decreased linearly with the amount of plant made inaccessible for feeding.
 -->
 
