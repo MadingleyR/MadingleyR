@@ -1,4 +1,4 @@
-plot_foodweb = function(madingley_data,max_flows=10,color=T,sample_data=100,...){
+plot_foodweb = function(madingley_data,max_flows=10,colour=T,sample_data=100,col=c("#74add1","#a50026","#fdae61"),node_opacity=0.5,...){
 
   # check if out_dir was specified manually within madingley_run()
   if(!is.null(madingley_data$out_path)){ # out_dir specified manually
@@ -229,20 +229,32 @@ plot_foodweb = function(madingley_data,max_flows=10,color=T,sample_data=100,...)
   bins$points_cex_norm = (bins$points_cex-min(bins$points_cex))/
     (max(bins$points_cex)-min(bins$points_cex)) * (norm_max_range-norm_min_range) + norm_min_range
 
-  p_colors = c("#00B358","#FF1300","#104BA9")
-
+  if(length(col)!=3){
+    p_colors = c("#00B358","#FF1300","#104BA9")
+    cat("please provide 3 colors, default colors used...")
+  }else{
+    p_colors = col
+  }
+  
+  p_colors = col2rgb(p_colors)/255
+  
+  
   for(i in 1:nrow(bins)){
     if(bins$x[i]>(-0.5)){
-      if(color){
+      if(colour){
+        
+        points(x=bins$x[i],y=bins$y[i],cex=bins$points_cex_norm[i],
+               col=rgb(0,0,0,0.001),bg=rgb(1,1,1,node_opacity),type="p",pch=21) #
+        
         if(bins$y[i]<2){
           points(x=bins$x[i],y=bins$y[i],cex=bins$points_cex_norm[i],
-                 col=rgb(0,0,0,0.001),bg=rgb(0,179/255,88/255,0.5),type="p",pch=21) #
+                 col=rgb(0,0,0,0.001),bg=rgb(p_colors[1,1],p_colors[2,1],p_colors[3,1],0.7),type="p",pch=21) # herb
         }else if(bins$y[i]<3){
           points(x=bins$x[i],y=bins$y[i],cex=bins$points_cex_norm[i],
-                 col=rgb(0,0,0,0.001),bg=rgb(16/255,75/255,169/255,0.5),type="p",pch=21) #
+                 col=rgb(0,0,0,0.001),bg=rgb(p_colors[1,3],p_colors[2,3],p_colors[3,3],0.7),type="p",pch=21) # carn
         }else{
           points(x=bins$x[i],y=bins$y[i],cex=bins$points_cex_norm[i],
-                 col=rgb(0,0,0,0.001),bg=rgb(255/255,19/255,0,0.5),type="p",pch=21) #
+                 col=rgb(0,0,0,0.001),bg=rgb(p_colors[1,2],p_colors[2,2],p_colors[3,2],0.7),type="p",pch=21) # omni
         }
       }else{
         points(x=bins$x[i],y=bins$y[i],cex=bins$points_cex_norm[i],

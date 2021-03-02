@@ -33,9 +33,9 @@ plot_trophicpyramid_internal = function(carnbio,omnibio,herbbio,autobio,colors, 
   #plot(1,1,col="white",xlim=c(-10,115),ylim=c(-10,115),xlab="",ylab="")
   plot(1,1,col="white",xlim=c(-15,120),ylim=c(-10,100),xaxs="i", yaxs="i",axes=F,xlab="",ylab="", ...)
   polygon(x=c(marginauto,100-marginauto,100-marginauto,marginauto),y=c(0,0,20,20),col=colors[4])
-  polygon(x=c(marginherb,100-marginherb,100-marginherb,marginherb),y=c(20,20,40,40),col=colors[1])
-  polygon(x=c(marginomni,100-marginomni,100-marginomni,marginomni),y=c(40,40,60,60),col=colors[3])
-  polygon(x=c(margincarn,100-margincarn,100-margincarn,margincarn),y=c(60,60,80,80),col=colors[2])
+  polygon(x=c(marginherb,100-marginherb,100-marginherb,marginherb),y=c(20,20,40,40),col=colors[3])
+  polygon(x=c(marginomni,100-marginomni,100-marginomni,marginomni),y=c(40,40,60,60),col=colors[2])
+  polygon(x=c(margincarn,100-margincarn,100-margincarn,margincarn),y=c(60,60,80,80),col=colors[1])
 
   # add pyramide flows
   bend = -0.9

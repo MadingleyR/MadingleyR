@@ -19,6 +19,7 @@
 \item{legend_mar}{the legend margin (default = 20)}
 \item{distance_legend_title}{the distance from the legend to the legend title (default = 4)}
 \item{legend_width}{the width of the legend bar (default = 2.5)}
+\item{col}{colours used, defined as a vector, when not defined default colours used}
 }
 
 \examples{

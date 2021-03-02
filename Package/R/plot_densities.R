@@ -1,5 +1,5 @@
 plot_densities = function(madingley_data,weighted="biomass",by_traits=c("DEFINITION_Endo.Ectotherm","Nutrition.source"),
-                          col=c("#00B358","#FF1300","#104BA9","#00B358","#FF1300","#104BA9"),plot=TRUE,multipanel=TRUE,...){
+                          col=c("#74add1","#a50026","#fdae61","#74add1","#a50026","#fdae61"),plot=TRUE,multipanel=TRUE,...){
 
 
   # check if out_dir was specified manually within madingley_run()

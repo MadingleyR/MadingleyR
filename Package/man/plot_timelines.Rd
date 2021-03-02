@@ -13,6 +13,7 @@ plot_timelines(m_data2, select = 'feeding guilds')
   \item{madingley_data}{madingley output list returned by madingley_run()}
   \item{select}{can be set to: 'functional groups' or 'feeding guilds'}
   \item{plot}{If FALSE it returns a data.frame with the time line data formatted for plotting (default = TRUE).}
+  \item{col}{colours used for the time lines, defined as vector, when not specified default colours used.}
 }
 
 \examples{

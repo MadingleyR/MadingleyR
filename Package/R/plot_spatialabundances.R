@@ -1,6 +1,7 @@
 # raster plot function
 plot_spatialabundances = function(madingley_data,functional_filter=F,plot=TRUE,box=T,axes=T,
-                                  names=0,cex_legend_title=1,cex_axis=1.3,legend_mar=20,distance_legend_title=4,legend_width=2.5){
+                                  names=0,cex_legend_title=1,cex_axis=1.3,legend_mar=20,distance_legend_title=4,legend_width=2.5,
+                                  col=c('#fff7ec','#fee8c8','#fdd49e','#fdbb84','#fc8d59','#ef6548','#d7301f','#b30000','#7f0000')){
 
   # get spatial window
   spatial_window=madingley_data$spatial_window
@@ -34,15 +35,7 @@ plot_spatialabundances = function(madingley_data,functional_filter=F,plot=TRUE,b
 
 
   # default color pal
-  pal = c("#440154FF", "#460B5DFF", "#481467FF", "#481D6FFF", "#482576FF",
-          "#472E7CFF", "#453581FF", "#433E85FF", "#404588FF", "#3D4D8AFF",
-          "#3A538BFF", "#375B8DFF", "#34618DFF", "#31688EFF", "#2E6F8EFF",
-          "#2B748EFF", "#297B8EFF", "#26818EFF", "#24878EFF", "#228D8DFF",
-          "#20938CFF", "#1F998AFF", "#1FA088FF", "#21A585FF", "#25AC82FF",
-          "#2DB17EFF", "#35B779FF", "#40BC72FF", "#4CC26CFF", "#59C864FF",
-          "#67CC5CFF", "#76D153FF", "#87D549FF", "#97D83FFF", "#A9DB33FF",
-          "#BADE28FF", "#CBE11EFF", "#DDE318FF", "#EDE51BFF", "#FDE725FF"
-  )
+  pal = col
 
   # get cohort data paths
   cohortsRnames = paste0(out_dir,madingley_data$out_dir_name,'cohort_properties/')

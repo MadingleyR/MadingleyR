@@ -12,7 +12,7 @@ plot_densities(m_data2, weighted = 'abundance' , xlim=c(-4, 5))
   \item{weighted}{select either 'biomass' or 'abundance' (pass as string)}
   \item{xlim}{min and max log10 body mass plotted}
   \item{ylim}{min and max density}
-  \item{col}{the colours used (length needs to be equal to the number of groups plotted)}
+  \item{col}{the colours used (length needs to be equal to the number of groups plotted, by default length = 6)}
   \item{plot}{If TRUE it generates the plot, if FALSE it returns the data output formatted for plotting which can be used for further analysis}
 }
 

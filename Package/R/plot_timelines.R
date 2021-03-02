@@ -1,9 +1,15 @@
-plot_timelines = function(madingley_data,select="functional groups",xlims=0,ylims=0,legend="topright",unclutter_val=0.7,plot=TRUE,timescale="months",...){
+plot_timelines = function(madingley_data,select="functional groups",
+                          col=c('#a50026','#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4','#313695'),
+                          xlims=0,ylims=0,legend="topright",unclutter_val=0.7,plot=TRUE,timescale="months",...){
 
   # default colors
-  cols_reds = c('#FF1300','#B23F36','#930B00','#FF5143','#FF8379')
-  cols_blues = c('#104BA9','#2B4875','#042861','#477FD6','#7098D6')
-  cols_greens = c('#00B358','#267D51','#006733','#3ADB89','#68DBA1')
+  # cols_reds = c('#FF1300','#B23F36','#930B00','#FF5143','#FF8379')
+  # cols_blues = c('#104BA9','#2B4875','#042861','#477FD6','#7098D6')
+  # cols_greens = c('#00B358','#267D51','#006733','#3ADB89','#68DBA1')
+  
+  
+  # default colors (colorblind friendly)
+  cols_reds = cols_blues = cols_greens = col
 
 
   #--------------------------------------------------------- functional groups
@@ -29,7 +35,7 @@ plot_timelines = function(madingley_data,select="functional groups",xlims=0,ylim
     if(length(xlims)==1) xlims = c(x_axis_min,x_axis_max)
     y_axis_max = ceiling(log10(max(madingley_data$time_line_stocks$TotalStockBiomass)))
     y_axis_min = floor(log10(min(tl[,3:ncol(tl)])))
-    if(length(ylims)==1) ylims = c(y_axis_min,y_axis_max)
+    if(length(ylims)==1) ylims = c(y_axis_min-1,y_axis_max)
     if(is.infinite(y_axis_min)) ylims[1] = 0
 
 
