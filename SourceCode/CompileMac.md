@@ -6,7 +6,7 @@ To compile the source on Mac the correct compiler is required (e.g. gcc@7, https
 brew install gcc@7
 ```
 
-After installing the compiler ```CompileMac.sh``` can be called within the ```SourceCode/madingley``` folder to compile to code from the terminal:
+After installing the compiler ```CompileMac.sh``` can be called within the ```SourceCode/madingley``` folder to compile to code from the terminal. The source code can be downloaded [here](https://github.com/MadingleyR/MadingleyR/archive/master.zip).
 
 ```bash
 cd path/to/SourceCode/madingley/
