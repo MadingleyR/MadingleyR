@@ -1,11 +1,3 @@
-<!--
----
-output:
-  pdf_document: default
-  html_document: default
----
--->
-
 ## Case study 1
 
 To investigate the role of large and megaherbivores in the Serengeti, we removed endothermic herbivores with a body mass >100 kg from the simulation. First, we need to load the ```MadingleyR``` package and select the spatial window:
