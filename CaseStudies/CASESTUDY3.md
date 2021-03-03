@@ -16,10 +16,10 @@ sptl_inp = madingley_inputs('spatial inputs') # load default inputs
 ```
 
 <!-- 
-![](../../Figures/spatialwindow2.png)
+![](../Figures/spatialwindow2.png)
 --->
 
-<p align="center"><img src="../../Figures/spatialwindow2.png" alt="Fig1" width="40%"/><br><em>spatial window</em><br><br><br></p>
+<p align="center"><img src="../Figures/spatialwindow2.png" alt="Fig1" width="40%"/><br><em>spatial window</em><br><br><br></p>
 
 Next, we determine how long each of the simulation phases will run for.
 
@@ -126,12 +126,12 @@ plot(r, legend.only=TRUE, col=colorRampPalette(c("#e5f5e0","#31a354"))(20),
 ```
 
 <!--
-![](../../Figures/fig7.png)
+![](../Figures/fig7.png)
 -->
 
 
 <p align="center">
-<img src="../../Figures/fig7.png" alt="Fig1" width="50%"/>
+<img src="../Figures/fig7.png" alt="Fig1" width="50%"/>
 <br>
 <em>Relative reduction in endotherm herbivore biomass after reducting autotroph production by 95%</em>
 <br>
