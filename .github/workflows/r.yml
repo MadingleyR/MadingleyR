@@ -16,7 +16,7 @@ on:
 
 jobs:
   build:
-    runs-on: linux
+    runs-on: ubuntu-18.04
     strategy:
       matrix:
         R: [ '3.5.3' ]  
