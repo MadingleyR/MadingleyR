@@ -8,3 +8,9 @@ To uninstall the package use the following R code:
 detach('package:MadingleyR', unload=TRUE)
 remove.packages('MadingleyR')
 ```
+
+The following is only intended for testing purposes:
+
+```R
+source('')
+```
