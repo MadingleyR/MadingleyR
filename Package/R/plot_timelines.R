@@ -140,11 +140,11 @@ plot_timelines = function(madingley_data,select="functional groups",
     random_colors = c()
     for(i in guilds){
       if(i=="Herbivore"){
-        random_colors = c(random_colors,sample("#00B358",1))
+        random_colors = c(random_colors,sample("#74add1",1))
       }else if(i=="Carnivore"){
-        random_colors = c(random_colors,sample("#FF1300",1))
+        random_colors = c(random_colors,sample("#d73027",1))
       }else if(i=="Omnivore"){
-        random_colors = c(random_colors,sample("#104BA9",1))
+        random_colors = c(random_colors,sample("#fdae61",1))
       }else{
         random_colors = c(random_colors,'black')
       }
