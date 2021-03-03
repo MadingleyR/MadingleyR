@@ -17,7 +17,7 @@ plot_spatialwindow = function(spatial_window, input_raster=0, window_color="red"
     input_raster[input_raster[]==1] = NA
   }
   
-  plot(input_raster,colNA="grey",legend=FALSE,...)
+  raster::plot(input_raster,colNA="grey",legend=FALSE,...)
   lines(x=c(spatial_window[[1]],spatial_window[[1]]),y=c(spatial_window[[3]],spatial_window[[4]]), col = window_color) # vert left
   lines(x=c(spatial_window[[2]],spatial_window[[2]]),y=c(spatial_window[[3]],spatial_window[[4]]), col = window_color) # vert right
   lines(x=c(spatial_window[[1]],spatial_window[[2]]),y=c(spatial_window[[4]],spatial_window[[4]]), col = window_color) # vert right
