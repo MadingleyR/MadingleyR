@@ -17,6 +17,6 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.R }}
-      - run:  Rscript -e 'source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI.R")'
+      - run: "R.exe" CMD BATCH C:\Users\myusername\Documents\R\Send_Outlook_Email.R
       
       
