@@ -28,4 +28,4 @@ jobs:
         with:
           r-version: ${{ matrix.R }}
       - run: sudo apt install libgdal-dev
-      - run: Rscript -e 'install.packages("remotes", repos="http://cran.rstudio.com/"); remotes::install_github("MadingleyR/MadingleyR", subdir="Package")'
+      - run:  Rscript -e 'source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI.R")'
