@@ -1,4 +1,4 @@
-name: R
+name: linux
 
 on:
   push:
@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         R: [ '3.5.3' ]  
-    name: R ${{ matrix.R }} sample
+    name: MadingleyR ${{ matrix.R }} linux
     steps:
       - uses: actions/checkout@master
       - name: Setup R
