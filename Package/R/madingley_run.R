@@ -11,21 +11,9 @@ madingley_run = function(out_dir=tempdir(),
                          silenced=F,
                          parallel=T) {
   
-  noise_cohort_order=1.0
-  grid_size=0
-
-  if(noise_cohort_order>1.0) {
-    cat("please set noise_cohort_order to a decimal value between 0.0 and 1.0, value forced to 1.0")
-    cat("\n")
-    noise_cohort_order=1.0
-  }
-
-  if(noise_cohort_order<0.0) {
-    cat("please set noise_cohort_order to a decimal value between 0.0 and 1.0, value forced to 0.0")
-    cat("\n")
-    noise_cohort_order=0.0
-  }
+  noise_cohort_order=1.0 # not used in current version
   NoiseThresholdCohortOrder=1-noise_cohort_order
+  grid_size=0 # overwritten later using raster resolution
 
   # check if output dir exists
   if(!dir.exists(out_dir)) stop('Specified output folder does not exist, please make sure out_dir is correct')
@@ -43,10 +31,6 @@ madingley_run = function(out_dir=tempdir(),
   # replace tilde with home folder path
   out_dir = sub("~", Sys.getenv("HOME"), out_dir)
   out_dir_save = out_dir
-
-  options(warn=-1)
-  try(sink(),silent = TRUE)
-  options(warn=0)
 
   # load default input rasters if not specified by input function
   if(class(spatial_inputs)!="list") spatial_inputs = madingley_inputs(input_type = "spatial inputs")
@@ -103,46 +87,31 @@ madingley_run = function(out_dir=tempdir(),
   unlink(input_dir, recursive = T)
   dir.create(input_dir, showWarnings = F)
 
-  options(warn=-1)
-  try(sink(),silent = TRUE)
-  options(warn=0)
-
   # def checks
   if(length(cohort_def)==0) cohort_def = get_default_cohort_def()
   if(class(stock_def)=="list") stock_def = get_default_stock_def()
 
   # write inputs csv files to temp dir
-  options("scipen"=100, "digits"=4)
   write_cohort_def(out_dir,cohort_def)
   write_stock_def(out_dir,stock_def)
   write_simulation_parameters(out_dir)
   write_mass_bin_def(out_dir)
-  options("scipen"=0, "digits"=7)
 
   # write madingley_data cohorts and stocks to temp dir
   write_madingley_data_cohorts_stocks_to_temp_dir_fast(input_dir=input_dir,madingley_data=madingley_data)
 
+  # write spatial outputs
+  write_spatial_inputs_to_temp_dir(spatial_inputs=spatial_inputs,
+                                   XY_window=spatial_window,
+                                   crop=T,
+                                   input_dir=out_dir,
+                                   silenced)
+  
   # use user defined model parameters or default
   if(class(model_parameters)!="data.frame"){ # default
     model_params = 0
   }else{ # not default
     model_params = paste(c(1,model_parameters$values),collapse=" ")
-  }
-
-  # check if spatial inputs have changed since last write to tempdir (can be overwritten with overwrite_sp_check==T)
-  if(overwrite_sp_check) { # not default
-    write_spatial_inputs_to_temp_dir(spatial_inputs=spatial_inputs,
-                                     XY_window=spatial_window,
-                                     crop=T,
-                                     input_dir=out_dir,
-                                     silenced)
-  }else{ # default
-    sp_inputs_changed = check_and_rewrite_spatial_inputs(spatial_inputs=spatial_inputs,tempdir=out_dir)
-    if(sp_inputs_changed) write_spatial_inputs_to_temp_dir(spatial_inputs=spatial_inputs,
-                                                           XY_window=spatial_window,
-                                                           crop=T,
-                                                           input_dir=out_dir,
-                                                           silenced)
   }
 
   if(dispersal_off) {
@@ -302,8 +271,5 @@ madingley_run = function(out_dir=tempdir(),
 
     }
   )
-  options(warn=-1)
-  try(sink(),silent = TRUE)
-  options(warn=0)
 
 }

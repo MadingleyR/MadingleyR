@@ -1,7 +1,9 @@
 plot_densities = function(madingley_data,weighted="biomass",by_traits=c("DEFINITION_Endo.Ectotherm","Nutrition.source"),
                           col=c("#74add1","#a50026","#fdae61","#74add1","#a50026","#fdae61"),plot=TRUE,multipanel=TRUE,...){
 
-
+  # store current par settings
+  opar = par(no.readonly = TRUE)
+  
   # check if out_dir was specified manually within madingley_run()
   if(!is.null(madingley_data$out_path)){ # out_dir specified manually
     tdo = madingley_data$out_path
@@ -91,6 +93,9 @@ plot_densities = function(madingley_data,weighted="biomass",by_traits=c("DEFINIT
       par(mar = c(5,4,4,2))
     }
   }
+  
+  # temporary turn of warnings
+  owarn = options()$warn # store orinigal value for warnings
   options(warn=-1)
 
   output=list()
@@ -149,13 +154,10 @@ plot_densities = function(madingley_data,weighted="biomass",by_traits=c("DEFINIT
     }
     fg_counter = fg_counter+1
   }
-  try(sink(),silent = TRUE)
-
-  options(warn=0)
-
-  if(multipanel){
-    reset_par()
-  }
+  
+  # return to original settings
+  par(opar)
+  options(warn=owarn)
 
   if(plot==FALSE) return(output)
 }

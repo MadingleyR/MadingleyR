@@ -1,5 +1,8 @@
 plot_trophicpyramid = function(madingley_data,flow_round=2,mass_round=2,col=c("#a50026","#fdae61","#74add1","#313695"),
                                text_col=rep("white",4),...){
+  
+  # store default par, to reset later
+  def_par = par(no.readonly = TRUE)
 
   # check if out_dir was specified manually within madingley_run()
   if(!is.null(madingley_data$out_path)){ # out_dir specified manually
@@ -123,5 +126,9 @@ plot_trophicpyramid = function(madingley_data,flow_round=2,mass_round=2,col=c("#
   text(50,25,"Herbivores",col=text_col[1])
   text(50,15,paste0("10^",round(log10(mass[mass$g=="Autotrophs",2]),mass_round)," kg"),col=text_col[4])
   text(50,5,"Autotrophs",col=text_col[4])
+  
+  
+  # return to default par
+  par(def_par)
 
 }

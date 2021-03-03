@@ -5,6 +5,7 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
                           max_cohort = 500,
                           silenced=F) {
 
+  # These parameters are only important to madingley_run(), pass default here in init
   NotYetAssignedVariableToPassToCPP=0.0
   NoDispersal=0
   RunInParallel=1
@@ -68,22 +69,15 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
   cohort_def$PROPERTY_Initial.number.of.GridCellCohorts[cohort_def$DEFINITION_Realm=="Terrestrial"] = n_cohorts_per_fg
 
   # write inputs files to temp dir
-  options("scipen"=100, "digits"=4)
-  write_cohort_def_dt(out_dir,cohort_def)
-  #write_cohort_def(out_dir,cohort_def)
+  write_cohort_def(out_dir,cohort_def)
   write_stock_def(out_dir,stock_def)
   write_simulation_parameters(out_dir)
   write_mass_bin_def(out_dir)
-  options("scipen"=0, "digits"=7)
   write_spatial_inputs_to_temp_dir(spatial_inputs=spatial_inputs,
                                    XY_window=spatial_window,
                                    crop=T,
                                    input_dir=out_dir,
                                    silenced) # spatial inputs
-
-  # write spatial inputs statistics to check later if identical data has been written before
-  check = sort(as.vector(unlist(lapply(spatial_inputs,function(x) {c(cellStats(x,stat='sd'),cellStats(x,stat='mean'))}))))
-  write.csv(data.frame(check=check),paste0(out_dir,"/spatial_inputs/spatial_inputs.csv"))
 
   # Run the C++ code (init)
   switch(Sys.info()[['sysname']],

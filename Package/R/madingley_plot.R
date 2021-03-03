@@ -1,6 +1,7 @@
 madingley_plot = function(madingley_data){
 
-  def.par = par(no.readonly = TRUE)
+  # store default par
+  def_par = par(no.readonly = TRUE)
 
   layout(matrix(c(7, 7, 7, 7, 7, 7, 1, 2, 3, 4, 5, 6), nrow=4, byrow=TRUE))
 
@@ -8,7 +9,8 @@ madingley_plot = function(madingley_data){
   cat('\n')
   plot_timelines(madingley_data, select = 'feeding guilds', main="Time series plot")
 
-  par(def.par)
+  # return to default par
+  par(def_par)
 
   try(plot_foodweb(madingley_data, max_flows = 5, sample_data = 30, main="Food-web plot"))
   cat('\n')

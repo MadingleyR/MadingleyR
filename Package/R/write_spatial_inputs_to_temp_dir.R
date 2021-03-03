@@ -1,15 +1,5 @@
 write_spatial_inputs_to_temp_dir = function(spatial_inputs,XY_window="0 0 0 0",crop=T,input_dir,silenced=F){
 
-
-  if(!"rgdal" %in% rownames(installed.packages())){
-    stop("rgdal not installed")
-  }
-  if(!"raster" %in% rownames(installed.packages())){
-    stop("package named 'raster' not installed")
-  }
-
-  require(rgdal); require(raster);
-
   XY_window_num = as.numeric(unlist(strsplit(XY_window, " ")))
   XY_window_adjusted = c(XY_window_num[1],
                          XY_window_num[2],
@@ -29,7 +19,7 @@ write_spatial_inputs_to_temp_dir = function(spatial_inputs,XY_window="0 0 0 0",c
       r = spatial_inputs[[i]]
 
       # create df
-      df = as.data.frame(cbind(r[],xyFromCell(r, 1:length(r[]), spatial=FALSE)))
+      df = as.data.frame(cbind(r[],raster::xyFromCell(r, 1:length(r[]), spatial=FALSE)))
       names(df) = c('var','x','y')
       df$var = ifelse(is.na(df$var),-999,df$var)
 
@@ -57,7 +47,7 @@ write_spatial_inputs_to_temp_dir = function(spatial_inputs,XY_window="0 0 0 0",c
         r = spatial_inputs[[i]][[j]]
 
         # create df
-        df = as.data.frame(cbind(r[],xyFromCell(r, 1:length(r[]), spatial=FALSE)))
+        df = as.data.frame(cbind(r[],raster::xyFromCell(r, 1:length(r[]), spatial=FALSE)))
         names(df) = c('var','x','y')
         df$var = ifelse(is.na(df$var),-999,df$var)
 

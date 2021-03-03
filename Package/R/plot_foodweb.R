@@ -1,5 +1,8 @@
 plot_foodweb = function(madingley_data,max_flows=10,colour=T,sample_data=100,col=c("#74add1","#a50026","#fdae61"),node_opacity=0.5,...){
 
+  # store default par
+  def_par = par(no.readonly = TRUE)
+  
   # check if out_dir was specified manually within madingley_run()
   if(!is.null(madingley_data$out_path)){ # out_dir specified manually
     tdo = madingley_data$out_path
@@ -288,5 +291,9 @@ plot_foodweb = function(madingley_data,max_flows=10,colour=T,sample_data=100,col
   text(x_placement,2.5,"Endotherm\nomnivore",cex=ycat_font_size, xpd=T)
   text(x_placement,3.0,"Ectotherm\ncarnivore",cex=ycat_font_size, xpd=T)
   text(x_placement,3.5,"Endotherm\ncarnivore",cex=ycat_font_size, xpd=T)
+  
+  
+  # return to default par
+  par(def_par)
 
 }
