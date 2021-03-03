@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        R: [ '3.5.3', '3.6.1' ]
+        R: [ '3.5.3' ]
     name: R ${{ matrix.R }} sample
     steps:
       - uses: actions/checkout@master
@@ -27,4 +27,4 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.R }}
-      - run: Rscript -e 'print("hello")'
+      - run: Rscript -e 'install.packages("remotes", repos=1); remotes::install_github('MadingleyR/MadingleyR', subdir='Package')'
