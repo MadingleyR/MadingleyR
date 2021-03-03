@@ -206,7 +206,7 @@ plot_timelines = function(madingley_data,select="functional groups",
 
       for(i in 2:length(unique_guild)) {
         cur_color = colors[i]
-        l_type = sample(1:4,1)
+        l_type = i #sample(1:4,1)
         lines(df$Month,log10(df[,i]),type="l",col=cur_color,lty=l_type,lwd=2)
         colors = c(colors,cur_color)
         l_types = c(l_types,l_type)
