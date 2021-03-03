@@ -13,6 +13,9 @@ chrt_def = madingley_inputs("cohort definition")
 stck_def = madingley_inputs("stock definition")
 mdl_prms = madingley_inputs("model parameters") 
 
+#### set spatial window
+spatial_window = c(31, 35, -5, -1)
+
 #### Init test model
 mdata = madingley_init(spatial_window = spatial_window,
                        cohort_def = chrt_def,
