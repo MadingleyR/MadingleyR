@@ -25,7 +25,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Case study 1](./CaseStudies/CASESTUDY1.md)
   * [Case study 2](./CaseStudies/CASESTUDY2.md)
   * [Case study 3](./CaseStudies/CASESTUDY3.md)
-  * [Full case study codes](https://github.com/MadingleyR/MadingleyR/tree/master/CaseStudies)
+  * [Full case study codes](https://github.com/MadingleyR/MadingleyR/tree/master/CaseStudies/FullCaseStudyCodes/)
 * Compile C++ source code
   * [Mac](./SourceCode/CompileMac.md)
   * [Windows](./SourceCode/CompileWindows.md)
