@@ -19,7 +19,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Download R markdown code](./Manual/UserManual.rmd)
   * [Download R code only](./Manual/UserManual.r) (for testing purposes)
 * Function description
-  * [Package manual pdf](./Manual/RFunctionDescription.pdf)
+  * [Function description pdf](./Manual/RFunctionDescription.pdf)
 * Example case studies
   * [Overview](./CaseStudies/)
   * [Case study 1](./CaseStudies/CASESTUDY1.md)
