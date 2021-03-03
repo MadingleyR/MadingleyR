@@ -12,5 +12,5 @@ remove.packages('MadingleyR')
 The following is only intended for testing purposes:
 
 ```R
-source('')
+source('https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Manual/UserManual.r')
 ```
