@@ -14,17 +14,18 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 
 ## Content
 
-* Basic use
-  * [R markdown vignette pdf](./Vignette/Vignette.pdf)
-  * [Download R markdown code](./Vignette/Vignette.rmd)
-  * [Download R code only](./Vignette/Vignette.r) (for testing purposes)
+* Package Manual
+  * [R markdown vignette pdf](./Manual/UserManual.pdf)
+  * [Download R markdown code](./Manual/UserManual.rmd)
+  * [Download R code only](./Manual/UserManual.r) (for testing purposes)
 * Function description
-  * [Package manual pdf](./Manual.pdf)
+  * [Package manual pdf](./Manual/RFunctionDescription.pdf)
 * Example case studies
-  * [Case study 1](./Vignette/CaseStudies/CASESTUDY1.md)
-  * [Case study 2](./Vignette/CaseStudies/CASESTUDY2.md)
-  * [Case study 3](./Vignette/CaseStudies/CASESTUDY3.md)
-  * [Full case study codes](https://github.com/MadingleyR/MadingleyR/tree/master/Vignette/CaseStudies)
+  * [Overview](./CaseStudies/)
+  * [Case study 1](./CaseStudies/CASESTUDY1.md)
+  * [Case study 2](./CaseStudies/CASESTUDY2.md)
+  * [Case study 3](./CaseStudies/CASESTUDY3.md)
+  * [Full case study codes](https://github.com/MadingleyR/MadingleyR/tree/master/CaseStudies)
 * Compile C++ source code
   * [Mac](./SourceCode/CompileMac.md)
   * [Windows](./SourceCode/CompileWindows.md)

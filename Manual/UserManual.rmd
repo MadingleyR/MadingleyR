@@ -1,5 +1,5 @@
 ---
-title: "MadingleyR vignette"
+title: "MadingleyR User Manual"
 output:
   pdf_document: default
   html_document:
