@@ -27,5 +27,5 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.R }}
-      - run: sudo apt-get install -y gdal-bin
+      - run: sudo apt install libgdal-dev
       - run: Rscript -e 'install.packages("remotes", repos="http://cran.rstudio.com/"); remotes::install_github("MadingleyR/MadingleyR", subdir="Package")'
