@@ -5,13 +5,13 @@
 #
 # See https://github.com/r-lib/actions/tree/master/examples#readme for
 # additional example workflows available for the R community.
+# apt-get install -y gdal-bin
+
 
 name: R
 
 on:
   push:
-    branches: [ master ]
-  pull_request:
     branches: [ master ]
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-18.04
     strategy:
       matrix:
-        R: [ '3.5.3' ]
+        R: [ '3.5.3' ]  
     name: R ${{ matrix.R }} sample
     steps:
       - uses: actions/checkout@master
@@ -27,4 +27,5 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.R }}
-      - run: sudo apt-get install -y gdal-bin && Rscript -e 'install.packages("remotes", repos="http://cran.rstudio.com/"); remotes::install_github("MadingleyR/MadingleyR", subdir="Package")'
+      - run: sudo apt-get install -y gdal-bin
+      - run: Rscript -e 'install.packages("remotes", repos="http://cran.rstudio.com/"); remotes::install_github("MadingleyR/MadingleyR", subdir="Package")'
