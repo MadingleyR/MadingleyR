@@ -5,9 +5,7 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
                           max_cohort = 500,
                           silenced=F) {
 
-
-  grid_size=0
-  NoiseThresholdCohortOrder=0.0
+  NotYetAssignedVariableToPassToCPP=0.0
   NoDispersal=0
   RunInParallel=1
 
@@ -36,12 +34,12 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
   if(!all(classes_check)) stop('Not all required spatial inputs formatted correctly')
 
   # set correct grid cell size (resolution)
+  grid_size=0
   if(grid_size==0) {
     grid_size = res(spatial_inputs$realm_classification)[1]
     if(grid_size==0 | is.na(grid_size)) grid_size = 1
   }
   if(grid_size>1) stop('Grid cell sizes larger than 1 degree currently not supported')
-  #print(paste('grid cell size:',grid_size))
 
   sum_res = 0; for(i in 1:13) sum_res = sum_res + mean(res(spatial_inputs[[i]]))
   if( sum_res!= (grid_size*13) ) stop('Please make sure all input raster have the same resolutaion (0.5 or 1 degree)')
@@ -71,7 +69,8 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
 
   # write inputs files to temp dir
   options("scipen"=100, "digits"=4)
-  write_cohort_def(out_dir,cohort_def)
+  write_cohort_def_dt(out_dir,cohort_def)
+  #write_cohort_def(out_dir,cohort_def)
   write_stock_def(out_dir,stock_def)
   write_simulation_parameters(out_dir)
   write_mass_bin_def(out_dir)
@@ -105,7 +104,7 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
                         start_t,
                         paste0('\\"',gsub("\\\\", "/", spatial_inputs_location),'\\\\"'),
                         grid_size,
-                        NoiseThresholdCohortOrder,
+                        NotYetAssignedVariableToPassToCPP,
                         NoDispersal,
                         RunInParallel,
                         use_non_default_mp)
@@ -154,7 +153,7 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
                         start_t,
                         paste0('\"',gsub("\\\\", "/", spatial_inputs_location),'\"'),
                         grid_size,
-                        NoiseThresholdCohortOrder,
+                        NotYetAssignedVariableToPassToCPP,
                         NoDispersal,
                         RunInParallel,
                         use_non_default_mp)
@@ -165,7 +164,6 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
       madingley_exec = paste('cd',lin_dist_dir,"&&","./madingley spin 0",exec_args)
 
       # init model
-      #cat(madingley_exec)
       if(silenced){
         print_out = system(madingley_exec,intern=T)
       }else{
@@ -197,7 +195,7 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
                         start_t,
                         paste0('\"',gsub("\\\\", "/", spatial_inputs_location),'\"'),
                         grid_size,
-                        NoiseThresholdCohortOrder,
+                        NotYetAssignedVariableToPassToCPP,
                         NoDispersal,
                         RunInParallel,
                         use_non_default_mp)

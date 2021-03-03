@@ -37,18 +37,6 @@ list_output_paths = function(madingley_data,full_path=T){
     if(length(temp)!=0) return_list$grid_properties = temp
   }
 
-  # # add input
-  # if(dir.exists(paste0(out_path_main,'input'))){
-  #   temp = list.files(paste0(out_path_main,'input'),pattern= "csv",full.names = full_path)
-  #   if(length(temp)!=0) return_list$input = temp
-  # }
-  #
-  # # add spatial_inputs
-  # if(dir.exists(paste0(out_path_main,'spatial_inputs'))){
-  #   temp = list.files(paste0(out_path_main,'spatial_inputs/1deg'),pattern= "csv",full.names = full_path)
-  #   if(length(temp)!=0) return_list$spatial_inputs = temp
-  # }
-
   # add timelines
   if(dir.exists(paste0(out_path_main,'timelines'))){
     temp = list.files(paste0(out_path_main,'timelines'),pattern= "csv",full.names = full_path)
@@ -56,8 +44,5 @@ list_output_paths = function(madingley_data,full_path=T){
   }
 
   return(return_list)
-
-
-
-
+  
 }

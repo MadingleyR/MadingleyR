@@ -1,3 +1,7 @@
 check_temp_dir = function(){
-  system(paste("open",tempdir()))
+  if(Sys.info()[['sysname']]=="Darwin"){
+    system(paste("open",tempdir()))
+  }else{
+    cat(tempdir())
+  }
 }
