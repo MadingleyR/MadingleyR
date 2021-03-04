@@ -27,8 +27,6 @@ expected_n_cohorts_per_fg_init = structure(c(`0` = 880L, `1` = 880L, `2` = 880L,
               c("0", "1", "2", "3", "4", "5", "6", "7", "8")), .Names = ""), class = "table")
 checks[5] = !any(table(mdata$cohorts$FunctionalGroupIndex)!=expected_n_cohorts_per_fg_init)
 
-checks[5] = F 
-
 for(i in checks){
   if(i){
     cat("check passed\n")
