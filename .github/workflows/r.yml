@@ -19,7 +19,7 @@ jobs:
           r-version: ${{ matrix.R }}
       - run: sudo apt-get install libc6
       - run: sudo apt install libgdal-dev
-      - run:  Rscript -e 'source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI.R")'
+      - run:  Rscript -e 'source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI_2.R")'
       
       
       

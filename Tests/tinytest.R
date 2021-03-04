@@ -1,7 +1,7 @@
-#detach('package:MadingleyR', unload=TRUE)
-#remove.packages('MadingleyR')
-#library(’remotes’) # or use library(’devtools’)
-#install_github(’MadingleyR/MadingleyR’, subdir=’Package’)
+detach('package:MadingleyR', unload=TRUE)
+remove.packages('MadingleyR')
+library("remotes") # or use library(’devtools’)
+install_github("MadingleyR/MadingleyR", subdir="Package")
 
 #### Load packages
 library('MadingleyR')
@@ -63,3 +63,4 @@ expect_true(exp(max(mdata2$cohorts$LogOptimalPreyBodySizeRatio))<1.5)
 
 # check if the body mass of the cohorts is still around the maximum set by the cohort definitions
 expect_false(any(aggregate(mdata2$cohorts$AdultMass,by=list(mdata2$cohorts$FunctionalGroupIndex),max)[,2]>chrt_def$PROPERTY_Maximum.mass+50))
+
