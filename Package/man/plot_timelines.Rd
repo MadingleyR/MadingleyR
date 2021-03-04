@@ -6,7 +6,7 @@ plot_timelines(m_data2, select = 'functional groups')
 plot_timelines(m_data2, select = 'feeding guilds')
 }
 
-\description{It creates a plot the total biomass of functional groups over time.}
+\description{Creates a time series plot of the functional groups or the feeding guilds.}
 
 \arguments{
 \strong{Input arguments}

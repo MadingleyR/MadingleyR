@@ -1,6 +1,6 @@
 \name{madingley_inputs}
 \alias{madingley_inputs}
-\title{MadingleyR: Load the default Madingley}
+\title{MadingleyR: Load the default Madingley inputs}
 \usage{
 madingley_inputs() # prints all available options
 sptl_inp = madingley_inputs("spatial inputs") # loads the default spatial inputs

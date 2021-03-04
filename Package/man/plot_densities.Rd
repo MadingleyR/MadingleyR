@@ -8,7 +8,7 @@ plot_densities(m_data2, weighted = 'abundance' , xlim=c(-4, 5))
 \description{It plots the abundance or biomass density against (log10) body mass.}
 
 \arguments{
-  \item{madingley_data}{madingley output list returned by madingley_run()}
+  \item{madingley_data}{Output list returned by madingley_run()}
   \item{weighted}{select either 'biomass' or 'abundance' (pass as string)}
   \item{xlim}{min and max log10 body mass plotted}
   \item{ylim}{min and max density}

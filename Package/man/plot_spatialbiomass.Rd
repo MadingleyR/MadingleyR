@@ -2,7 +2,7 @@
 \alias{plot_spatialbiomass}
 \title{MadingleyR: Create spatial biomass plot}
 \usage{plot_spatialbiomass(m_data2, functional_filter = TRUE)}
-\description{It plots the spatial biomass per grid cell of functional groups spatially.}
+\description{It plots the biomass per grid cell of functional groups spatially.}
 
 \arguments{
 \strong{Input arguments}

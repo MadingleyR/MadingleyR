@@ -2,7 +2,7 @@
 \alias{plot_spatialabundances}
 \title{MadingleyR: Create spatial abundance plot}
 \usage{plot_spatialabundances(m_data2, functional_filter = TRUE)}
-\description{It plots the spatial abundances of functional groups spatially.}
+\description{It plots the abundances of functional groups spatially.}
 \arguments{
 \strong{Input arguments}
 \item{madingley_data}{madingley output list returned by madingley_run()}

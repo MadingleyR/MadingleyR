@@ -10,14 +10,14 @@ urlcolor: blue
 
 ```{r wrap-hook, echo = F}
 library(knitr)
-hook_output = knit_hooks$get('output')
+hook_output = knit_hooks$get("output")
 knit_hooks$set(output = function(x, options) {
   # this hook is used only when the linewidth option is not NULL
   if (!is.null(n <- options$linewidth)) {
     x = knitr:::split_lines(x)
     # any lines wider than n should be wrapped
     if (any(nchar(x) > n)) x = strwrap(x, width = n)
-    x = paste(x, collapse = '\n')
+    x = paste(x, collapse = "\n")
   }
   hook_output(x, options)
 })
@@ -35,10 +35,10 @@ The MadingleyR package can be directly installed from R using the ```devtools```
 
 ```{r, message=FALSE, linewidth=90}
 # Load the remotes package
-library('remotes') # or use library('devtools')
+library("remotes") # or use library("devtools")
 
 # Install the MadingleyR package
-install_github('MadingleyR/MadingleyR', subdir='Package')
+install_github("MadingleyR/MadingleyR", subdir="Package")
 ```
 
 When calling the ```install_github()``` function, the argument ```force = TRUE``` can be used to make sure the package is updated to the latest version, in the case previous installation files exist in the machine. In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable, default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
@@ -70,10 +70,10 @@ After checking which inputs are available, they can be loaded manually as shown 
 
 ```{r, message=FALSE, results='hide'}
 # Load MadingleyR default inputs
-sptl_inp = madingley_inputs('spatial inputs')
-chrt_def = madingley_inputs('cohort definition')
-stck_def = madingley_inputs('stock definition')
-mdl_prms = madingley_inputs('model parameters') # useful later for running the model
+sptl_inp = madingley_inputs("spatial inputs")
+chrt_def = madingley_inputs("cohort definition")
+stck_def = madingley_inputs("stock definition")
+mdl_prms = madingley_inputs("model parameters") # useful later for running the model
 ```
 
 Next, we can view what is in the default input parameters of the MadingleyR package. These inputs can also be modified depending on the simulation experiment.
@@ -115,7 +115,7 @@ str(mdata,1)
 
 ## Running the Madingley model
 
-After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes. The code below runs the Madingley model for 10 years (```years = 10```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```. Similar to the ```cohort_def```, ```stock_def``` and ```spatial_inputs``` (shown previously) we can see and alter the default model parameters. These parameters quantify the strength, rates and constants of the the ecological interactions in the model, [see modelparams.pdf](https://madingleyr.github.io/MadingleyR/Vignette/modelparams.pdf).
+After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes. The code below runs the Madingley model for 10 years (```years = 10```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```. Similar to the ```cohort_def```, ```stock_def``` and ```spatial_inputs``` (shown previously) we can see and alter the default model parameters. These parameters quantify the strength, rates and constants of the the ecological interactions in the model, [see modelparams.pdf](https://madingleyr.github.io/MadingleyR/Manual/modelparams.pdf).
 
 ```{r}
 # Run the Madingley model for 10 years

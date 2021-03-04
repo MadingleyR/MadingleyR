@@ -23,7 +23,7 @@ mdata2 = madingley_run(madingley_data = mdata,
 ####
 
 # Set scenario parameters
-reps = 6 # set number of replicas per land-use intensity
+reps = 5 # set number of replicas per land-use intensity
 fractional_veg_production = seq(1.0, 0.1, -0.1) # accessible biomass
 m_params = madingley_inputs('model parameters') # load default model parameters
 fg = c('Herbivore', 'Carnivore', 'Omnivore') # vector for aggregating cohorts
