@@ -17,6 +17,10 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.R }}
-      - run: "D:\a\_temp\R-3.5.3-win.exe" CMD BATCH "https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI.R"
+          
+      - name: Check package
+        shell: Rscript {0}
+        run: |
+          source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI.R")
       
       
