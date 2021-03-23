@@ -8,6 +8,9 @@ library('remotes') # or use library('devtools')
 
 # Install the MadingleyR package
 install_github('MadingleyR/MadingleyR', subdir='Package')
+
+# Get version MadingleyR and C++ source code
+madingley_version( )
 ```
 
 In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable (no compilation needed), default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
