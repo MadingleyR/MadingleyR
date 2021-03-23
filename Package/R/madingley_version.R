@@ -28,7 +28,7 @@ madingley_version = function(R=TRUE, CPP=TRUE) {
       version_CPP = system(run_exec,intern=T)
 
       # return the version data
-      df[2,2] = version_CPP
+      df[2,2] = version_CPP[length(version_CPP)]
       return(df)
 
     },
@@ -43,7 +43,7 @@ madingley_version = function(R=TRUE, CPP=TRUE) {
       version_CPP = system(madingley_exec,intern=T)
 
       # return the version data
-      df[2,2] = version_CPP
+      df[2,2] = version_CPP[length(version_CPP)]
       return(df)
 
     },
@@ -58,7 +58,7 @@ madingley_version = function(R=TRUE, CPP=TRUE) {
       version_CPP = system(madingley_exec,intern=T)
 
       # return the version data
-      df[2,2] = version_CPP
+      df[2,2] = version_CPP[length(version_CPP)]
       return(df)
 
     }
