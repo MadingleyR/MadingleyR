@@ -76,5 +76,3 @@ plot_foodweb(mdata4, max_flows = 5) # large-herbivore removal food-web plot
 <br>
 <br>
 </p>
-
-
