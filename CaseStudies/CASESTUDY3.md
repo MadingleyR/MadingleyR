@@ -109,15 +109,23 @@ mdata4 = madingley_run(madingley_data = mdata_list[[20]],
 Finally we compare the end state of the model before the autotroph reduction to the end state of the model after the autotroph reduction using a spatial plot.
 
 ```R
-# Create plot
+# Get plot data
 herb_bef = plot_spatialbiomass(mdata2, functional_filter = TRUE, plot = FALSE)[[1]]
 herb_red = plot_spatialbiomass(mdata4, functional_filter = TRUE, plot = FALSE)[[1]]
 r = (10^herb_red/10^herb_bef)*100 # calculate % difference
-r[] = ifelse(herb_bef[]==0,0,r[]) # remove values were no herbivores were present
+
+# Set values were no herbivores were present to 0
+r[] = ifelse(herb_bef[]==0,0,r[]) 
+
+# Remove values above 95% quantile
 r_max = ceiling(quantile(r[],na.rm=TRUE,seq(0,1,0.05))["95%"]) 
-r[] = ifelse(r[]>r_max,r_max+1e-9,r[]) # remove values above 95% quantile
+r[] = ifelse(r[]>r_max,r_max+1e-9,r[]) 
+
+# Create plot
 plot(r,colNA="white", axes = FALSE, box = FALSE, legend = FALSE,
      col = colorRampPalette(c("#e5f5e0","#31a354"))(20),zlim=c(0,(r_max+1e-9)))
+     
+# Add plot legend
 plot(r, legend.only=TRUE, col=colorRampPalette(c("#e5f5e0","#31a354"))(20),
      legend.width=1, legend.shrink=0.75, 
      legend.mar = 42, axis.args=list(at=seq(0,r_max,5), 
