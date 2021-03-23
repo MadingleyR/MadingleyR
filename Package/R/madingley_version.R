@@ -1,4 +1,4 @@
-madingley_version = function(R=TRUE, CPP=TRUE) {
+madingley_version = function( ) {
   
   R_package_version = packageVersion("MadingleyR")
   

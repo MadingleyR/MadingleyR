@@ -6,11 +6,14 @@ library('remotes') # or use library('devtools')
 # Install the MadingleyR package
 install_github('MadingleyR/MadingleyR', subdir='Package')
 
+# Load MadingleyR package 
+library('MadingleyR')
+
+# Get version MadingleyR and C++ source code
+madingley_version( )
+
 #------- Model initialisation  -------#
   
-# Load package
-library(MadingleyR)
-
 # Spatial model domain = c(min_long, max_long, min_lat, max_lat)
 spatial_window = c(31, 35, -5, -1)
 
