@@ -1,12 +1,13 @@
 ## Case study 3
 
-Please note that running this case study requires significantly more processing power and/or time compared to the previous case studies because of the spatial scale (the amount of model grid cells to process). The code was tested on a Dell XPS15 with a i7-8750H (6 core) processor and 16 gb memory, the total run time of the script was 13 hours and 31 minutes. Although it can be run on a laptop, we suggest running this on a powerful desktop or server.
+Please note that running this case study requires significantly more processing power and/or time compared to the previous case studies because of the spatial scale (the amount of model grid cells to process). The code was tested on a Dell XPS15 with a i7-8750H (6 core) processor and 16 gb memory, the total run time of the script was 13 hours and 31 minutes. Although it can be run on a laptop, we suggest running this on a powerful desktop or server, or reduce the study area.
 
 ```R
 library(MadingleyR)
 
 # Set spatial window
-spatial_window = c(-20, 55, -36, 40) # c(32, 34, -4, 0) # smaller test region
+spatial_window = c(-20, 55, -36, 40) # full study area
+# spatial_window =  c(32, 34, -4, 0) # to set a smaller test region
 
 # Can be used to check if we defined the spatial window correctly
 plot_spatialwindow(spatial_window) 
@@ -138,6 +139,3 @@ plot(r, legend.only=TRUE, col=colorRampPalette(c("#e5f5e0","#31a354"))(20),
 <br>
 <br>
 </p>
-
-
-
