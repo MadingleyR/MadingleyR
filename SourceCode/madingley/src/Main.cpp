@@ -5,6 +5,8 @@
 #include "LoadCSVEnvironment.h"
 #include "InputParameters.h"
 
+std::string CPP_VERSION = "2.01";
+
 // flags
 int NumberFlags;
 std::string TypeOfRun;
@@ -64,7 +66,7 @@ std::vector<double> VegetationModel_Parameters(33,0.0);
 //################################## Get model input parameters
 
 int main( int argc, char* argv[] ) {
-	
+
     // Write out model details to the console
 	ConfigurationDirectory = "./input/Model setup/";
 
@@ -75,6 +77,10 @@ int main( int argc, char* argv[] ) {
     NumberFlags = argc;
 
     TypeOfRun = argv[1];
+    if(TypeOfRun=="version"){
+        std::cout << CPP_VERSION << std::endl;
+        exit(0);
+    }
     InputParameters::Get( )->SetTypeOfRun( TypeOfRun );
     
     NumberOfSimulationYears = std::stoi(argv[2]);
