@@ -115,7 +115,7 @@ herb_red = plot_spatialbiomass(mdata4, functional_filter = TRUE, plot = FALSE)[[
 r = (10^herb_red/10^herb_bef)*100 # calculate % difference
 r[] = ifelse(herb_bef[]==0,0,r[]) # remove values were no herbivores were present
 r_max = ceiling(quantile(r[],na.rm=TRUE,seq(0,1,0.05))["95%"]) 
-r[] = ifelse(r[]>r_max,r_max+1e-9,r[])
+r[] = ifelse(r[]>r_max,r_max+1e-9,r[]) # remove values above 95% quantile
 plot(r,colNA="white", axes = FALSE, box = FALSE, legend = FALSE,
      col = colorRampPalette(c("#e5f5e0","#31a354"))(20),zlim=c(0,(r_max+1e-9)))
 plot(r, legend.only=TRUE, col=colorRampPalette(c("#e5f5e0","#31a354"))(20),
