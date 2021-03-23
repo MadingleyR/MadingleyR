@@ -9,6 +9,9 @@ library('remotes') # or use library('devtools')
 # Install the MadingleyR package
 install_github('MadingleyR/MadingleyR', subdir='Package')
 
+# Load MadingleyR package 
+library('MadingleyR')
+
 # Get version MadingleyR and C++ source code
 madingley_version( )
 ```
