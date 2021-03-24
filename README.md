@@ -36,6 +36,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Mac](./SourceCode/CompileMac.md)
   * [Windows](./SourceCode/CompileWindows.md)
   * [Linux](./SourceCode/CompileLinux.md)
+  * [C++ update record](./SourceCode/README.md)
 
 ## Useful links
 
