@@ -13,13 +13,12 @@ Download source code [here](https://github.com/MadingleyR/MadingleyR/archive/mas
 
 Update description | References | Version Number | Files
 --- | --- | --- | ---
-Food-web outputting, this allows for the tracking of feeding directions and rates. | source code Hoeks et al. 2020 | <2.00 |
+Food-web outputting, this allows for the tracking of feeding directions and rates. | source code Hoeks et al. 2020 | <2.00 | ```Eating*.cpp```, ```WriteModelState.cpp```
 Large carnivore predator-prey ratio, large carnivores (>21 kg) are able to feed on larger prey. | Carbone et al. (1999) | <2.00 | ```MadingleyInitialisation.cpp```
-Spatial control of the initialisation of cohort body mass range, maximum body masses can be set using the spatial input layers provided in the package. | Wilman et al. (2014); IUCN Red List (2017); Myhrvold et al. (2015); Roll et al. (2017) |  <2.00 |
-Removal of netCDF dependencies, allowing for more straightforward compilation of the C++ source code on Windows. | This repository | 2.00 |
-I/O (input and output) handling for communication with R. | This repository | 2.01 |
-Direct control of all parameters included in the model equations that define the ecological behaviour of cohorts and stocks. | This repository | 2.01 |
-
+Spatial control of the initialisation of cohort body mass range, maximum body masses can be set using the spatial input layers provided in the package. | Wilman et al. (2014); IUCN Red List (2017); Myhrvold et al. (2015); Roll et al. (2017) |  <2.00 | ```MadingleyInitialisation.cpp```
+Removal of netCDF dependencies, allowing for more straightforward compilation of the C++ source code on Windows. | This repository | 2.00 | ```LoadCSVEnvironment.cpp```
+I/O (input and output) handling for communication with R. | This repository | 2.01 | ```Main.cpp```, ```LoadCSVEnvironment.cpp```, ```WriteModelState.cpp```
+Direct control of all parameters included in the model equations that define the ecological behaviour of cohorts and stocks. | This repository | 2.01 | Applies to all files
 
 ### References
 
