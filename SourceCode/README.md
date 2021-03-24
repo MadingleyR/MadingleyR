@@ -1,5 +1,7 @@
 # MadingleyR_CPP_sources
-The source files for the cpp engine of MadingleyR
+
+## Compile
+Compile the source files for the C++ engine of MadingleyR
 
 * [Compile code for Mac](./CompileMac.md)
 * [Compile code for Windows](./CompileWindows.md)
@@ -7,7 +9,7 @@ The source files for the cpp engine of MadingleyR
 
 Download source code [here](https://github.com/MadingleyR/MadingleyR/archive/master.zip) and viewed online [here](https://github.com/MadingleyR/MadingleyR/tree/master/SourceCode).
 
-# Update record
+## Update record
 
 Update description | Reference | Version Number
 --- | --- | ---
