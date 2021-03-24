@@ -1,7 +1,7 @@
-# MadingleyR_CPP_sources
+# MadingleyR C++ source
 
-## Compile
-Compile the source files for the C++ engine of MadingleyR
+### Compile
+Compile the C++ source code for the  MadingleyR
 
 * [Compile code for Mac](./CompileMac.md)
 * [Compile code for Windows](./CompileWindows.md)
@@ -9,7 +9,7 @@ Compile the source files for the C++ engine of MadingleyR
 
 Download source code [here](https://github.com/MadingleyR/MadingleyR/archive/master.zip) and viewed online [here](https://github.com/MadingleyR/MadingleyR/tree/master/SourceCode).
 
-## Update record
+### Update record
 
 Update description | Reference | Version Number
 --- | --- | ---
@@ -18,5 +18,6 @@ Large carnivore predator-prey ratio, large carnivores (>21 kg) are able to feed 
 Spatial control of the initialisation of cohort body mass range, maximum body masses can be set using the spatial input layers provided in the package. | Wilman et al. (2014); IUCN Red List (2017); Myhrvold et al. (2015); Roll et al. (2017) |  <2.00 (source code Hoeks et al. 2020)
 Removal of netCDF dependencies, allowing for more straightforward compilation of the C++ source code on Windows | This repository | 2.00
 I/O (input and output) handling for communication with R | This repository | 2.01
+Direct control of all parameters included in the model equations that define the ecological behaviour of cohorts and stocks | This repository | 2.01
 
 
