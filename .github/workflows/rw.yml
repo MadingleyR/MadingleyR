@@ -21,6 +21,6 @@ jobs:
       - name: Check package
         shell: Rscript {0}
         run: |
-          source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI_v2.R")
+          source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI_v3.R")
       
       

@@ -18,4 +18,4 @@ jobs:
         with:
           r-version: ${{ matrix.R }}
       - run: brew install gdal
-      - run:  Rscript -e 'source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI_v2.R")'
+      - run:  Rscript -e 'source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI_v3.R")'
