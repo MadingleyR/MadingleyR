@@ -22,6 +22,7 @@ A full guide to load the required inputs and setup and run a Madingley simulatio
 \strong{MadingleyR provides several plotting functions:}
  
 \itemize{
+  \item \code{plot_spatialwindow()}: Plots the selected spatial window (spatial model domain)
   \item \code{plot_densities()}: Plots abundance or biomass density against body mass
   \item \code{plot_foodweb()}: Plots athefood-web plot
   \item \code{plot_spatialabundances()}: Creates a spatial abundance plot
