@@ -21,7 +21,8 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 ## Content
 
 * Package Manual
-  * [R markdown vignette pdf](./Manual/UserManual.pdf)
+  * [R markdown manual pdf](./Manual/UserManual.pdf)
+  * [R markdown manual html](./Manual/UserManual.html)
   * [Download R markdown code](./Manual/UserManual.rmd)
   * [Download R code only](./Manual/UserManual.r)
 * Function description
