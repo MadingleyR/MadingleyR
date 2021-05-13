@@ -1,9 +1,9 @@
 ---
 title: "MadingleyR User Manual"
 output:
+  pdf_document: default
   html_document:
     df_print: paged
-  pdf_document: default
 toc: yes
 urlcolor: blue
 ---
@@ -33,13 +33,15 @@ knit_hooks$set(output = function(x, options) {
 
 The MadingleyR package can be directly installed from R using the ```devtools``` or ```remotes``` R package. The following command installs the package using the remotes R package:
 
-```{r, message=FALSE, linewidth=90}
+```{r, message=FALSE, linewidth=90, eval = FALSE}
 # Load the remotes package
 library("remotes") # or use library("devtools")
 
 # Install the MadingleyR package
 install_github("MadingleyR/MadingleyR", subdir="Package")
+```
 
+```{r, message=FALSE, linewidth=90, eval = TRUE}
 # Load MadingleyR package 
 library("MadingleyR")
 
