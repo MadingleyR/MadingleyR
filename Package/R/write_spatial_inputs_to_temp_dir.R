@@ -37,7 +37,10 @@ write_spatial_inputs_to_temp_dir = function(spatial_inputs,XY_window="0 0 0 0",c
 
       # write to csv
       if(cntr==1 & !silenced) cat(paste0("Processing: ",i,", "))
-      if(cntr>1 & cntr<8 & !silenced) cat(paste0(i,", "))
+      if(cntr>1 & cntr<4 & !silenced) cat(paste0(i,", "))
+      if(cntr==4 & !silenced) cat(paste0(i,"\n"))
+      if(cntr==5 & !silenced) cat(paste0("Processing: ",i,", "))
+      if(cntr>5 & cntr<8 & !silenced) cat(paste0(i,", "))
       if(cntr==8 & !silenced) cat(paste0(i,"\n"))
       write.csv(df,paste0(input_sp_dir,paste0(i,'.csv')),row.names = F)
     }
