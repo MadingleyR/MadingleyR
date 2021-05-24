@@ -1,7 +1,8 @@
 ---
 title: "MadingleyR User Manual"
-output: rmarkdown::pdf_document
-toc: yes
+output: rmarkdown::html_vignette
+#output: rmarkdown::pdf_document
+#toc: yes
 urlcolor: blue
 vignette: >
   %\VignetteIndexEntry{MadingleyR}
