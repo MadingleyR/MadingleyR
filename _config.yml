@@ -1,3 +1,6 @@
+title: "MadingleyR"
+description: "MadingleyR: R package for the Madingley Model"
+
 plugins:
   - jekyll-relative-links
 relative_links:
