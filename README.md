@@ -7,13 +7,16 @@ The MadingleyR package can be directly installed from R using the ```devtools```
 library('remotes') # or use library('devtools')
 
 # Install the MadingleyR package
-install_github('MadingleyR/MadingleyR', subdir='Package')
+install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = TRUE)
 
 # Load MadingleyR package 
 library('MadingleyR')
 
 # Get version MadingleyR and C++ source code
 madingley_version( )
+
+# View vignette
+vignette('MadingleyR')
 ```
 
 In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable (no compilation needed), default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
@@ -22,10 +25,10 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 
 * Package Manual
   * [R markdown manual pdf](./Manual/UserManual.pdf)
-  * [Download R markdown code](./Manual/UserManual.rmd)
-  * [Download R code only](./Manual/UserManual.r)
+  * [Download R markdown code](./Package/vignettes/UserManual.rmd)
 * Function description
   * [Function description pdf](./Manual/RFunctionDescription.pdf)
+  * [MadingleyR parameter description](./Manual/modelparams.pdf)
 * Example case studies
   * [Overview](./CaseStudies/)
   * [Case study 1](./CaseStudies/CASESTUDY1.md)
