@@ -16,7 +16,7 @@
   \item \code{madingley_run()}: Runs the Madingley model
 }
 
-A full guide to load the required inputs and setup and run a Madingley simulation can be found on: \url{https://madingleyr.github.io/MadingleyR/Manual/UserManual.pdf}\cr\cr
+A full guide to load the required inputs and setup and run a Madingley simulation can be found on: \url{https://madingleyr.github.io/MadingleyR/Package/vignettes/MadingleyR.pdf}\cr\cr
 
  
 \strong{MadingleyR provides several plotting functions:}
