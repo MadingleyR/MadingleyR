@@ -2,6 +2,7 @@
 title: "MadingleyR User Manual"
 output: rmarkdown::pdf_document
 toc: yes
+urlcolor: blue
 vignette: >
   %\VignetteIndexEntry{MadingleyR}
   %\VignetteEngine{knitr::rmarkdown}
@@ -99,6 +100,8 @@ print(stck_def)
 print(chrt_def)
 ```
 
+See [modelparams.pdf](https://madingleyr.github.io/MadingleyR/Documentation/modelparams.pdf) for the contents and explanation of ```mdl_prms```.
+
 \pagebreak
 
 For this example purposes we lowered the maximum number of cohorts allowed per spatial grid cell (keeping the number of interactions at a reasonable level). The Madingley model merges cohorts if they are highly similar and the maximum number of cohorts is exceeded. Lowering this value will increase model performance at expenses of resolution of cohort diversity. Setting ```max_cohort = 100``` saves time creating this vignette. By the default maximum number of cohorts allowed is 1000.
@@ -123,7 +126,7 @@ str(mdata,1)
 
 ## Running the Madingley model
 
-After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes (normally with ```max_cohort = 1000``` or ```max_cohort = 500```). The code below runs the Madingley model for 2 years (```years = 2```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```. Similar to the ```cohort_def```, ```stock_def``` and ```spatial_inputs``` (shown previously) we can see and alter the default model parameters. These parameters quantify the strength, rates and constants of the the ecological interactions in the model, [see modelparams.pdf](https://madingleyr.github.io/MadingleyR/Manual/modelparams.pdf).
+After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes (normally with ```max_cohort = 1000``` or ```max_cohort = 500```). The code below runs the Madingley model for 2 years (```years = 2```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```. Similar to the ```cohort_def```, ```stock_def``` and ```spatial_inputs``` (shown previously) we can see and alter the default model parameters. These parameters quantify the strength, rates and constants of the the ecological interactions in the model, [see modelparams.pdf](https://madingleyr.github.io/MadingleyR/Documentation/modelparams.pdf).
 
 ```{r}
 # Run the Madingley model for 2 years

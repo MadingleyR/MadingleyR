@@ -27,8 +27,8 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [R markdown manual vignette](./Package/vignettes/MadingleyR.pdf)
   * [Download R markdown code](./Package/vignettes/MadingleyR.Rmd)
 * Function description
-  * [Function description pdf](./Manual/RFunctionDescription.pdf)
-  * [MadingleyR parameter description](./Manual/modelparams.pdf)
+  * [Function description pdf](./Documentation/RFunctionDescription.pdf)
+  * [MadingleyR parameter description](./Documentation/modelparams.pdf)
 * Example case studies
   * [Overview](./CaseStudies/)
   * [Case study 1](./CaseStudies/CASESTUDY1.md)
