@@ -101,13 +101,15 @@ print(chrt_def)
 
 \pagebreak
 
+For this example purposes we lowered the maximum number of cohorts allowed per spatial grid cell (keeping the number of interactions at a reasonable level). The Madingley model merges cohorts if they are highly similar and the maximum number of cohorts is exceeded. Lowering this value will increase model performance at expenses of resolution of cohort diversity. Setting ```max_cohort = 100``` saves time creating this vignette. By the default maximum number of cohorts allowed is 1000.
 
 ```{r, linewidth=90}
 # Initialise model the model using the pre-loaded inputs
 mdata = madingley_init(spatial_window = spatial_window,
                        cohort_def = chrt_def,
                        stock_def = stck_def,
-                       spatial_inputs = sptl_inp)
+                       spatial_inputs = sptl_inp,
+                       max_cohort = 100)
 ```
 
 The returned ```mdata``` object will contain all cohorts and stocks (```data.frame```). In addition, the spatial window will be attached, making sure any consecutive model run will use the same spatial window.
@@ -121,20 +123,22 @@ str(mdata,1)
 
 ## Running the Madingley model
 
-After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes. The code below runs the Madingley model for 2 years (```years = 2```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```. Similar to the ```cohort_def```, ```stock_def``` and ```spatial_inputs``` (shown previously) we can see and alter the default model parameters. These parameters quantify the strength, rates and constants of the the ecological interactions in the model, [see modelparams.pdf](https://madingleyr.github.io/MadingleyR/Manual/modelparams.pdf).
+After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes (normally with ```max_cohort = 1000``` or ```max_cohort = 500```). The code below runs the Madingley model for 2 years (```years = 2```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```. Similar to the ```cohort_def```, ```stock_def``` and ```spatial_inputs``` (shown previously) we can see and alter the default model parameters. These parameters quantify the strength, rates and constants of the the ecological interactions in the model, [see modelparams.pdf](https://madingleyr.github.io/MadingleyR/Manual/modelparams.pdf).
 
 ```{r}
-# Run the Madingley model for 10 years
+# Run the Madingley model for 2 years
 mdata2 = madingley_run(madingley_data = mdata, 
                        years = 2, 
                        cohort_def = chrt_def, 
                        stock_def = stck_def, 
                        spatial_inputs = sptl_inp, 
-                       model_parameters = mdl_prms)
+                       model_parameters = mdl_prms,
+                       max_cohort = 100)
 
 # View the contents of mdata2
 str(mdata2,1)
 ```
+
 
 By default the ```madingley_run()``` function prints the simulation process (simulation month). However, it can be useful in some cases to silence the printing of ```madingley_run()``` using ```silenced = TRUE```. Additionally, the ```parallel``` input argument allows the user to run the simulation in serial (on one processing core) or in parallel (using multiple cores). By default the simulation is executed in parallel to speed up the time required to run a simulation. See ```?madingley_run``` for all input arguments.
 

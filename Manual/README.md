@@ -1,5 +1,5 @@
 * [View and download pdf here](https://madingleyr.github.io/MadingleyR/Manual/UserManual.pdf)
-* [Download R markdown code here](https://madingleyr.github.io/MadingleyR/Package/vignettes/UserManual.rmd)
+* [Download R markdown code here](https://madingleyr.github.io/MadingleyR/Package/vignettes/MadingleyR.rmd)
 
 To uninstall the package use the following R code:
 
