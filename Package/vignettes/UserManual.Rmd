@@ -1,0 +1,166 @@
+---
+title: "UserManual"
+output: rmarkdown::pdf_document
+vignette: >
+  %\VignetteIndexEntry{UserManual}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r wrap-hook, echo = F}
+library(knitr)
+hook_output = knit_hooks$get("output")
+knit_hooks$set(output = function(x, options) {
+  # this hook is used only when the linewidth option is not NULL
+  if (!is.null(n <- options$linewidth)) {
+    x = knitr:::split_lines(x)
+    # any lines wider than n should be wrapped
+    if (any(nchar(x) > n)) x = strwrap(x, width = n)
+    x = paste(x, collapse = "\n")
+  }
+  hook_output(x, options)
+})
+
+def.chunk.hook  <- knit_hooks$get("output")
+knit_hooks$set(output = function(x, options) {
+  x <- def.chunk.hook(x, options)
+  ifelse(options$size != "normalsize", paste0("\n \\", options$size,"\n\n", x, "\n\n \\normalsize"), x)
+})
+```
+
+## Loading MadingleyR package
+
+First we need to load to ```MadingleyR``` package. We can use ```madingley_version()``` to check the version of the R package as well as the C++ source code.
+
+
+```{r, message=FALSE, linewidth=90, eval = TRUE}
+# Load MadingleyR package 
+library("MadingleyR")
+
+# Get version MadingleyR and C++ source code
+madingley_version( )
+```
+
+## Model initialisation
+
+The function ```madingley_init()``` initialises a model run by generating a cohort and stock data set. Both data sets are returned as data frames in a list object (here named: ```mdata```) after the ```madingley_init()``` finishes. The cohort data set contains functional information for all cohorts (i.e. heterotrophs) needed to run a Madingley simulation (```mdata$cohorts```). The stock data set holds the functional information concerning the stocks (i.e. photo-autotrophs) (```mdata$stocks```). The generated data sets are based on the functional definitions defined in ```cohort_def``` (cohort definitions) and ```stock_def``` (stock definitions). ```spatial_window``` defines the boundaries of the spatial location, formatted as a vector containing four coordinates in the following order: 1) minimum longitude, 2) maximum longitude, 3) minimum latitude and 4) maximum latitude. The R code shown below illustrates the use of the ```madingley_init()``` function for an area that includes the Serengeti. 
+
+```{r, linewidth=90, message=FALSE}
+# Spatial model domain = c(min_long, max_long, min_lat, max_lat)
+spatial_window = c(31, 35, -5, -1)
+
+# plot the spatial window to check selection
+plot_spatialwindow(spatial_window)
+```
+
+
+```{r, linewidth=90}
+# Prints possible input options to the R console
+madingley_inputs( ) 
+```
+
+After checking which inputs are available, they can be loaded manually as shown below. However, if the default inputs suffice, it is possible to initialise the model without providing these inputs manually.
+
+```{r, message=FALSE, results='hide'}
+# Load MadingleyR default inputs
+sptl_inp = madingley_inputs("spatial inputs")
+chrt_def = madingley_inputs("cohort definition")
+stck_def = madingley_inputs("stock definition")
+mdl_prms = madingley_inputs("model parameters") # useful later for running the model
+```
+
+Next, we can view what is in the default input parameters of the MadingleyR package. These inputs can also be modified depending on the simulation experiment.
+
+```{r, linewidth=130, size="footnotesize"}
+# View the structure of the spatial input layers
+str(sptl_inp,2)
+
+# View the default stock definitions
+print(stck_def)
+```
+
+
+
+```{r, linewidth=130, size="footnotesize"}
+# View the default cohort definitions
+print(chrt_def)
+```
+
+
+```{r, linewidth=90}
+# Initialise model the model using the pre-loaded inputs
+mdata = madingley_init(spatial_window = spatial_window,
+                       cohort_def = chrt_def,
+                       stock_def = stck_def,
+                       spatial_inputs = sptl_inp)
+```
+
+The returned ```mdata``` object will contain all cohorts and stocks (```data.frame```). In addition, the spatial window will be attached, making sure any consecutive model run will use the same spatial window.
+
+```{r, linewidth=90}
+# View the contents of mdata
+str(mdata,1)
+```
+
+
+## Running the Madingley model
+
+After generating cohorts and stocks, a simulation can be started using the ```madingley_run()``` function. The ```madingley_run()``` function requires the initialisation data set produced by the ```madingley_init()``` function. A typical Madingley simulation first requires a spin-up phase that allows ecosystem components to reach a stable state. This phase usually consists of a 100 to 1000-year model simulation without any model user induced changes. The code below runs the Madingley model for 10 years (```years = 10```) using the previously generated ```mdata``` object. The standard model input variables (e.g. cohort definitions, stock definitions, spatial inputs and/or model parameters) can be changed for ```madingley_run()``` via the following input parameters: ```cohort_def```, ```stock_def```, ```spatial_inputs```, ```model_parameters```. Similar to the ```cohort_def```, ```stock_def``` and ```spatial_inputs``` (shown previously) we can see and alter the default model parameters. These parameters quantify the strength, rates and constants of the the ecological interactions in the model, [see modelparams.pdf](https://madingleyr.github.io/MadingleyR/Manual/modelparams.pdf).
+
+```{r}
+# Run the Madingley model for 10 years
+mdata2 = madingley_run(madingley_data = mdata, 
+                       years = 10, 
+                       cohort_def = chrt_def, 
+                       stock_def = stck_def, 
+                       spatial_inputs = sptl_inp, 
+                       model_parameters = mdl_prms)
+
+# View the contents of mdata2
+str(mdata2,1)
+```
+
+By default the ```madingley_run()``` function prints the simulation process (simulation month). However, it can be useful in some cases to silence the printing of ```madingley_run()``` using ```silenced = TRUE```. Additionally, the ```parallel``` input argument allows the user to run the simulation in serial (on one processing core) or in parallel (using multiple cores). By default the simulation is executed in parallel to speed up the time required to run a simulation. See ```?madingley_run``` for all input arguments.
+
+
+## Creating plots
+
+Specific plots can be created from the output generated by ```madingley_run()``` using the functions listed in the code blocks below. Alternatively, the ```madingley_plot()``` function with ```mdata2``` as input can be used to create all plots at once.
+
+```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+# Plot MadingleyR time lines
+plot_timelines(mdata2)
+```
+
+```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+# Plot MadingleyR body mass density
+plot_densities(mdata2)
+```
+
+```{r, fig.height=7, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+# Plot MadingleyR trophic pyramid
+plot_trophicpyramid(mdata2)
+```
+
+
+```{r, fig.height=6, fig.width=7, message=FALSE,error=FALSE,linewidth=90}
+# Create MadingleyR log10-binned food-web plot
+plot_foodweb(mdata2, max_flows = 5)
+```
+
+
+```{r, fig.height=7, fig.width=9, message=FALSE,error=FALSE,linewidth=90}
+# Plot MadingleyR spatial biomass
+plot_spatialbiomass(mdata2, functional_filter = TRUE)
+```
+
+
+
+
