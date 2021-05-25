@@ -8,6 +8,6 @@ Description: The MadingleyR package is a wrapper around the C++ code of the Madi
 License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
-Imports: sp, raster, rgdal, data.table, rmarkdown
+Imports: sp, raster, rgdal, data.table (>= 1.12.6), rmarkdown
 Suggests: knitr, rmarkdown
 VignetteBuilder: knitr
