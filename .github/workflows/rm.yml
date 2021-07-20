@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     strategy:
       matrix:
-        R: [ '3.5.3' ]  
+        R: [ '3.6.3' ]  
     name: MadingleyR ${{ matrix.R }} mac
     steps:
       - uses: actions/checkout@master
