@@ -131,7 +131,7 @@ madingley_run = function(out_dir=tempdir(),
   switch(Sys.info()[['sysname']],
 
     # run on windows
-    Windows= {
+    Windows = {
 
       # setup C++ input arguments
       sp_dir = paste0(out_dir,"spatial_inputs/1deg/")
@@ -172,14 +172,14 @@ madingley_run = function(out_dir=tempdir(),
       out = return_output_list_run(cohort_def,stock_def,out_dir,out_dir_name)
       out$spatial_window = madingley_data$spatial_window
       if(!out_dir_save==tempdir()){
-        out$out_dir = out_dir_save
+        out$out_path = out_dir_save
       }
       out$grid_size = grid_size
       return(out)
     },
 
     # run on linux
-    Linux  = {
+    Linux = {
 
       # setup C++ input arguments
       sp_dir = paste0(out_dir,"/spatial_inputs/1deg/")
