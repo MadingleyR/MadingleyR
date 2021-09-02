@@ -58,9 +58,5 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 <br>
 </p>
 
-## Contact information
-
-email: NA@na.na
-
 
 
