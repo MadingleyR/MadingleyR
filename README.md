@@ -29,6 +29,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 * Function description
   * [Function description pdf](./Documentation/RFunctionDescription.pdf)
   * [MadingleyR parameter description](./Documentation/modelparams.pdf)
+  * [Units spatial inputs layers](./Documentation/SpatialInputsUnits.pdf)
 * Example case studies
   * [Overview](./CaseStudies/)
   * [Case study 1](./CaseStudies/CASESTUDY1.md)
