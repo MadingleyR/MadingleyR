@@ -41,7 +41,7 @@ get_default_model_parameters = function(){
                                   0.04309283,-1.478393163,0.139462774,-4.395910091,
                                   0.362742634,0.388125108,19.98393943,1.148698636,
                                   8.419032427,0.01,24.0,0.01,24.0,0.01,12.0,1,
-                                  0.001,2.0,0.00000226032940698105,0.476,0)
+                                  0.001,2.0,0.00000226032940698105,0.476)
   VegetationModel_names = rep("VegetationModel_Parameters",length(VegetationModel_Parameters))
 
   All_values = c(Activity_Parameters,
@@ -264,8 +264,8 @@ get_default_model_parameters = function(){
   ModelParameters$category[i] = "Terrestrial Carbon"
   ModelParameters$notes[i] = "Mass Carbon Per Mass Leaf Dry Matter"; i = i + 1
 
-  ModelParameters$category[i] = "HANPP"
-  ModelParameters$notes[i] = "0 = off, 1 = fraction raster (0.9 represent 10% reduction), 3 = value raster (gC/m^2/year)"; i = i + 1
+  # ModelParameters$category[i] = "HANPP"
+  # ModelParameters$notes[i] = "0 = off, 1 = fraction raster (0.9 represent 10% reduction), 3 = value raster (gC/m^2/year)"; i = i + 1
 
   # return ModelParameters
   return(ModelParameters)
