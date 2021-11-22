@@ -25,7 +25,6 @@ mdata2 = madingley_run(madingley_data = mdata,
 # Set scenario parameters
 reps = 5 # set number of replicas per land-use intensity
 fractional_veg_production = seq(1.0, 0.1, -0.1) # accessible biomass
-m_params = madingley_inputs('model parameters') # load default model parameters
 fg = c('Herbivore', 'Carnivore', 'Omnivore') # vector for aggregating cohorts
 stats = data.frame() # used to store individual model output statistics
 
@@ -38,15 +37,15 @@ for(j in 1:reps){
   
     print(paste0("rep: ",j," fraction veg reduced: ",fractional_veg_production[i]))
     
-    m_params[86, 2] = fractional_veg_production[i] # lower veg production
+    sptl_inp$hanpp[] = fractional_veg_production[i] # lower veg production
     
     mdata4 = madingley_run(
       years = 50,
       madingley_data = mdata3,
-      model_parameters = m_params,
       output_timestep = c(99,99,99,99),
       spatial_inputs = sptl_inp,
-      silenced = TRUE) 
+      silenced = TRUE,
+      apply_hanpp = 1) 
     
     # Calculate cohort biomass
     cohorts = mdata4$cohorts

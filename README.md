@@ -42,6 +42,8 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Compile on Windows](./SourceCode/CompileWindows.md)
   * [Compile on Linux](./SourceCode/CompileLinux.md)
 
+## Updates
+* 22 Nov 2021 - MadingleyR v1.0.2 (source code v2.02): add control over spatial HANPP
 
 ## Useful links
 

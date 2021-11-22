@@ -5,7 +5,7 @@
 #include "LoadCSVEnvironment.h"
 #include "InputParameters.h"
 
-std::string CPP_VERSION = "2.01";
+std::string CPP_VERSION = "2.02";
 
 // flags
 int NumberFlags;

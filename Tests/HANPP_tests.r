@@ -28,3 +28,4 @@ mdata4 = madingley_run(madingley_data = mdata, spatial_inputs = sptl_inp, years 
 mean(mdata4$time_line_stocks$TotalStockBiomass[mdata4$time_line_stocks$Year==10])
 
 
+madingley_version()

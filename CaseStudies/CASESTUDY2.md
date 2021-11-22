@@ -1,6 +1,6 @@
 ## Case study 2
 
-In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters. The code below shows how the initialisation and spin-up simulation can be done. Case study one uses the exact same procedure and provides more explanation on the code ([see](./CASESTUDY1.md)). Please note that ```madingley_run()``` tries to write outputs to ```C:/MadingleyOut```, make sure this folder exists or modify the path.
+In the second example, we reduced the relative biomass of autotrophs (i.e., vegetation) accessible for herbivory and observed how it affected the biomass of endotherms. First a 100-year spin-up simulation was run using the default MadingleyR input parameters. The code below shows how the initialisation and spin-up simulation can be done. Case study one uses the exact same procedure and provides more explanation on the code ([see](./CASESTUDY1.md)). 
 
 ```R
 library(MadingleyR)
@@ -12,21 +12,20 @@ sptl_inp = madingley_inputs('spatial inputs') # load default inputs
 # Initialise model
 mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
 
-# Run spin-up of 100 years (output results to C:/MadingleyOut)
+# Run spin-up of 100 years 
 mdata2 = madingley_run(madingley_data = mdata,
                        spatial_inputs = sptl_inp,
                        years = 100)
 ```
 
 
-Next, this spin-up simulation is extended by an additional 50 years without any reduction in available autotroph biomass and the end state was used as the control. The 100-year spin-up was then also used to run 8 independent land-use intensity experiments where the fraction accessible stock mass for herbivory was reduced by 0.1 increments to test the effects over a gradient of land-use intensities. This was done by modifying the default model input parameters (```madingley_inputs('model parameters')```). Each land-use intensity experiment was run 5 times for 50 years. 
+Next, this spin-up simulation is extended by an additional 50 years without any reduction in available autotroph biomass and the end state was used as the control. The 100-year spin-up was then also used to run 8 independent land-use intensity experiments where the fraction accessible stock mass for herbivory was reduced by 0.1 increments to test the effects over a gradient of land-use intensities. This was done by modifying the values of ```hanpp``` (human appropriation net primary productivity) spatial input layer and setting ```apply_hanpp``` to 1 (```apply_hanpp = 1``` tells the model to reduce the vegetation using fractional values):
 
 ```R
 
 # Set scenario parameters
 reps = 5 # set number of replicas per land-use intensity
 fractional_veg_production = seq(1.0, 0.1, -0.1) # accessible biomass
-m_params = madingley_inputs('model parameters') # load default model parameters
 fg = c('Herbivore', 'Carnivore', 'Omnivore') # vector for aggregating cohorts
 stats = data.frame() # used to store individual model output statistics
 
@@ -39,15 +38,15 @@ for(j in 1:reps){
   
     print(paste0("rep: ",j," fraction veg reduced: ",fractional_veg_production[i]))
     
-    m_params[86, 2] = fractional_veg_production[i] # lower veg production
+    sptl_inp$hanpp[] = fractional_veg_production[i] # lower veg production in the hanpp spatial input layer
     
     mdata4 = madingley_run(
       years = 50,
       madingley_data = mdata3,
-      model_parameters = m_params,
       output_timestep = c(99,99,99,99),
       spatial_inputs = sptl_inp,
-      silenced = TRUE) 
+      silenced = TRUE,
+      apply_hanpp = 1) 
     
     # Calculate cohort biomass
     cohorts = mdata4$cohorts
