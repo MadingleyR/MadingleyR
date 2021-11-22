@@ -1,23 +1,22 @@
+# Load the remotes package
+# library('remotes') # or use library('devtools')
+
+# Install the MadingleyR package
+install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = TRUE, force = TRUE)
+
 library(MadingleyR)
 
 # Set model params
-spatial_window = c(35, 37, 50, 52) # region of interest: Serengeti
+spatial_window = c(35, 37, 50, 52) # region of interest, somewhere in europe
 plot_spatialwindow(spatial_window)
 sptl_inp = madingley_inputs('spatial inputs') # load default inputs
-mdl_params = get_default_model_parameters() # madingley_inputs('model parameters')
-
-# set the maximum body masses of the functional groups manually
-sptl_inp$Endo_O_max[ ] = 200000 # set max size omnivores = 200000 g (200 kg)
-sptl_inp$Endo_C_max[ ] = 600000 # set max size carnivores = 600000 g (600 kg)
-sptl_inp$Ecto_max[ ] = 150000 # set max size ectotherms = 150000 g (150 kg)
 
 # Initialise model
 mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = sptl_inp)
 
 # Run spin-up of 10 years 
-mdl_params[86,]$values = 1
 sptl_inp$hanpp[] = 1
-mdata2 = madingley_run(madingley_data = mdata, spatial_inputs = sptl_inp, years = 10, model_parameters = mdl_params)
+mdata2 = madingley_run(madingley_data = mdata, spatial_inputs = sptl_inp, years = 10, )
 
 # Run spin-up of 10 years 
 mdl_params[86,]$values = 1
