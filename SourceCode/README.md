@@ -19,6 +19,7 @@ Spatial control of the initialisation of cohort body mass range, maximum body ma
 Removal of netCDF dependencies, allowing for more straightforward compilation of the C++ source code on Windows. | This repository | 2.00 | ```LoadCSVEnvironment.cpp```
 I/O (input and output) handling for communication with R. | This repository | 2.01 | ```Main.cpp```, ```LoadCSVEnvironment.cpp```, ```WriteModelState.cpp```, ```InputParameters.cpp```
 Direct control of all parameters included in the model equations that define the ecological behaviour of cohorts and stocks. | This repository | 2.01 | ```InputParameters.cpp```, Applies to ecological files
+Control of HANPP using spatial input layer | This repository | 2.02 | ```xxx.cpp```
 
 ### References
 
