@@ -128,8 +128,8 @@ public:
 
 
 
-    void SetRandomCohortOrderNoiseThreshold( const double& ); 
-    double GetRandomCohortOrderNoiseThreshold( ) const;
+    void Set_USE_HANPP( const double& ); 
+    double Get_USE_HANPP( ) const;
 
     void SetRunWithoutDispersal( const int& ); 
     int GetRunWithoutDispersal( ) const;
@@ -187,7 +187,7 @@ private:
     int mUseNonDefaultModelParameters;
     bool mOverwriteApplySpinUp;
 
-    double mRandomCohortOrderNoiseThreshold;
+    double mUSE_HANPP;
     int mRunWithoutDispersal;
     int mRunInParallel;
 

@@ -7,13 +7,17 @@ madingley_run = function(out_dir=tempdir(),
                          model_parameters=0,
                          output_timestep=c(0,0,0,0),
                          max_cohort=500,
-                         dispersal_off=F,
-                         silenced=F,
-                         parallel=T) {
+                         dispersal_off=FALSE,
+                         silenced=FALSE,
+                         parallel=TRUE,
+                         apply_hanpp=FALSE) {
   
-  noise_cohort_order=1.0 # not used in current version
-  NoiseThresholdCohortOrder=1-noise_cohort_order
   grid_size=0 # overwritten later using raster resolution
+  
+  # check if HANPP should be applied
+  hanpp = 0
+  if(apply_hanpp==1) hanpp = 1 # apply fractional raster values using hanpp input layer
+  if(apply_hanpp==2) hanpp = 2 # apply absolute raster values using hanpp input layer
 
   # check if output dir exists
   if(!dir.exists(out_dir)) stop('Specified output folder does not exist, please make sure out_dir is correct')
@@ -46,6 +50,10 @@ madingley_run = function(out_dir=tempdir(),
   for(i in 1:13) classes_check[i] = class(spatial_inputs[[i]])==classes[i]
   if(!all(classes_check)) stop('Not all required spatial inputs formatted correctly')
 
+  # check HANPP rasters
+  if(raster::maxValue(spatial_inputs$hanpp) > 1.5 & hanpp == 1) { # using absolute raster but fractional selected
+    stop('Please make sure spatial hanpp raster matches with apply_hanpp input parameter (fractional selection with fractionall values..)')
+  }
 
   # set correct grid cell size (resolution)
   if(grid_size==0) {
@@ -140,7 +148,7 @@ madingley_run = function(out_dir=tempdir(),
                         '"%PATH2%"',max_cohort,
                         '"%PATH3%"','"%PATH4%"',
                         start_t,'"%PATH5%"',
-                        grid_size,NoiseThresholdCohortOrder,
+                        grid_size,hanpp,
                         NoDispersal,int_RunInParallel,model_params)
 
       # setup windows executable path
@@ -194,7 +202,7 @@ madingley_run = function(out_dir=tempdir(),
                         start_t,
                         paste0('\"',gsub("\\\\", "/", sp_dir),'\"'),
                         grid_size,
-                        NoiseThresholdCohortOrder,
+                        hanpp,
                         NoDispersal,
                         int_RunInParallel,
                         model_params)
@@ -240,7 +248,7 @@ madingley_run = function(out_dir=tempdir(),
                         start_t,
                         paste0('\"',gsub("\\\\", "/", sp_dir),'\"'),
                         grid_size,
-                        NoiseThresholdCohortOrder,
+                        hanpp,
                         NoDispersal,
                         int_RunInParallel,
                         model_params)

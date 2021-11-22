@@ -171,11 +171,11 @@ std::vector<double> InputParameters::Get_EatingHerbivory_Parameters( ) const {
     return m_EatingHerbivory_Parameters;
 }
 
-double InputParameters::GetRandomCohortOrderNoiseThreshold( ) const {
-    return mRandomCohortOrderNoiseThreshold;
+double InputParameters::Get_USE_HANPP( ) const {
+    return mUSE_HANPP;
 }
-void InputParameters::SetRandomCohortOrderNoiseThreshold(const double& val ) {
-    mRandomCohortOrderNoiseThreshold = val;
+void InputParameters::Set_USE_HANPP(const double& val ) {
+    mUSE_HANPP = val;
 }
 
 int InputParameters::GetRunWithoutDispersal( ) const {

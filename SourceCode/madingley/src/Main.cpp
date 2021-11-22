@@ -62,7 +62,7 @@ std::vector<double> MetabolismEndotherm_Parameters(6,0.0);
 std::vector<double> MetabolismHeterotroph_Parameters(3,0.0);
 std::vector<double> Mortality_Parameters(5,0.0);
 std::vector<double> Reproduction_Parameters(4,0.0);
-std::vector<double> VegetationModel_Parameters(33,0.0);
+std::vector<double> VegetationModel_Parameters(32,0.0);
 //################################## Get model input parameters
 
 int main( int argc, char* argv[] ) {
@@ -149,9 +149,18 @@ int main( int argc, char* argv[] ) {
 	double GridcellSize = std::stod(argv[19]);
 	InputParameters::Get( )->SetGridcellSize( GridcellSize );
 
-	double NoiseRandomizationCohortOrder = std::stod(argv[20]);
-	InputParameters::Get( )->SetRandomCohortOrderNoiseThreshold( NoiseRandomizationCohortOrder );
-    if(NoiseRandomizationCohortOrder>0.0) std::cout << "Ordering cohorts from small to large using " << 1.0 - NoiseRandomizationCohortOrder <<  " randomization" << std::endl;
+	//USE_HANPP
+	double USE_HANPP = std::stod(argv[20]);
+	InputParameters::Get( )->Set_USE_HANPP( USE_HANPP );
+	if(USE_HANPP>0.7 && USE_HANPP<1.4){
+	  std::cout << "HANPP applied using fractional raster, values quantified in spatial hanpp input layer" << std::endl;
+	}else if(USE_HANPP>1.7){
+	  std::cout << "HANPP applied as using absolute values in spatial hanpp input raster (gC/m^2/year)" << std::endl;
+	}else{
+	  std::cout << "No HANPP applied" << std::endl;
+	}
+	
+	
 
     int RunWithoutDispersal = std::stoi(argv[21]);
 	InputParameters::Get( )->SetRunWithoutDispersal( RunWithoutDispersal );
@@ -295,6 +304,7 @@ int main( int argc, char* argv[] ) {
         std::cout << std::endl;
         std::cout << "-----------------------------------" << std::endl;
         std::cout << std::endl;
+        
     }else{
         if(TypeOfRun=="run") {
             std::cout << "Using default model parameters" << std::endl;

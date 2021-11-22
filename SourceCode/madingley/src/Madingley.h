@@ -49,7 +49,6 @@ public:
     int WriteGridProperties; //(yes=1/no=0)
 
     int UseNonDefaultModelParameters;
-    double RandomCohortOrderNoiseThreshold;
 
 private:
     /** \brief  Run processes for cells*/

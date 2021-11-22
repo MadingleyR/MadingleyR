@@ -26,7 +26,7 @@ public:
     @param gridCellStocks The stocks in the current grid cell 
     @param actingStock The position of the acting stock in the jagged array of grid cell stocks 
     @param currentTimestep The current model time step */
-    double RemoveHumanAppropriatedMatter(double , GridCell& , Stock& , unsigned , unsigned );
+    double RemoveHumanAppropriatedMatter(double , GridCell& , Stock& , unsigned , unsigned, bool );
     //----------------------------------------------------------------------------------------------
     /** \brief Instance of the class to perform general functions */
 private:
