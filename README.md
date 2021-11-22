@@ -45,7 +45,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 
 ## Useful links
 
-* Additional information about the package can be found [here](addlink) (paper link not yet available)
+* Additional information about the package can be found [here](https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354)
 * More information about the Madingley model can be found [here](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
 
 ## MadingleyR workflow
