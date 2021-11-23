@@ -42,7 +42,7 @@ Be careful outputting many large files, it can easily fill up your hard disk. Al
   \item{parallel}{If the simulation run should be executed in parallel (using all cores available) or in serial. By default it is set to TRUE. Naturally, a parallel model run significantly speeds up the execution time, but might make performing other tasks on the machine more difficult.}
   \item{apply_hanpp}{By default human appropriation of net primary productivity is turned off (apply_hanpp = FALSE), besides apply_hanpp = FALSE two other values can be supplied the this input parameter: \cr
   --- apply_hanpp = 1, reduces NPP in fractions provided in the hanpp spatial input raster, a fraction of 0.9 represent a 0.1 reduction in autotroph productivity.  \cr
-  --- apply_hanpp = 2, reduces NPP using grams of carbon (gC/m^2/year), provided in the same hanpp spatial input raster. \cr
+  --- apply_hanpp = 2, reduces NPP using grams of carbon (gC/m^2/year), values need to be provided in the hanpp spatial input raster. By default, when loading the spatial inputs on MadingleyR the package comes with an example hanpp layer (2005). \cr
   }
 }
 \examples{
