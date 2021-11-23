@@ -43,7 +43,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
   * [Compile on Linux](./SourceCode/CompileLinux.md)
 
 ## Updates
-* 22 Nov 2021 - MadingleyR v1.0.2 (source code v2.02): add control over spatial HANPP
+* 22 Nov 2021 - MadingleyR v1.0.2 (source code v2.02): add control over spatial HANPP (see [HANPP example](./Tests/HANPP_tests2.R))
 
 ## Useful links
 
