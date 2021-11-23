@@ -55,7 +55,6 @@ autotr_biomass4 = make_spatial_biomass_raster_autotrophs(mdata4)
 plot(log10(autotr_biomass4), zlim=c(12,14)) # make plot from rasters
 
 # still a global value (single fractional value for all cells) can be set using
-# only not in the model parameters, but like this:
 sp_in$hanpp[] = 0.4 
 plot(sp_in$hanpp) # all values in the raster are 0.4 now
 
