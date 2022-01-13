@@ -23,7 +23,7 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 
 ## Troubleshooting
 
-Please note that if the installation via Github fails, the MadingleyR package can be installed using the latest static release version. Follow this [link](https://github.com/MadingleyR/MadingleyR/releases) for the installation guide.
+Please note that if the installation via Github fails, the MadingleyR package can be installed using the latest static release. Follow this [link](https://github.com/MadingleyR/MadingleyR/releases) for the installation guide, select the newest release to make sure all the latest updates are included.
 
 ## Updates
 * 05 Sept 2021 - MadingleyR v1.0.0 (source code v2.00): windows output folder fix
