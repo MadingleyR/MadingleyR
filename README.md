@@ -21,6 +21,10 @@ vignette('MadingleyR')
 
 In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ```data.table``` and ```raster```), the installation process also downloads the precompiled C++ executable (no compilation needed), default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
 
+## Troubleshooting
+
+Please note that if the installation via Github fails, the MadingleyR package can be installed using the latest static release version. Follow this [link](https://github.com/MadingleyR/MadingleyR/releases) for the installation guide.
+
 ## Updates
 * 05 Sept 2021 - MadingleyR v1.0.0 (source code v2.00): windows output folder fix
 * 23 Nov 2021 - MadingleyR v1.0.2 (source code v2.02): add control over spatial HANPP (see [HANPP example](https://github.com/MadingleyR/MadingleyR/blob/master/Tests/HANPP_tests2.r))
