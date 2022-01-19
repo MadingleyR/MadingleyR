@@ -1,6 +1,6 @@
 plot_timelines = function(madingley_data,select="functional groups",
                           col=c('#a50026','#d73027','#f46d43','#fdae61','#fee090','#ffffbf','#e0f3f8','#abd9e9','#74add1','#4575b4','#313695'),
-                          xlims=0,ylims=0,legend="topright",unclutter_val=0.7,plot=TRUE,timescale="months",...){
+                          xlims=0,ylims=0,legend="topright",unclutter_val=0.1,plot=TRUE,timescale="months",...){
 
   # default colors
   # cols_reds = c('#FF1300','#B23F36','#930B00','#FF5143','#FF8379')

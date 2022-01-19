@@ -118,13 +118,13 @@ plot_trophicpyramid = function(madingley_data,flow_round=2,mass_round=2,col=c("#
   text(100-mar[2]+30,55,paste0(round(flow_h_c,flow_round),"%"))
 
 
-  text(50,75,paste0("10^",round(log10(mass[mass$g=="Carnivore",2]),mass_round)," kg"),col=text_col[2])
+  text(50,75,paste0("10^",round(log10(mass[mass$g=="Carnivore",2]/12),mass_round)," kg"),col=text_col[2])
   text(50,65,"Carnivores",col=text_col[2])
-  text(50,55,paste0("10^",round(log10(mass[mass$g=="Omnivore",2]),mass_round)," kg"),col=text_col[3])
+  text(50,55,paste0("10^",round(log10(mass[mass$g=="Omnivore",2]/12),mass_round)," kg"),col=text_col[3])
   text(50,45,"Omnivores",col=text_col[3])
-  text(50,35,paste0("10^",round(log10(mass[mass$g=="Herbivore",2]),mass_round)," kg"),col=text_col[1])
+  text(50,35,paste0("10^",round(log10(mass[mass$g=="Herbivore",2]/12),mass_round)," kg"),col=text_col[1])
   text(50,25,"Herbivores",col=text_col[1])
-  text(50,15,paste0("10^",round(log10(mass[mass$g=="Autotrophs",2]),mass_round)," kg"),col=text_col[4])
+  text(50,15,paste0("10^",round(log10(mass[mass$g=="Autotrophs",2]/12),mass_round)," kg"),col=text_col[4])
   text(50,5,"Autotrophs",col=text_col[4])
   
   

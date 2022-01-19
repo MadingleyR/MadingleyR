@@ -146,7 +146,7 @@ void WriteModelState::WriteStockProperties( Grid& madingleyGrid, std::string out
               CSV2 <<
               gridCell.GetIndex( ) << "," <<
               s.mFunctionalGroupIndex << "," <<
-              s.mTotalBiomass <<
+              s.mTotalBiomass << // in grams
               std::endl;
         } );
     } );
@@ -456,7 +456,7 @@ void WriteModelState::WriteStockTimeline( Grid& madingleyGrid, std::string outpu
     } );
 
     // write data
-    CSV2 << StockBiomass << std::endl;
+    CSV2 << StockBiomass/1000 << std::endl; // calculate to kg
 
     CSV2.close();
 }
