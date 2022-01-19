@@ -28,7 +28,7 @@ Please note that if the installation via Github fails, the MadingleyR package ca
 ## Updates
 * 05 Sept 2021 - MadingleyR v1.0.0 (source code v2.00): windows output folder fix
 * 23 Nov 2021 - MadingleyR v1.0.2 (source code v2.02): add control over spatial HANPP (see [HANPP example](https://github.com/MadingleyR/MadingleyR/blob/master/Tests/HANPP_tests2.r))
-* 19 Jan 2022 - MadingleyR v1.0.3 (source code v2.03): unit fixes for biomass of vegetation in plotting functions
+* 19 Jan 2022 - MadingleyR v1.0.3 (source code v2.03): unit fixes for biomass of vegetation in plotting functions, fix to trophic pyramid
 
 ## Content
 
