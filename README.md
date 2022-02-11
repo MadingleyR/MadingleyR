@@ -26,9 +26,10 @@ In addition to installing the MadingleyR dependencies (```rgdal```, ```sp```, ``
 Please note that if the installation via Github fails, the MadingleyR package can be installed locally using the latest static release. Follow this [link](https://github.com/MadingleyR/MadingleyR/releases) for the installation guide, select the latest release to make sure all updates are included.
 
 ## Updates
-* 19 Jan 2022 - MadingleyR v1.0.3 (source code v2.02): unit fixes for biomass of vegetation in plotting functions, fix to trophic pyramid
-* 23 Nov 2021 - MadingleyR v1.0.2 (source code v2.02): add control over spatial HANPP (see [HANPP example](https://github.com/MadingleyR/MadingleyR/blob/master/Tests/HANPP_tests2.r))
-* 05 Sept 2021 - MadingleyR v1.0.0 (source code v2.00): windows output folder fix
+* 11 Feb 2022 - MadingleyR v1.0.4 (C++ source code v2.02): plottings adapted to allow for functional groups going extinct
+* 19 Jan 2022 - MadingleyR v1.0.3 (C++ source code v2.02): unit fixes for biomass of vegetation in plotting functions, fix to trophic pyramid
+* 23 Nov 2021 - MadingleyR v1.0.2 (C++ source code v2.02): add control over spatial HANPP (see [HANPP example](https://github.com/MadingleyR/MadingleyR/blob/master/Tests/HANPP_tests2.r))
+* 05 Sept 2021 - MadingleyR v1.0.0 (C++ source code v2.00): windows output folder fix
 
 ## Content
 
