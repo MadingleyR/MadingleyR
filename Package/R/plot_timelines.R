@@ -110,11 +110,8 @@ plot_timelines = function(madingley_data,select="functional groups",
         text_y_c = ((text_y_c-min(text_y_c))/(max(text_y_c)-min(text_y_c)) )* (norm_max_range-norm_min_range) + norm_min_range
       }
       
-      aggg = aggregate(CohortAbundance~FunctionalGroupIndex,data=madingley_data$cohorts,sum)
-      
-      
-      
-      names = paste("FG",aggg$FunctionalGroupIndex[order_cohorts])
+      aggg = aggregate(CohortAbundance~FunctionalGroupIndex,data=madingley_data$cohorts,sum) # check for extinct functional groups
+      names = paste("FG",aggg$FunctionalGroupIndex[order_cohorts]) # make sure labeling is in correct order
       text(text_x_c, y = text_y_c, labels = names, cex=0.9)
       text(xlims[2]+max(tl$Year), y = names_y_auto, labels = "Autotrophs",cex=0.9)
       
