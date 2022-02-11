@@ -107,6 +107,7 @@ plot_densities = function(madingley_data,weighted="biomass",by_traits=c("DEFINIT
     main_lab_sel = main_labs$main_labs[nn]
     main_lab_sel_list = gsub(" ", "", main_lab_sel, fixed = TRUE)
     c_select = c[c$main_labs==main_lab_sel,]
+    if(nrow(c_select)==0) next # functional group not present, moving to next loop iteration
     factor = 10
     c_select$mass_class = (round(log10(c_select$IndividualBodyMass)*factor)/factor)-2
     if(weighted=="biomass"){
