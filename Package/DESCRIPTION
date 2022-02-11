@@ -1,7 +1,7 @@
 Package: MadingleyR
 Type: Package
 Title: MadingleyR: General Ecosystem Model
-Version: 1.0.3
+Version: 1.0.4
 Author: Selwyn Hoeks
 Maintainer: The package maintainer <s.hoeks@science.ru.nl>
 Description: The MadingleyR package is a wrapper around the C++ code of the Madingley model. It was intended as an accessible and transparent tool to lower the barrier of using the Madingley model, thereby broadening the Madingley comminity. 
