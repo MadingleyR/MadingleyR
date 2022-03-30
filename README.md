@@ -32,7 +32,9 @@ Please note that if the installation via Github fails, the MadingleyR package ca
 * 05 Sept 2021 - MadingleyR v1.0.0 (C++ source code v2.00): windows output folder fix
 
 ## Content
-
+* Model/Package information
+  * [MadingleyR package paper (Glob. Ecol. Biogeogr.)](https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354)
+  * [Madingley model paper (PLoS Biol.)](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
 * Tutorial vignette
   * [PDF MadingleyR tutorial vignette](./Package/vignettes/MadingleyR.pdf)
   * [Download R markdown code](./Package/vignettes/MadingleyR.Rmd)
@@ -51,11 +53,6 @@ Please note that if the installation via Github fails, the MadingleyR package ca
   * [Compile on Mac](./SourceCode/CompileMac.md)
   * [Compile on Windows](./SourceCode/CompileWindows.md)
   * [Compile on Linux](./SourceCode/CompileLinux.md)
-
-## Useful links
-
-* Additional information about the package can be found [here](https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354)
-* More information about the Madingley model can be found [here](https://journals.plos.org/plosbiology/article?id=10.1371/journal.pbio.1001841)
 
 ## MadingleyR workflow
 
