@@ -1,4 +1,4 @@
-plot_window = function(XY_window,backgroud="mean temp"){
+plot_window = function(XY_window,spatial_inputs,backgroud="mean temp"){
   if(backgroud=="mean temp") {
     plot(mean(spatial_inputs$`near-surface_temperature`))
   }
