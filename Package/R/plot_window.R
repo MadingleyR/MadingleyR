@@ -3,7 +3,7 @@ plot_window = function(XY_window,spatial_raster=NA){
     plot(spatial_raster)
   }else{
     spatial_path=paste0(get_lib_path(),"/spatial_input_rasters/land_mask.tif")
-    plot(raster::raster(spatial_path))
+    raster::plot(raster::raster(spatial_path))
   }
   lines(x=XY_window[1:2],y=XY_window[c(3,3)])
   lines(x=XY_window[1:2],y=XY_window[c(4,4)])
