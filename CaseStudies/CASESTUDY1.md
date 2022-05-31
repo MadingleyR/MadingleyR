@@ -58,7 +58,7 @@ remove_idx = which(mdata2$cohorts$AdultMass > 1e5 &
                    mdata2$cohorts$FunctionalGroupIndex == 0)
 mdata2$cohorts = mdata2$cohorts[-remove_idx, ]
 ```
-And then the modified object was used to run a consecutive simulation of 50 years. However, before running the simulation we need limit the maximum body mass of endothermic herbivores allowed in the simulation using the same value as threshold defined above for the removal (100 kg). Again for clarity, the spatial maximum body mass inputs (named e.g.  ```sptl_inp$Endo_H_max```) control the maximum body masses used per grid cell when the model is generating cohorts at the initialisation phase, the cohort definitions (named ```cohort_defs```) control the maximum body masses allowed during the simulation per functional group.
+And then we use the modified object to run a consecutive simulation of 50 years. However, before running the simulation we need limit the maximum body mass of endothermic herbivores allowed in the simulation using the same value as threshold defined above for the removal (100 kg). Again for clarity, the spatial maximum body mass inputs (named e.g.  ```sptl_inp$Endo_H_max```) control the maximum body masses used per grid cell when the model is generating cohorts at the initialisation phase, the cohort definitions (named ```cohort_defs```) control the maximum body masses allowed during the simulation per functional group.
 
 ```R
 # Set max allowed endothermic herbivore body mass in cohort definitions
