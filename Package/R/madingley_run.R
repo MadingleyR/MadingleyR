@@ -1,8 +1,8 @@
 madingley_run = function(out_dir=tempdir(),
                          madingley_data,
                          years=1,
-                         cohort_def=get_default_cohort_def(),
-                         stock_def=get_default_stock_def(),
+                         cohort_def=0,
+                         stock_def=0,
                          spatial_inputs=0,
                          model_parameters=0,
                          output_timestep=c(0,0,0,0),
@@ -11,6 +11,9 @@ madingley_run = function(out_dir=tempdir(),
                          silenced=FALSE,
                          parallel=TRUE,
                          apply_hanpp=FALSE) {
+  
+  
+  
   
   grid_size=0 # overwritten later using raster resolution
   
@@ -96,8 +99,10 @@ madingley_run = function(out_dir=tempdir(),
   dir.create(input_dir, showWarnings = F)
 
   # def checks
-  if(length(cohort_def)==0) cohort_def = get_default_cohort_def()
-  if(class(stock_def)=="list") stock_def = get_default_stock_def()
+  if(class(cohort_def)=="numeric") cohort_def = madingley_data$cohort_def # if argument is not used, use defs from madingley_data
+  if(class(stock_def)=="numeric") stock_def = madingley_data$stock_def # if argument is not used, use defs from madingley_data
+  if(is.null(cohort_def)) cohort_def = get_default_cohort_def() # cannot find defs in madingley_data ?!
+  if(is.null(stock_def)) stock_def = get_default_stock_def() # cannot find defs in madingley_data ?!
 
   # write inputs csv files to temp dir
   write_cohort_def(out_dir,cohort_def)
