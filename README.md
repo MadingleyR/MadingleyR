@@ -47,7 +47,8 @@ In addition to installing the MadingleyR dependencies (`rgdal`, `sp`, `data.tabl
 
 ## Updates
 
--   11 Feb 2022 - MadingleyR v1.0.4 (C++ source code v2.02): plottings adapted to allow for functional groups going extinct
+-   01 Jun 2022 - MadingleyR v1.0.5 (C++ source code v2.02): ```madingley_run()``` cohort and stock definition input bugs fixed
+-   11 Feb 2022 - MadingleyR v1.0.4 (C++ source code v2.02): plotting functions adapted to allow for functional groups going extinct
 -   19 Jan 2022 - MadingleyR v1.0.3 (C++ source code v2.02): unit fixes for biomass of vegetation in plotting functions, fix to trophic pyramid
 -   23 Nov 2021 - MadingleyR v1.0.2 (C++ source code v2.02): add control over spatial HANPP (see [HANPP example](https://github.com/MadingleyR/MadingleyR/blob/master/Tests/HANPP_tests2.r))
 -   05 Sept 2021 - MadingleyR v1.0.0 (C++ source code v2.00): windows output folder fix
