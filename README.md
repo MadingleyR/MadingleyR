@@ -21,7 +21,7 @@ vignette('MadingleyR')
 
 In addition to installing the MadingleyR dependencies (`rgdal`, `sp`, `data.table` and `raster`), the installation process also downloads the precompiled C++ executable (no compilation needed), default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
 
-## Content
+## Repository content
 
 -   Model/Package information
     -   [MadingleyR package paper (Glob. Ecol. Biogeogr.)](https://onlinelibrary.wiley.com/doi/full/10.1111/geb.13354)
@@ -44,6 +44,16 @@ In addition to installing the MadingleyR dependencies (`rgdal`, `sp`, `data.tabl
     -   [Compile on Mac](./SourceCode/CompileMac.md)
     -   [Compile on Windows](./SourceCode/CompileWindows.md)
     -   [Compile on Linux](./SourceCode/CompileLinux.md)
+
+## Package maintainer
+
+<a href="https://github.com/SHoeks">
+<img src="https://avatars.githubusercontent.com/u/36075931?s=400&v=4" width="20">
+Selwyn Hoeks
+</a>
+<br>
+Please contact me via GitHub for technical issues.
+
 
 ## Updates
 
