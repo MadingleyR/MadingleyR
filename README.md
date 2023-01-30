@@ -52,7 +52,7 @@ In addition to installing the MadingleyR dependencies (`rgdal`, `sp`, `data.tabl
 Selwyn Hoeks
 </a>
 <br>
-Please contact me via GitHub for technical issues.
+<br>
 
 
 ## Updates
