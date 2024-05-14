@@ -36,7 +36,14 @@ madingley_run = function(out_dir=tempdir(),
   if(substr(out_dir,(nchar(out_dir)+1)-1,nchar(out_dir))=='\\') out_dir=substr(out_dir,1,nchar(out_dir)-1)
 
   # replace tilde with home folder path
-  out_dir = sub("~", Sys.getenv("HOME"), out_dir)
+  if(Sys.info()[['sysname']]!="Windows") {
+    out_dir = sub("~", Sys.getenv("HOME"), out_dir)
+  }else if(Sys.info()[['sysname']]=="Windows") {
+    if(grepl("~1",out_dir)){
+      out_dir_tmp = strsplit(out_dir,"~1")[[1]]
+      out_dir = paste0(Sys.getenv("USERPROFILE"),out_dir_tmp[length(out_dir_tmp)])
+    }
+  }
   out_dir_save = out_dir
 
   # load default input rasters if not specified by input function
