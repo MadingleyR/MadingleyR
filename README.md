@@ -19,7 +19,7 @@ madingley_version( )
 vignette('MadingleyR')
 ```
 
-In addition to installing the MadingleyR dependencies (`rgdal`, `sp`, `data.table` and `raster`), the installation process also downloads the precompiled C++ executable (no compilation needed), default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
+In addition to installing the MadingleyR dependencies (`terra`, `sf` and `data.table`), the installation process also downloads the precompiled C++ executable (no compilation needed), default spatio-temporal input layers and all other default input parameters and includes them in the installation folder.
 
 ## Repository content
 
