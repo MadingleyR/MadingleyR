@@ -1,5 +1,5 @@
 install.packages("remotes", repos="http://cran.rstudio.com/")
-remotes::install_github("MadingleyR/MadingleyR", subdir="Package")
+remotes::install_github("MadingleyR/MadingleyR", subdir="Package", build_vignettes = FALSE)
 library('MadingleyR')
 
 # Load MadingleyR default inputs
