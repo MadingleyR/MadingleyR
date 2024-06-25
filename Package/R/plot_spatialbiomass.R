@@ -7,13 +7,6 @@ plot_spatialbiomass = function(madingley_data,functional_filter=F,plot=TRUE,box=
   # get spatial window
   spatial_window=madingley_data$spatial_window
 
-  # check package raster
-  if (!"raster" %in% installed.packages()[, "Package"]) {
-    stop("Package 'raster' not installed")
-  }else{
-    require(raster)
-  }
-
   # check if out_dir was specified manually within madingley_run()
   if(!is.null(madingley_data$out_path)){ # out_dir specified manually
     tdo = madingley_data$out_path
@@ -42,10 +35,9 @@ plot_spatialbiomass = function(madingley_data,functional_filter=F,plot=TRUE,box=
   cohortsRnames = grep("FullCohortProperties",list.files(cohortsRnames,full.names=T),value = T)
 
   # check if required files were exported
-  if(!length(cohortsRnames)>1){ # not exist
-    stop("Required files were not exported during model run")
-  }
+  if(!length(cohortsRnames)>1){ stop("Required files were not exported during model run") }
 
+  # create tmp csv paths
   cohortsRnames = cohortsRnames[1:(length(cohortsRnames)-1)]
   cohortsRnames = cohortsRnames[(length(cohortsRnames)-11):length(cohortsRnames)] # select last 12 csvs
   csv_out_path = paste0(out_dir,madingley_data$out_dir_name,'Data_proc_biomass.csv')
@@ -109,15 +101,25 @@ plot_spatialbiomass = function(madingley_data,functional_filter=F,plot=TRUE,box=
 
   # open raster data
   baseRname = paste(get_lib_path(),'spatial_input_rasters','realm_classification.tif', sep = '/')
-  e <- raster::extent(spatial_window[1], spatial_window[2], spatial_window[3], spatial_window[4])
-  r_empty = crop(raster::raster(baseRname),e);
+  # old code raster pkg: e = raster::extent(spatial_window[1], spatial_window[2], spatial_window[3], spatial_window[4])
+  # r = raster::raster(baseRname)
+  # r_empty = raster::crop(r,e)
+  e = terra::ext(spatial_window[1], spatial_window[2], spatial_window[3], spatial_window[4])
+  r = terra::rast(baseRname)
+  r_empty = terra::crop(r,e)
   if(madingley_data$grid_size!=1) {
-    r_sized = raster::raster(nrow=dim(r_empty)[1]*(1/madingley_data$grid_size),ncol=dim(r_empty)[2]*(1/madingley_data$grid_size))
-    extent(r_sized) = c(spatial_window[1], spatial_window[2], spatial_window[3], spatial_window[4])
-    r_empty = raster::resample(r_empty,r_sized,"bilinear")
+    # old raster code: r_sized = raster::raster(nrow=dim(r_empty)[1]*(1/madingley_data$grid_size),ncol=dim(r_empty)[2]*(1/madingley_data$grid_size))
+    # raster::extent(r_sized) = c(spatial_window[1], spatial_window[2], spatial_window[3], spatial_window[4])
+    # r_empty = raster::resample(r_empty,r_sized,"bilinear")
+    r_sized = terra::rast(nrow=terra::nrow(r_empty)*(1/madingley_data$grid_size),ncol=terra::ncol(r_empty)*(1/madingley_data$grid_size))
+    terra::ext(r_sized) = c(spatial_window[1], spatial_window[2], spatial_window[3], spatial_window[4])
+    r_empty = terra::resample(r_empty,r_sized,"bilinear")
   }
-  r_empty[] = ifelse(r_empty[]==2,1,NA)
-  m_r_empty = raster::as.matrix(r_empty)
+  # old raster code: r_empty[] = ifelse(r_empty[]==2,1,NA)
+  # m_r_empty = raster::as.matrix(r_empty)
+  r_empty = terra::ifel(r_empty==2,1,NA)
+  m_r_empty = terra::as.matrix(r_empty,wide=TRUE)
+  # check against old raster pkg: m_r_emptycheck = raster::as.matrix(raster::raster(r_empty))
 
   # insert raster values
   FGS = unique(d$FG)
@@ -149,16 +151,22 @@ plot_spatialbiomass = function(madingley_data,functional_filter=F,plot=TRUE,box=
         gc_counter = gc_counter+1
       }
     }
-    raster_list[[fg]][] = apply(m_r_empty, 2, rev) # flip matrix vertically
+    # old code: raster_list[[fg]][] = apply(m_r_empty, 2, rev) # flip matrix vertically
+    etmp = terra::ext(raster_list[[fg]])
+    crstemp = terra::crs(raster_list[[fg]])
+    raster_list[[fg]] = terra::rast(apply(m_r_empty, 2, rev)) # flip matrix vertically
+    terra::ext(raster_list[[fg]]) = etmp
+    terra::crs(raster_list[[fg]]) = crstemp
   }
 
   if(functional_filter){
-    raster_stack = stack(raster_list)
+    # old: raster_stack = raster::stack(raster_list)
+    raster_stack = terra::rast(raster_list)
     raster_stack = raster_stack*r_empty
     names(raster_stack) = paste('Biomass FG',FGS)
 
     if(names[1]==0) {
-      names(raster_stack) = paste('Functional Group',FGS)
+      names(raster_stack) = paste('log10 Biomass[kg]\nFunctional Group',FGS)
     }else{
       if(length(names(raster_stack))!=length(names)){
         cat('Using default naming, length input not same as rasters plotted')
@@ -170,23 +178,27 @@ plot_spatialbiomass = function(madingley_data,functional_filter=F,plot=TRUE,box=
 
 
     if(plot) {
-      raster::plot(raster_stack,col=pal,box=box,axes=axes,
-                   axis.args=list(cex.axis=cex_axis),
-                   legend=T,legend.args = list(text = 'log10(Biomass [kg])',  side = 4,
-                                               line = distance_legend_title, cex = cex_legend_title),legend.mar=legend_mar, legend.width=legend_width)
+      terra::plot(raster_stack,col=pal,box=box,axes=axes,legend=TRUE
+                   # axis.args=list(cex.axis=cex_axis),
+                   #legend.args = list(text = 'log10(Biomass [kg])',  side = 4,line = distance_legend_title, cex = cex_legend_title),
+                   #legend.mar=legend_mar, legend.width=legend_width
+                  )
     }else{
       return(raster_stack)
     }
   }else{
-    raster_stack = stack(raster_list)
+    # old: raster_stack = raster::stack(raster_list)
+    raster_stack = terra::rast(raster_list)
     raster_list[[1]] = raster_list[[1]]*r_empty
     raster_list[[1]] = log10(sum(10^(raster_stack)))
+    raster_list[[1]] = terra::ifel(is.na(r_empty),NA,raster_list[[1]])
     names(raster_list[[1]]) = paste('Total Biomass')
     if(plot) {
-      raster::plot(raster_list[[1]],col=pal,main='log10 Total Biomass [kg]',box=box,axes=axes,
-                   axis.args=list(cex.axis=cex_axis),
-                   legend=T,legend.args = list(text = 'log10(Biomass [kg])',  side = 4,
-                                               line = distance_legend_title, cex = cex_legend_title),legend.mar=legend_mar, legend.width=legend_width)
+      terra::plot(raster_list[[1]],col=pal,main='log10 Total Biomass [kg]',box=box,axes=axes,legend=TRUE
+                   # axis.args=list(cex.axis=cex_axis),
+                   #legend.args = list(text = 'log10(Biomass [kg])',  side = 4,line = distance_legend_title, cex = cex_legend_title),
+                   #legend.mar=legend_mar, legend.width=legend_width
+                  )
     }else{
       return(raster_list[[1]])
     }

@@ -30,19 +30,29 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
                        "diurnal_temperature_range")
   spatial_inputs = spatial_inputs[match(correct_sp_names,names(spatial_inputs))] # order input layers using the order defined by correct_sp_names
   if(!all.equal(names(spatial_inputs),correct_sp_names)) stop('Not all required spatial inputs names correctly')
-  classes = c(rep('RasterLayer',8),rep('RasterBrick',5)); classes_check = rep(F,13)
-  for(i in 1:13) classes_check[i] = class(spatial_inputs[[i]])==classes[i]
+  # old code raster pkg: classes = c(rep('RasterLayer',8),rep('RasterBrick',5)); classes_check = rep(F,13)
+  # for(i in 1:13) classes_check[i] = class(spatial_inputs[[i]])==classes[i]
+  # if(!all(classes_check)) stop('Not all required spatial inputs formatted correctly')
+  classes = rep("SpatRaster",13); layerdims = c(rep(1,8),rep(12,5)); 
+  classes_check = rep(F,13); dims_check = rep(F,13); 
+  for(i in 1:13) {
+    classes_check[i] = class(spatial_inputs[[i]])==classes[i]
+    dims_check[i] = nlyr(spatial_inputs[[i]])==layerdims[i]
+  }
   if(!all(classes_check)) stop('Not all required spatial inputs formatted correctly')
+  if(!all(dims_check)) stop('Dimensions spatial inputs not formatted correctly')
 
   # set correct grid cell size (resolution)
   grid_size=0
   if(grid_size==0) {
-    grid_size = res(spatial_inputs$realm_classification)[1]
+    # old raster pkg code: grid_size = raster::res(spatial_inputs$realm_classification)[1]
+    grid_size = terra::res(spatial_inputs$realm_classification)[1]
     if(grid_size==0 | is.na(grid_size)) grid_size = 1
   }
   if(grid_size>1) stop('Grid cell sizes larger than 1 degree currently not supported')
 
-  sum_res = 0; for(i in 1:13) sum_res = sum_res + mean(res(spatial_inputs[[i]]))
+  # old raster pkg code: sum_res = 0; for(i in 1:13) sum_res = sum_res + mean(raster::res(spatial_inputs[[i]]))
+  sum_res = 0; for(i in 1:13) sum_res = sum_res + mean(terra::res(spatial_inputs[[i]]))
   if( sum_res!= (grid_size*13) ) stop('Please make sure all input raster have the same resolutaion (0.5 or 1 degree)')
 
   # prepare inputs arguments Madingley C++ wrapper
@@ -75,7 +85,7 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
   write_mass_bin_def(out_dir)
   write_spatial_inputs_to_temp_dir(spatial_inputs=spatial_inputs,
                                    XY_window=spatial_window,
-                                   crop=T,
+                                   crop=TRUE,
                                    input_dir=out_dir,
                                    silenced) # spatial inputs
 

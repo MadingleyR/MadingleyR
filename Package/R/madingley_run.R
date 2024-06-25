@@ -12,9 +12,6 @@ madingley_run = function(out_dir=tempdir(),
                          parallel=TRUE,
                          apply_hanpp=FALSE) {
   
-  
-  
-  
   grid_size=0 # overwritten later using raster resolution
   
   # check if HANPP should be applied
@@ -26,7 +23,7 @@ madingley_run = function(out_dir=tempdir(),
   if(!dir.exists(out_dir)) stop('Specified output folder does not exist, please make sure out_dir is correct')
 
   # fixed values in current model build
-  overwrite_sp_check = F
+  overwrite_sp_check = FALSE
 
   # get spatial window from madingley_data output list
   spatial_window = madingley_data$spatial_window
@@ -56,18 +53,35 @@ madingley_run = function(out_dir=tempdir(),
     "diurnal_temperature_range")
   spatial_inputs = spatial_inputs[match(correct_sp_names,names(spatial_inputs))] # order input layers using the order defined by correct_sp_names
   if(!all.equal(names(spatial_inputs),correct_sp_names)) stop('Not all required spatial inputs names correctly')
-  classes = c(rep('RasterLayer',8),rep('RasterBrick',5)); classes_check = rep(F,13)
-  for(i in 1:13) classes_check[i] = class(spatial_inputs[[i]])==classes[i]
+  # old code raster pkg: classes = c(rep('RasterLayer',8),rep('RasterBrick',5)); classes_check = rep(F,13)
+  # for(i in 1:13) classes_check[i] = class(spatial_inputs[[i]])==classes[i]
+  # if(!all(classes_check)) stop('Not all required spatial inputs formatted correctly')
+  classes = rep("SpatRaster",13)
+  layerdims = c(rep(1,8),rep(12,5)); 
+  classes_check = rep(F,13)
+  dims_check = rep(F,13); 
+  for(i in 1:13) {
+    classes_check[i] = class(spatial_inputs[[i]])==classes[i]
+    dims_check[i] = nlyr(spatial_inputs[[i]])==layerdims[i]
+  }
   if(!all(classes_check)) stop('Not all required spatial inputs formatted correctly')
+  if(!all(dims_check)) stop('Dimensions spatial inputs not formatted correctly')
 
   # check HANPP rasters
-  if(raster::maxValue(spatial_inputs$hanpp) > 1.5 & hanpp == 1) { # using absolute raster but fractional selected
-    stop('Please make sure spatial hanpp raster matches with apply_hanpp input parameter (fractional selection with fractionall values..)')
+  if(!is.null(spatial_inputs$hanpp) & hanpp > 0){
+    # old code raster pkg: hanpp_max = as.numeric(raster::maxValue(spatial_inputs$hanpp))
+    hanpp_max = as.numeric(terra::global(spatial_inputs$hanpp,'max',na.rm=TRUE))
+    if(hanpp_max > 1.5 & hanpp == 1) { # using absolute raster but fractional selected
+      stop('Please make sure spatial hanpp raster matches with apply_hanpp input parameter \n(trying to apply hanpp with fractional values, hanpp raster supplied with unrealistic fractional values..)')
+    }
+  }else if(is.null(spatial_inputs$hanpp) & hanpp > 0) {
+    stop('HANPP raster is missing while hanpp parameter is not set to 0')
   }
-
+  
   # set correct grid cell size (resolution)
   if(grid_size==0) {
-    grid_size = res(spatial_inputs$realm_classification)[1]
+    # old code raster pkg: grid_size = raster::res(spatial_inputs$realm_classification)[1]
+    grid_size = terra::res(spatial_inputs$realm_classification)[1]
     if(grid_size==0 | is.na(grid_size)) grid_size = 1
   }
   if(grid_size>1) stop('Grid cell sizes larger than 1 degree currently not supported')
@@ -76,7 +90,8 @@ madingley_run = function(out_dir=tempdir(),
   # check if grid cell size of spatial_inputs and madingley_data are equal
   if(grid_size!=madingley_data$grid_size) stop('The grid cell size of madingley_data and spatial_inputs do not match')
 
-  sum_res = 0; for(i in 1:13) sum_res = sum_res + mean(res(spatial_inputs[[i]]))
+  # old code raster pkg: sum_res = 0; for(i in 1:13) sum_res = sum_res + mean(raster::res(spatial_inputs[[i]]))
+  sum_res = 0; for(i in 1:13) sum_res = sum_res + mean(terra::res(spatial_inputs[[i]]))
   if( sum_res!= (grid_size*13) ) stop('Please make sure all input raster have the same resolutaion (0.5 or 1 degree)')
 
   # check spatial window
@@ -98,12 +113,12 @@ madingley_run = function(out_dir=tempdir(),
   # create temporary output dir
   out_dir_name = paste0("/madingley_outs_",format(Sys.time(), "%d_%m_%y_%H_%M_%S"),"/")
   out_dir = paste0(out_dir,out_dir_name)
-  dir.create(out_dir, showWarnings = F)
+  dir.create(out_dir, showWarnings = FALSE)
 
   # creat temporary input dir
   input_dir = paste0(out_dir,"input/")
-  unlink(input_dir, recursive = T)
-  dir.create(input_dir, showWarnings = F)
+  unlink(input_dir, recursive = TRUE)
+  dir.create(input_dir, showWarnings = FALSE)
 
   # def checks
   if(class(cohort_def)=="numeric") cohort_def = madingley_data$cohort_def # if argument is not used, use defs from madingley_data
@@ -123,7 +138,7 @@ madingley_run = function(out_dir=tempdir(),
   # write spatial outputs
   write_spatial_inputs_to_temp_dir(spatial_inputs=spatial_inputs,
                                    XY_window=spatial_window,
-                                   crop=T,
+                                   crop=TRUE,
                                    input_dir=out_dir,
                                    silenced)
   
@@ -183,7 +198,7 @@ madingley_run = function(out_dir=tempdir(),
       # init model
       #cat(run_exec)
       if(silenced){
-        print_out = system(run_exec,intern=T)
+        print_out = system(run_exec,intern=TRUE)
       }else{
         system(run_exec)
       }
@@ -228,7 +243,7 @@ madingley_run = function(out_dir=tempdir(),
       # init model
       #cat(madingley_exec)
       if(silenced){
-        print_out = system(madingley_exec,intern=T)
+        print_out = system(madingley_exec,intern=TRUE)
       }else{
         system(madingley_exec)
       }
@@ -274,7 +289,7 @@ madingley_run = function(out_dir=tempdir(),
       # init model
       #cat(madingley_exec)
       if(silenced){
-        print_out = system(madingley_exec,intern=T)
+        print_out = system(madingley_exec,intern=TRUE)
       }else{
         system(madingley_exec)
       }
