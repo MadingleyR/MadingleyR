@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     strategy:
       matrix:
-        R: [ '3.6.3' ]  
+        R: [ '4.3.3' ]  # [ '3.6.3' ]  
     name: MadingleyR ${{ matrix.R }} mac
     steps:
       - uses: actions/checkout@master
@@ -17,5 +17,5 @@ jobs:
         uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.R }}
-      - run: brew install gdal
+      # - run: brew install gdal
       - run:  Rscript -e 'source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/CI_v3.R")'
