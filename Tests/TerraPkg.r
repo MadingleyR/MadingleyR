@@ -12,7 +12,6 @@
 # plot_spatialbiomass --> use of raster::extent(), raster::raster(), raster::crop(), raster::resample(), raster::as.matrix(), raster::plot(), raster::stack()
 # plot_window --> raster::raster(), raster::plot()
 # write_spatial_inputs_to_temp_dir() --> use of raster::xyFromCell()
-
 #-------------------------------------
 
 #----- REINSTALL PACKAGE
@@ -32,7 +31,6 @@ if(FALSE){
   setwd(dir)
 }
 
-
 #------ SMALL TEST CASE
 
 # load MadingleyR package
@@ -45,11 +43,16 @@ spatial_window = c(-11, 25, 35, 60)
 plot_spatialwindow(spatial_window)
 spatial_inputs = madingley_inputs('spatial inputs')
 
+# cohort input parameters
+max_cohorts = 500
+cohort_inputs = madingley_inputs('cohort definition')
+cohort_inputs$PROPERTY_Initial.number.of.GridCellCohorts = round(max_cohorts/nrow(cohort_inputs))
+
 # initialise model
-mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = spatial_inputs, max_cohort = 40)
+mdata = madingley_init(spatial_window = spatial_window, spatial_inputs = spatial_inputs, max_cohort = max_cohorts)
 
 # run spin-up for 10 years
-mdata2 = madingley_run(madingley_data = mdata, years = 10, spatial_inputs = spatial_inputs, max_cohort = 40)
+mdata2 = madingley_run(madingley_data = mdata, years = 10, spatial_inputs = spatial_inputs, max_cohort = max_cohorts)
 
 # plot results
 plot_timelines(mdata2)
@@ -61,4 +64,4 @@ plot_spatialbiomass(mdata2, functional_filter = TRUE)
 plot_spatialabundances(mdata2, functional_filter = FALSE)
 plot_spatialabundances(mdata2, functional_filter = TRUE)
 plot_spatialabundances(mdata2, functional_filter = TRUE, plot = FALSE)
-
+madingley_version( )

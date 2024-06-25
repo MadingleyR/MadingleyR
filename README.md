@@ -56,12 +56,20 @@ Selwyn Hoeks
 
 
 ## Updates
-
--   01 Jun 2022 - MadingleyR v1.0.5 (C++ source code v2.02): ```madingley_run()``` cohort and stock definition input bugs fixed
--   11 Feb 2022 - MadingleyR v1.0.4 (C++ source code v2.02): plotting functions adapted to allow for functional groups going extinct
--   19 Jan 2022 - MadingleyR v1.0.3 (C++ source code v2.02): unit fixes for biomass of vegetation in plotting functions, fix to trophic pyramid
--   23 Nov 2021 - MadingleyR v1.0.2 (C++ source code v2.02): add control over spatial HANPP (see [HANPP example](https://github.com/MadingleyR/MadingleyR/blob/master/Tests/HANPP_tests2.r))
--   05 Sept 2021 - MadingleyR v1.0.0 (C++ source code v2.00): windows output folder fix
+-   __26 Jun 2024 - MadingleyR v1.0.6__ (C++ source code v2.02): intergration of the terra R package (removing deprecated raster and rgdal dependencies), the following function were updated, replacing the raster function with their terra equivalents:
+    - ```check_and_rewrite_spatial_inputs()``` --> use of ```raster::cellStats()```
+    - ```madingley_inputs()``` --> use of ```raster::raster()```, ```raster::brick()```
+    - ```madingley_run()``` --> use of ```raster::maxValue()```, ```raster::res()```
+    - ```madingley_init()``` --> use of ```raster::res()```
+    - ```plot_spatialabundances()``` --> use of ```raster::extent()```, ```raster::raster()```, ```raster::crop()```, ```raster::resample()```, ```raster::as.matrix()```, ```raster::plot()```, ```raster::stack()```
+    - ```plot_spatialbiomass()``` --> use of ```raster::extent()```, ```raster::raster()```, ```raster::crop()```, ```raster::resample()```, ```raster::as.matrix()```, ```raster::plot()```, ```raster::stack()```
+    - ```plot_window()``` --> ```raster::raster()```, ```raster::plot()```
+    - ```write_spatial_inputs_to_temp_dir()``` --> use of ```raster::xyFromCell()```
+-   __01 Jun 2022 - MadingleyR v1.0.5__ (C++ source code v2.02): ```madingley_run()``` cohort and stock definition input bugs fixed
+-   __11 Feb 2022 - MadingleyR v1.0.4__ (C++ source code v2.02): plotting functions adapted to allow for functional groups going extinct
+-   __19 Jan 2022 - MadingleyR v1.0.3__ (C++ source code v2.02): unit fixes for biomass of vegetation in plotting functions, fix to trophic pyramid
+-   __23 Nov 2021 - MadingleyR v1.0.2__ (C++ source code v2.02): add control over spatial HANPP (see [HANPP example](https://github.com/MadingleyR/MadingleyR/blob/master/Tests/HANPP_tests2.r))
+-   __05 Sept 2021 - MadingleyR v1.0.0__ (C++ source code v2.00): windows output folder fix
 
 ## Troubleshooting
 
