@@ -14,12 +14,20 @@
 # write_spatial_inputs_to_temp_dir() --> use of raster::xyFromCell()
 #-------------------------------------
 
-#----- REINSTALL PACKAGE
+#----- REINSTALL LATEST VERSION
 if(FALSE){
   detach("package:MadingleyR", unload = TRUE) # unload if loaded, don't mind the error
   remove.packages("MadingleyR")  # uninstall current package
   library('remotes') # or use library('devtools') # load the remotes package
   install_github('MadingleyR/MadingleyR', subdir='Package', force = TRUE, build_vignettes = FALSE) # install the MadingleyR package
+}
+
+
+#-----  REINSTALL DIFFERENT LOCAL (RELEASE) VERSIONS
+# see: https://github.com/MadingleyR/MadingleyR/releases
+if(FALSE){
+  #remotes::install_local("MadingleyR-1.0.5.zip")
+  remotes::install_local("MadingleyR-1.0.6.zip")
 }
 
 #------ SOURCE FUNCTIONS FOR DEBUGGING
@@ -36,7 +44,7 @@ if(FALSE){
 # load MadingleyR package
 library(terra)
 library(MadingleyR)
-madingley_version( ) # make sure new versions are installed: R package = 1.0.2, C++ src = 2.02
+madingley_version( ) # compare R package = 1.0.6 (terra) to 1.0.5 (rgdal), C++ src = 2.02
 
 # set spatial window and load spatial rasters
 spatial_window = c(-11, 25, 35, 60)
