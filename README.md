@@ -56,7 +56,7 @@ Selwyn Hoeks
 
 
 ## Updates
--   __26 Jun 2024 - MadingleyR v1.0.6__ (C++ source code v2.02): intergration of the terra R package (removing deprecated raster and rgdal dependencies), the following function were updated, replacing the raster function with their terra equivalents:
+-   __26 Jun 2024 - MadingleyR v1.0.6__ (C++ source code v2.02): integration of the terra R package (removing deprecated raster and rgdal dependencies), the following function were updated, replacing the raster function with their terra equivalents:
     - ```check_and_rewrite_spatial_inputs()``` --> use of ```raster::cellStats()```
     - ```madingley_inputs()``` --> use of ```raster::raster()```, ```raster::brick()```
     - ```madingley_run()``` --> use of ```raster::maxValue()```, ```raster::res()```
