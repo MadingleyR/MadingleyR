@@ -18,7 +18,7 @@ jobs:
         with:
           r-version: ${{ matrix.R }}
       - run: sudo apt-get install libc6
-      - run: sudo apt-get install libcurl-dev
+      - run: sudo apt-get install libcurl4-openssl-dev
       # - run: sudo apt install libgdal-dev
       - run:  Rscript -e 'source("https://raw.githubusercontent.com/MadingleyR/MadingleyR/master/Tests/WorkFlowTest_v4.R")'
       
