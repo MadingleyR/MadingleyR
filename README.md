@@ -56,6 +56,7 @@ Selwyn Hoeks
 
 
 ## Updates
+-   __03 Nov 2026 - MadingleyR v1.0.7__ (C++ source code v2.02): more rubust output path handling in ```madingley_run()``` by adding ```out_dir = normalizePath(out_dir)``` to ensure the reliable support of relative output directories.
 -   __26 Jun 2024 - MadingleyR v1.0.6__ (C++ source code v2.02): integration of the terra R package (removing deprecated raster and rgdal dependencies), the following function were updated, replacing the raster function with their terra equivalents:
     - ```check_and_rewrite_spatial_inputs()``` --> use of ```raster::cellStats()```
     - ```madingley_inputs()``` --> use of ```raster::raster()```, ```raster::brick()```

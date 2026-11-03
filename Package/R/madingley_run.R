@@ -41,6 +41,7 @@ madingley_run = function(out_dir=tempdir(),
       out_dir = paste0(Sys.getenv("USERPROFILE"),out_dir_tmp[length(out_dir_tmp)])
     }
   }
+  out_dir = normalizePath(out_dir, winslash = "/", mustWork = TRUE)
   out_dir_save = out_dir
 
   # load default input rasters if not specified by input function

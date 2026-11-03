@@ -3,7 +3,7 @@ madingley_init = function(cohort_def=get_default_cohort_def(),
                           spatial_inputs=0,
                           spatial_window=c(32,35,-4,-1),
                           max_cohort = 500,
-                          silenced=F) {
+                          silenced=FALSE) {
 
   # These parameters are only important to madingley_run(), pass default here in init
   NotYetAssignedVariableToPassToCPP=0.0
