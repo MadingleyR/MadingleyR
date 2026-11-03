@@ -1,3 +1,5 @@
+library('remotes') # or use library('devtools')
+install_github('MadingleyR/MadingleyR', subdir='Package', build_vignettes = TRUE)
 library(MadingleyR)
 
 # load updated function versions
